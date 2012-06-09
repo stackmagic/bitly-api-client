@@ -1,7 +1,7 @@
 
 h1. bit.ly api client built in java
 
-This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api.html. It is:
+p. This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api.html. It is:
 
 * small
 * easy to use
@@ -14,61 +14,61 @@ h2. get started right away
 
 h3. step 1: get an oauth access token
 
-There is one prerequisite: you need to obtain an oauth access token from bit.ly (which also requires you to "have an account with bit.ly":https://bitly.com/a/sign_up and "register an app in the dev center":http://bitly.com/a/settings/advanced). You can do this with "scribe-java":https://github.com/fernandezpablo85/scribe-java but bit.ly support is not yet available. I made a fork of the scribe project and added bit.ly support. A pull request is currently pending. In the mean time: use my fork (or just the @BitlyApi@ class from it) which is available here: "https://github.com/stackmagic/scribe-java":https://github.com/stackmagic/scribe-java
+p. There is one prerequisite: you need to obtain an oauth access token from bit.ly (which also requires you to "have an account with bit.ly":https://bitly.com/a/sign_up and "register an app in the dev center":http://bitly.com/a/settings/advanced). You can do this with "scribe-java":https://github.com/fernandezpablo85/scribe-java but bit.ly support is not yet available. I made a fork of the scribe project and added bit.ly support. A pull request is currently pending. In the mean time: use my fork (or just the @BitlyApi@ class from it) which is available here: "https://github.com/stackmagic/scribe-java":https://github.com/stackmagic/scribe-java
 
 h3. step 2: check out the integration tests
 
-There are a bunch of integration tests that you can run and look at to get an idea of how this stuff works. The tests are all matching @**/*IntegrationTest.java@ inside @src/test/java@.
+p. There are a bunch of integration tests that you can run and look at to get an idea of how this stuff works. The tests are all matching @**/*IntegrationTest.java@ inside @src/test/java@.
 
-In order to run the integration tests you must put your access token into a file with a single line and no leading or trailing spaces named @.accesstoken@ inside the project's root directory.
+p. In order to run the integration tests you must put your access token into a file with a single line and no leading or trailing spaces named @.accesstoken@ inside the project's root directory.
 
 h3. step 3: get cracking (fluent builders)
 
-The basic principle is simple: You create a BitlyClient with your access token. This is your factory and can be reused and passed around instead of passing around the access token String. Let the @BitlyClient@ create a @RequestBuilder@ for you and configure it, then make the call to bitly and work with the response. Simple, right? So here goes:
+p. The basic principle is simple: You create a BitlyClient with your access token. This is your factory and can be reused and passed around instead of passing around the access token String. Let the @BitlyClient@ create a @RequestBuilder@ for you and configure it, then make the call to bitly and work with the response. Simple, right? So here goes:
 
-@BitlyClient client = new BitlyClient("... the access token ...")@
-@Response<ShortUrl> respShort = client.shorten() //@
-                                         @.longUrl("https://github.com/stackmagic/bitly-api-client") //@
-                                         @.call();@
+bc.. BitlyClient client = new BitlyClient("... the access token ...")
+Response<ShortUrl> respShort = client.shorten() //
+                                     .longUrl("https://github.com/stackmagic/bitly-api-client") //
+                                     .call();
 
-This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the @BitlyClient@ instance around, you can instantiate the @RequestBuilder@ specializations directly. So above example would become this: 
+p. This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the @BitlyClient@ instance around, you can instantiate the @RequestBuilder@ specializations directly. So above example would become this: 
 
-@Response<ShortUrl> respShort = new ShortenRequestBuilder("... the access token ...") //@
-                                         @.longUrl("https://github.com/stackmagic/bitly-api-client") //@
-                                         @.call();@
+bc.. Response<ShortUrl> respShort = new ShortenRequestBuilder("... the access token ...") //
+                               .longUrl("https://github.com/stackmagic/bitly-api-client") //
+                               .call();
 
-And it's a 1-liner (but less pretty IMO).
+p. And it's a 1-liner (but less pretty IMO).
 
 h3. step 3: get cracking (traditional style)
 
-If you don't like fluent builders the above example can also be written like this:
+p. If you don't like fluent builders the above example can also be written like this:
 
-@ShortenRequestBuilder builder = new ShortenRequestBuilder("... the access token ...")@
-@builder.longUrl("https://github.com/stackmagic/bitly-api-client");@
-@Response<ShortUrl> respShort = builder.call();@
+bc.. ShortenRequestBuilder builder = new ShortenRequestBuilder("... the access token ...")
+builder.longUrl("https://github.com/stackmagic/bitly-api-client");
+Response<ShortUrl> respShort = builder.call();
 
 h3. step 3: working with the response object
 
-The @Response<T>@ is a container that contains 3 important fields:
+p. The @Response<T>@ is a container that contains 3 important fields:
 
 * status_code
 * status_txt
 * data
 
-The @data@ field contains the actual response information of type @T@. It is possible, that the @data@ field is null. As of now, it is your obligation to check the status_code and act accordingly. No exceptions are thrown if an error response is received. "The meaning of the status_code":http://dev.bitly.com/formats.html is well documented by bitly.
+p. The @data@ field contains the actual response information of type @T@. It is possible, that the @data@ field is null. As of now, it is your obligation to check the status_code and act accordingly. No exceptions are thrown if an error response is received. "The meaning of the status_code":http://dev.bitly.com/formats.html is well documented by bitly.
 
 h2. roadmap
 
-right now this project is a rough skeleton. the api style is pretty much defined unless some unexpected special case comes up. the next most important steps are:
+p. right now this project is a rough skeleton. the api style is pretty much defined unless some unexpected special case comes up. the next most important steps are:
 
 * distinguish between single and multi occurrence parameters. some endpoints allow batching, this is not yet implemented in the request builder.
 * implement the full api
 * set up a maven repo (possibly combined with my scribe-java fork)
 * add some javadoc
-* throw exceptions when there is a @status_code@ that doesn't equal 200?
+* throw exceptions when there is a @status_code@ that doesn't equal 200? make this optional (eg call() and callWithException()?)
 * add some debugging output (what's the smallest logging api in terms of size and further dependencies?)
 
 h2. questions / bugs
 
-Feel free to raise a bug or question here: "https://github.com/stackmagic/bitly-api-client/issues":https://github.com/stackmagic/bitly-api-client/issues
+p. Feel free to raise a bug or question here: "https://github.com/stackmagic/bitly-api-client/issues":https://github.com/stackmagic/bitly-api-client/issues
 
