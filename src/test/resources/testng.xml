@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="all" verbose="1">
+	<test name="all">
+		<groups>
+			<run>
+				<exclude name="integration-tests" />
+			</run>
+		</groups>
+	</test>
+</suite>

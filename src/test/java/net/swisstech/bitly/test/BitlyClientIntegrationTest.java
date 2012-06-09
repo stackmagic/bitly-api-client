@@ -18,17 +18,18 @@ package net.swisstech.bitly.test;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.testng.annotations.Test;
-
 import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
+import net.swisstech.bitly.test.util.TestGroup;
+
+import org.testng.annotations.Test;
 
 public class BitlyClientIntegrationTest {
 
-	@Test
+	@Test(groups = TestGroup.INTTEST)
 	public void makeSomeTestCalls() throws IOException {
 
 		String accessToken = AccessTokenUtil.readFrom(".accesstoken");
