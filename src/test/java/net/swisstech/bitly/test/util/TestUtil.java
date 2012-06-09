@@ -15,7 +15,8 @@
  */
 package net.swisstech.bitly.test.util;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import net.swisstech.bitly.model.Response;
 
 public class TestUtil {

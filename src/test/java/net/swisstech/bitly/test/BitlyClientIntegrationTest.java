@@ -17,6 +17,7 @@ package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.print;
 import static net.swisstech.bitly.test.util.TestUtil.verify;
+import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,6 +26,7 @@ import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
+import net.swisstech.bitly.model.v3.LinkEdit;
 import net.swisstech.bitly.model.v3.Lookup;
 import net.swisstech.bitly.model.v3.ShortUrl;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
@@ -57,6 +59,8 @@ public class BitlyClientIntegrationTest {
 
 		verify(resp, Expand.class);
 		print(resp);
+
+		// TODO verify the response
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -73,6 +77,8 @@ public class BitlyClientIntegrationTest {
 
 		verify(resp, Info.class);
 		print(resp);
+
+		// TODO verify the response
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -85,6 +91,8 @@ public class BitlyClientIntegrationTest {
 
 		verify(resp, Lookup.class);
 		print(resp);
+
+		// TODO verify the response
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -95,6 +103,8 @@ public class BitlyClientIntegrationTest {
 
 		verify(resp, ShortUrl.class);
 		print(resp);
+
+		// TODO verify the response
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -105,5 +115,22 @@ public class BitlyClientIntegrationTest {
 
 		verify(resp, ShortUrl.class);
 		print(resp);
+
+		// TODO verify the response
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkEdit() {
+		// test link to https://www.example.com/bitly-api-client-test
+		Response<LinkEdit> resp = client.linkEdit() //
+				.setLink("http://bit.ly/MtVsf1") //
+				.setNote("Note: " + System.currentTimeMillis()) //
+				.setUserTs(System.currentTimeMillis()) //
+				.call();
+
+		verify(resp, LinkEdit.class);
+		print(resp);
+
+		assertEquals(resp.data.link_edit.link, "http://bit.ly/MtVsf1");
 	}
 }

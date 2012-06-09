@@ -17,6 +17,7 @@ package net.swisstech.bitly;
 
 import net.swisstech.bitly.builder.ExpandRequestBuilder;
 import net.swisstech.bitly.builder.InfoRequestBuilder;
+import net.swisstech.bitly.builder.LinkEditRequestBuilder;
 import net.swisstech.bitly.builder.LookupRequestBuilder;
 import net.swisstech.bitly.builder.ShortenRequestBuilder;
 
@@ -32,6 +33,10 @@ public class BitlyClient {
 		return new ExpandRequestBuilder(accessToken);
 	}
 
+	public InfoRequestBuilder info() {
+		return new InfoRequestBuilder(accessToken);
+	}
+
 	public LookupRequestBuilder lookup() {
 		return new LookupRequestBuilder(accessToken);
 	}
@@ -40,7 +45,7 @@ public class BitlyClient {
 		return new ShortenRequestBuilder(accessToken);
 	}
 
-	public InfoRequestBuilder info() {
-		return new InfoRequestBuilder(accessToken);
+	public LinkEditRequestBuilder linkEdit() {
+		return new LinkEditRequestBuilder(accessToken);
 	}
 }

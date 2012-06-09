@@ -15,48 +15,22 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import java.util.List;
+public class LinkEdit {
 
-import org.joda.time.DateTime;
+	public Link link_edit;
 
-import com.google.gson.annotations.SerializedName;
-
-public class LinkHistory {
-
-	public long result_count;
-
-	public List<Element> link_history;
-
-	public static class Element {
-
-		public String aggregate_link;
-
-		public boolean archived;
-
-		public DateTime created_at;
+	public static class Link {
 
 		public String link;
 
-		public String long_url;
-
-		public DateTime modified_at;
-
-		@SerializedName("private")
-		public boolean privat;
-
-		public String title;
-
-		public DateTime user_ts;
-
 		@Override
 		public String toString() {
-			return String.format("LinkHistoryElement { aggregate_link=%s link=%s long_url=%s private=%b }", aggregate_link, link, long_url, privat);
+			return String.format("Link { link=%s }", link);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return String.format("LinkHistory { result_count=%d link_history=%s }", result_count, link_history);
+		return String.format("LinkEdit { link_edit=%s }", link_edit);
 	}
-
 }

@@ -20,6 +20,8 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,10 +37,16 @@ import com.google.gson.GsonBuilder;
 
 public abstract class RequestBuilder<T> {
 
+	private final String accessToken;
+
 	private List<QueryParameter> queryParameters = new LinkedList<QueryParameter>();
 
 	public RequestBuilder(String accessToken) {
-		addQueryParameter("access_token", accessToken);
+		this.accessToken = accessToken;
+	}
+
+	public List<QueryParameter> getQueryParameters() {
+		return Collections.unmodifiableList(queryParameters);
 	}
 
 	public abstract String getEndpoint();
@@ -62,26 +70,48 @@ public abstract class RequestBuilder<T> {
 		addQueryParameter(new QueryParameter(name, value));
 	}
 
+	public void addQueryParameter(String name, long value) {
+		addQueryParameter(new QueryParameter(name, value));
+	}
+
 	public void addQueryParameter(QueryParameter queryParameter) {
 		queryParameters.add(queryParameter);
 	}
 
 	public String buildUrl() {
-		StringBuffer buf = new StringBuffer();
-		buf.append(getEndpoint());
-		buf.append("?");
-		for (QueryParameter qp : queryParameters) {
-			buf.append(qp);
-			buf.append("&");
+		return buildUrl(queryParameters);
+	}
+
+	protected String buildUrl(List<QueryParameter> params) {
+
+		// TODO find a way to pass the collection to addQuery in a simple and
+		// extensible way without breaking but extending the normal
+		// addQueryParameter methods
+		params = new LinkedList<QueryParameter>(params);
+		params.add(new QueryParameter("access_token", accessToken));
+
+		StringBuffer url = new StringBuffer();
+		url.append(getEndpoint());
+		url.append("?");
+		Iterator<QueryParameter> paramIter = params.iterator();
+		while (paramIter.hasNext()) {
+			String param = paramIter.next().toString();
+			url.append(param);
+			if (paramIter.hasNext()) {
+				url.append("&");
+			}
 		}
-		return buf.toString();
+
+		return url.toString();
 	}
 
 	public Response<T> call() {
 		try {
 
 			// make the call
-			URLConnection conn = new URL(buildUrl()).openConnection();
+			String url = buildUrl();
+			System.out.println("Calling URL: " + url);
+			URLConnection conn = new URL(url).openConnection();
 			conn.connect();
 			StringBuffer respBuf = new StringBuffer();
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));

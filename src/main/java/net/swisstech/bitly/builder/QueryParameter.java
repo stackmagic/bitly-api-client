@@ -32,6 +32,18 @@ class QueryParameter {
 		this(name, String.valueOf(value));
 	}
 
+	public QueryParameter(String name, long value) {
+		this(name, String.valueOf(value));
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s=%s", name, value);
