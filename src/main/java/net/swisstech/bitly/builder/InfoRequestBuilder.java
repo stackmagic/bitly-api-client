@@ -15,10 +15,13 @@
  */
 package net.swisstech.bitly.builder;
 
+import java.lang.reflect.Type;
 import java.util.Collection;
 
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Info;
+
+import com.google.gson.reflect.TypeToken;
 
 public class InfoRequestBuilder extends RequestBuilder<Info> {
 
@@ -29,6 +32,12 @@ public class InfoRequestBuilder extends RequestBuilder<Info> {
 	@Override
 	public String getEndpoint() {
 		return "https://api-ssl.bitly.com/v3/info";
+	}
+
+	@Override
+	protected Type getTypeForGson() {
+		return new TypeToken<Response<Info>>() {
+		}.getType();
 	}
 
 	public InfoRequestBuilder setExpandUser(boolean expand) {
@@ -72,10 +81,5 @@ public class InfoRequestBuilder extends RequestBuilder<Info> {
 			addShortUrl(shortUrl);
 		}
 		return this;
-	}
-
-	@SuppressWarnings("unchecked")
-	public Response<Info> call() {
-		return (Response<Info>) callInternal();
 	}
 }

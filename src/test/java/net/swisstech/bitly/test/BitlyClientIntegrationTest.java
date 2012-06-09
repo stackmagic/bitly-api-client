@@ -15,6 +15,7 @@
  */
 package net.swisstech.bitly.test;
 
+import static net.swisstech.bitly.test.util.TestUtil.*;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -22,20 +23,46 @@ import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
+import net.swisstech.bitly.model.v3.ShortUrl;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
-	public void makeSomeTestCalls() throws IOException {
+	private BitlyClient client;
 
+	@BeforeMethod
+	public void beforeMethod() throws IOException {
 		String accessToken = AccessTokenUtil.readFrom(".accesstoken");
-		BitlyClient client = new BitlyClient(accessToken);
+		client = new BitlyClient(accessToken);
+	}
 
-		Response<Expand> respExpand = client.expandRequest() //
+	@Test(groups = TestGroup.INTTEST)
+	public void callShorten() throws IOException {
+		Response<ShortUrl> resp = client.shorten() //
+				.setLongUrl("https://www.example.com/") //
+				.call();
+
+		verify(resp, ShortUrl.class);
+		print(resp);
+	}
+	@Test(groups = TestGroup.INTTEST)
+	public void callShortenWithExtraParameters() throws IOException {
+		Response<ShortUrl> resp = client.shorten() //
+				.setLongUrl("https://www.example.com/%s?%s=%s#%s", "test1", "test2", "test3", "test4") //
+				.call();
+		
+		verify(resp, ShortUrl.class);
+		print(resp);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callExpand() throws IOException {
+
+		Response<Expand> resp = client.expand() //
 				.addHash("phphotoWinterSun") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
 				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
@@ -44,10 +71,13 @@ public class BitlyClientIntegrationTest {
 				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
 				.call();
 
-		System.out.println(respExpand);
-		System.out.println(respExpand.data);
+		verify(resp, Expand.class);
+		print(resp);
+	}
 
-		Response<Info> respInfo = client.infoRequest() //
+	@Test(groups = TestGroup.INTTEST)
+	public void callInfo() throws IOException {
+		Response<Info> resp = client.info() //
 				.setExpandUser(false) //
 				.addHash("phphotoWinterSun") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
@@ -57,7 +87,7 @@ public class BitlyClientIntegrationTest {
 				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
 				.call();
 
-		System.out.println(respInfo);
-		System.out.println(respInfo.data);
+		verify(resp, Info.class);
+		print(resp);
 	}
 }

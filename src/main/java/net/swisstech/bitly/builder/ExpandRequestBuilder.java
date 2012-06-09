@@ -15,10 +15,13 @@
  */
 package net.swisstech.bitly.builder;
 
+import java.lang.reflect.Type;
 import java.util.Collection;
 
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
+
+import com.google.gson.reflect.TypeToken;
 
 public class ExpandRequestBuilder extends RequestBuilder<Expand> {
 
@@ -29,6 +32,12 @@ public class ExpandRequestBuilder extends RequestBuilder<Expand> {
 	@Override
 	public String getEndpoint() {
 		return "https://api-ssl.bitly.com/v3/expand";
+	}
+
+	@Override
+	protected Type getTypeForGson() {
+		return new TypeToken<Response<Expand>>() {
+		}.getType();
 	}
 
 	public ExpandRequestBuilder addHash(String hash) {
@@ -67,10 +76,5 @@ public class ExpandRequestBuilder extends RequestBuilder<Expand> {
 			addShortUrl(shortUrl);
 		}
 		return this;
-	}
-
-	@SuppressWarnings("unchecked")
-	public Response<Expand> call() {
-		return (Response<Expand>) callInternal();
 	}
 }

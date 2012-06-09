@@ -1,0 +1,15 @@
+
+[0.0.3-SNAPSHOT]
+
+* Shorten request
+* add changelog
+
+[0.0.2-SNAPSHOT]
+
+* add README.textile
+* split unit and integration tests
+
+[0.0.1-SNAPSHOT]
+
+* Expand request
+* Info request

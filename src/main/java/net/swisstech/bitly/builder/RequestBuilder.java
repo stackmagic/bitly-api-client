@@ -32,9 +32,8 @@ import org.joda.time.Instant;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
-abstract class RequestBuilder<T> {
+public abstract class RequestBuilder<T> {
 
 	private List<QueryParameter> queryParameters = new LinkedList<QueryParameter>();
 
@@ -43,6 +42,17 @@ abstract class RequestBuilder<T> {
 	}
 
 	public abstract String getEndpoint();
+
+	/**
+	 * GSON has this construct to deserialize generic types. Just using
+	 * <code>Response&lt;T&gt;</code> won't work here for the same reasons GSON
+	 * introduced this construct in the first place. So the RequestBuilder has
+	 * to return an explicit type here, no T parameters or anything because that
+	 * won't work and then GSON will serialize the responsee's data as a
+	 * StringMap.
+	 * @return Type for GSON deserializer
+	 */
+	protected abstract Type getTypeForGson();
 
 	public void addQueryParameter(String name, String value) {
 		addQueryParameter(new QueryParameter(name, value));
@@ -67,7 +77,7 @@ abstract class RequestBuilder<T> {
 		return buf.toString();
 	}
 
-	protected Object callInternal() {
+	public Response<T> call() {
 		try {
 
 			// make the call
@@ -88,9 +98,7 @@ abstract class RequestBuilder<T> {
 			Gson gson = builder.create();
 
 			// deserialize
-			Type type = new TypeToken<Response<T>>() {
-			}.getType();
-			Response<T> response = gson.fromJson(resp, type);
+			Response<T> response = gson.fromJson(resp, getTypeForGson());
 			return response;
 
 		} catch (Throwable t) {

@@ -13,29 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly;
+package net.swisstech.bitly.model.v3;
 
-import net.swisstech.bitly.builder.ExpandRequestBuilder;
-import net.swisstech.bitly.builder.InfoRequestBuilder;
-import net.swisstech.bitly.builder.ShortenRequestBuilder;
+public class ShortUrl {
 
-public class BitlyClient {
+	public long new_hash;
 
-	private final String accessToken;
+	public String url;
 
-	public BitlyClient(String accessToken) {
-		this.accessToken = accessToken;
-	}
+	public String hash;
 
-	public ShortenRequestBuilder shorten() {
-		return new ShortenRequestBuilder(accessToken);
-	}
+	public String global_hash;
 
-	public ExpandRequestBuilder expand() {
-		return new ExpandRequestBuilder(accessToken);
-	}
+	public String long_url;
 
-	public InfoRequestBuilder info() {
-		return new InfoRequestBuilder(accessToken);
+	@Override
+	public String toString() {
+		return String.format("ShortUrl { new_hash=%d url=%s hash=%s global_hash=%s long_url=%s }", new_hash, url, hash, global_hash, long_url);
 	}
 }
