@@ -21,7 +21,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class AccessTokenUtil {
+public final class AccessTokenUtil {
+
+	/** private constructor for utility class */
+	private AccessTokenUtil() {
+	}
 
 	public static String readFrom(String path) throws IOException {
 		File file = new File(path);

@@ -19,7 +19,11 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import net.swisstech.bitly.model.Response;
 
-public class TestUtil {
+public final class TestUtil {
+
+	/** private constructor for utility class */
+	private TestUtil() {
+	}
 
 	public static <T> void verify(Response<T> response, Class<?> type) {
 		assertNotNull(response);

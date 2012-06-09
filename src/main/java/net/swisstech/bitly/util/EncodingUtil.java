@@ -20,9 +20,13 @@ import java.net.URLEncoder;
 
 import net.swisstech.bitly.builder.RequestBuilderException;
 
-public class EncodingUtil {
+public final class EncodingUtil {
 
 	private static final String URLENCODING = "UTF-8";
+
+	/** private constructor for utility class */
+	private EncodingUtil() {
+	}
 
 	public static String encode(String string) {
 		try {
