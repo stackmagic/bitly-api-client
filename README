@@ -1,6 +1,6 @@
 
 if you want to run the unit (integration) test you must create a file called
-".accesstoken" in this (the rott) directory that contains a single line with
+".accesstoken" in this (the root) directory that contains a single line with
 your access token
 
 to obtain an oauth access token, have a look at the scribe project, bitly
