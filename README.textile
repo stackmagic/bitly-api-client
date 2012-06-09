@@ -46,6 +46,14 @@ If you don't like fluent builders the above example can also be written like thi
 @builder.longUrl("https://github.com/stackmagic/bitly-api-client");@
 @Response<ShortUrl> respShort = builder.call();@
 
+h2. roadmap
+
+right now this project is a rough skeleton. the api style is pretty much defined unless some unexpected special case comes up. the next most important steps are:
+
+* implement the full api
+* set up a maven repo (possibly combined with my scribe-java fork)
+* add some javadoc
+
 h2. questions / bugs
 
 Feel free to raise a bug or question here: "https://github.com/stackmagic/bitly-api-client/issues":https://github.com/stackmagic/bitly-api-client/issues
