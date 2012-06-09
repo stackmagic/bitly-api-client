@@ -1,0 +1,52 @@
+
+h1. bit.ly api client built in java
+
+This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api.html. It is:
+
+* small
+* easy to use
+* built by apache maven
+* with a minimum of dependencies
+* and for now a **work in progress**
+
+h2. get started right away
+
+h3. step 1: get an oauth access token
+
+There is one prerequisite: you need to obtain an oauth access token from bit.ly (which also requires you to "have an account with bit.ly":https://bitly.com/a/sign_up and "register an app in the dev center":http://bitly.com/a/settings/advanced). You can do this with "scribe-java":https://github.com/fernandezpablo85/scribe-java but bit.ly support is not yet available. I made a fork of the scribe project and added bit.ly support. A pull request is currently pending. In the mean time: use my fork (or just the @BitlyApi@ class from it) which is available here: "https://github.com/stackmagic/scribe-java":https://github.com/stackmagic/scribe-java
+
+h3. step 2: check out the integration tests
+
+There are a bunch of integration tests that you can run and look at to get an idea of how this stuff works. The tests are all matching @**/*IntegrationTest.java@ inside @src/test/java@.
+
+In order to run the integration tests you must put your access token into a file with a single line and no leading or trailing spaces named @.accesstoken@ inside the project's root directory.
+
+h3. step 3: get cracking (fluent builders)
+
+The basic principle is simple: You create a BitlyClient with your access token. This is your factory and can be reused and passed around instead of passing around the access token String. Let the @BitlyClient@ create a @RequestBuilder@ for you and configure it, then make the call to bitly and work with the response. Simple, right? So here goes:
+
+@BitlyClient client = new BitlyClient("... the access token ...")@
+@Response<ShortUrl> respShort = client.shorten() //@
+                                         @.longUrl("https://github.com/stackmagic/bitly-api-client") //@
+                                         @.call();@
+
+This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the @BitlyClient@ instance around, you can instantiate the @RequestBuilder@ specializations directly. So above example would become this: 
+
+@Response<ShortUrl> respShort = new ShortenRequestBuilder("... the access token ...") //@
+                                         @.longUrl("https://github.com/stackmagic/bitly-api-client") //@
+                                         @.call();@
+
+And it's a 1-liner (but less pretty IMO).
+
+h3. step 3: get cracking (traditional style)
+
+If you don't like fluent builders the above example can also be written like this:
+
+@ShortenRequestBuilder builder = new ShortenRequestBuilder("... the access token ...")@
+@builder.longUrl("https://github.com/stackmagic/bitly-api-client");@
+@Response<ShortUrl> respShort = builder.call();@
+
+h2. questions / bugs
+
+Feel free to raise a bug or question here: "https://github.com/stackmagic/bitly-api-client/issues":https://github.com/stackmagic/bitly-api-client/issues
+

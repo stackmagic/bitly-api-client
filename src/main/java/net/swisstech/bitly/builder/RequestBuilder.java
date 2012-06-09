@@ -25,7 +25,7 @@ import java.util.List;
 
 import net.swisstech.bitly.gson.converter.DateTimeTypeConverter;
 import net.swisstech.bitly.gson.converter.InstantTypeConverter;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 
 import org.joda.time.DateTime;
 import org.joda.time.Instant;
@@ -88,9 +88,9 @@ abstract class RequestBuilder<T> {
 			Gson gson = builder.create();
 
 			// deserialize
-			Type type = new TypeToken<ApiResponse<T>>() {
+			Type type = new TypeToken<Response<T>>() {
 			}.getType();
-			ApiResponse<T> response = gson.fromJson(resp, type);
+			Response<T> response = gson.fromJson(resp, type);
 			return response;
 
 		} catch (Throwable t) {

@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import net.swisstech.bitly.BitlyClient;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
@@ -35,7 +35,7 @@ public class BitlyClientIntegrationTest {
 		String accessToken = AccessTokenUtil.readFrom(".accesstoken");
 		BitlyClient client = new BitlyClient(accessToken);
 
-		ApiResponse<Expand> respExpand = client.expandRequest() //
+		Response<Expand> respExpand = client.expandRequest() //
 				.addHash("phphotoWinterSun") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
 				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
@@ -47,7 +47,7 @@ public class BitlyClientIntegrationTest {
 		System.out.println(respExpand);
 		System.out.println(respExpand.data);
 
-		ApiResponse<Info> respInfo = client.infoRequest() //
+		Response<Info> respInfo = client.infoRequest() //
 				.setExpandUser(false) //
 				.addHash("phphotoWinterSun") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //

@@ -17,7 +17,7 @@ package net.swisstech.bitly.builder;
 
 import java.util.Collection;
 
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 
 public class ExpandRequestBuilder extends RequestBuilder<Expand> {
@@ -70,7 +70,7 @@ public class ExpandRequestBuilder extends RequestBuilder<Expand> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ApiResponse<Expand> call() {
-		return (ApiResponse<Expand>) callInternal();
+	public Response<Expand> call() {
+		return (Response<Expand>) callInternal();
 	}
 }
