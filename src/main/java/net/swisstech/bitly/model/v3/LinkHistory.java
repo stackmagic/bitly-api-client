@@ -17,28 +17,46 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-public class Expand {
+import org.joda.time.DateTime;
 
-	public List<Element> expand;
+import com.google.gson.annotations.SerializedName;
+
+public class LinkHistory {
+
+	public long result_count;
+
+	public List<Element> link_history;
 
 	public static class Element {
 
-		public String global_hash;
+		public String aggregate_link;
+
+		public boolean archived;
+
+		public DateTime created_at;
+
+		public String link;
 
 		public String long_url;
 
-		public String short_url;
+		public DateTime modified_at;
 
-		public String user_hash;
+		@SerializedName("private")
+		public boolean private_;
+
+		public String title;
+
+		public DateTime user_ts;
 
 		@Override
 		public String toString() {
-			return String.format("Element { global_hash=%s long_url=%s short_url=%s user_hash=%s }", global_hash, long_url, short_url, user_hash);
+			return String.format("LinkHistoryElement { aggregate_link=%s link=%s long_url=%s private=%b }", aggregate_link, link, long_url, private_);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Expand { expand=%s }", expand);
+		return String.format("LinkHistory { result_count=%d link_history=%s }", result_count, link_history);
 	}
+
 }

@@ -13,50 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.model.v3.user;
+package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import org.joda.time.DateTime;
+public class Lookup {
 
-import com.google.gson.annotations.SerializedName;
-
-public class LinkHistory {
-
-	public long result_count;
-
-	public List<Element> link_history;
+	public List<Element> link_lookup;
 
 	public static class Element {
 
+		public String url;
+
 		public String aggregate_link;
-
-		public boolean archived;
-
-		public DateTime created_at;
-
-		public String link;
-
-		public String long_url;
-
-		public DateTime modified_at;
-
-		@SerializedName("private")
-		public boolean private_;
-
-		public String title;
-
-		public DateTime user_ts;
 
 		@Override
 		public String toString() {
-			return String.format("LinkHistoryElement { aggregate_link=%s link=%s long_url=%s private=%b }", aggregate_link, link, long_url, private_);
+			return String.format("Element { url=%s aggregate_link=%s }", url, aggregate_link);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return String.format("LinkHistory { result_count=%d link_history=%s }", result_count, link_history);
+		return String.format("Lookup { link_lookup=%s }", link_lookup);
 	}
-
 }

@@ -15,7 +15,9 @@
  */
 package net.swisstech.bitly.test;
 
-import static net.swisstech.bitly.test.util.TestUtil.*;
+import static net.swisstech.bitly.test.util.TestUtil.print;
+import static net.swisstech.bitly.test.util.TestUtil.verify;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -23,6 +25,7 @@ import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
+import net.swisstech.bitly.model.v3.Lookup;
 import net.swisstech.bitly.model.v3.ShortUrl;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
@@ -38,25 +41,6 @@ public class BitlyClientIntegrationTest {
 	public void beforeMethod() throws IOException {
 		String accessToken = AccessTokenUtil.readFrom(".accesstoken");
 		client = new BitlyClient(accessToken);
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callShorten() throws IOException {
-		Response<ShortUrl> resp = client.shorten() //
-				.setLongUrl("https://www.example.com/") //
-				.call();
-
-		verify(resp, ShortUrl.class);
-		print(resp);
-	}
-	@Test(groups = TestGroup.INTTEST)
-	public void callShortenWithExtraParameters() throws IOException {
-		Response<ShortUrl> resp = client.shorten() //
-				.setLongUrl("https://www.example.com/%s?%s=%s#%s", "test1", "test2", "test3", "test4") //
-				.call();
-		
-		verify(resp, ShortUrl.class);
-		print(resp);
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -88,6 +72,38 @@ public class BitlyClientIntegrationTest {
 				.call();
 
 		verify(resp, Info.class);
+		print(resp);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLookup() {
+		Response<Lookup> resp = client.lookup() //
+				.addUrl("https://www.example.com/") //
+				.addUrls("https://www.example.com/1", "https://www.example.com/2") //
+				.addUrls(Arrays.asList("https://www.example.com/1", "https://www.example.com/2")) //
+				.call();
+
+		verify(resp, Lookup.class);
+		print(resp);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callShorten() throws IOException {
+		Response<ShortUrl> resp = client.shorten() //
+				.setLongUrl("https://www.example.com/") //
+				.call();
+
+		verify(resp, ShortUrl.class);
+		print(resp);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callShortenWithExtraParameters() {
+		Response<ShortUrl> resp = client.shorten() //
+				.setLongUrl("https://www.example.com/%s?%s=%s#%s", "test1", "test2", "test3", "test4") //
+				.call();
+
+		verify(resp, ShortUrl.class);
 		print(resp);
 	}
 }

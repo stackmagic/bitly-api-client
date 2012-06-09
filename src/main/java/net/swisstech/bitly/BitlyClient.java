@@ -17,6 +17,7 @@ package net.swisstech.bitly;
 
 import net.swisstech.bitly.builder.ExpandRequestBuilder;
 import net.swisstech.bitly.builder.InfoRequestBuilder;
+import net.swisstech.bitly.builder.LookupRequestBuilder;
 import net.swisstech.bitly.builder.ShortenRequestBuilder;
 
 public class BitlyClient {
@@ -27,12 +28,16 @@ public class BitlyClient {
 		this.accessToken = accessToken;
 	}
 
-	public ShortenRequestBuilder shorten() {
-		return new ShortenRequestBuilder(accessToken);
-	}
-
 	public ExpandRequestBuilder expand() {
 		return new ExpandRequestBuilder(accessToken);
+	}
+
+	public LookupRequestBuilder lookup() {
+		return new LookupRequestBuilder(accessToken);
+	}
+
+	public ShortenRequestBuilder shorten() {
+		return new ShortenRequestBuilder(accessToken);
 	}
 
 	public InfoRequestBuilder info() {
