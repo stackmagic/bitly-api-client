@@ -3,7 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.swisstech.bitly</groupId>
 	<artifactId>bitly-api-client</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
+
+	<distributionManagement>
+		<repository>
+			<!-- my local setup has a parallel git repo "maven-repo" where -->
+			<!-- the gh-pages branch is checked out and set up following -->
+			<!-- the instructions at http://bit.ly/LKqoDd -->
+			<id>gh-pages</id>
+			<url>file:///${basedir}/../maven-repo/maven2</url>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>
