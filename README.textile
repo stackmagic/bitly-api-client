@@ -66,7 +66,7 @@ bc.. ShortenRequestBuilder builder = new ShortenRequestBuilder("... the access t
 builder.longUrl("https://github.com/stackmagic/bitly-api-client");
 Response<ShortUrl> respShort = builder.call();
 
-h3. step 3: working with the response object
+h3. step 4: working with the response object
 
 p. The @Response<T>@ is a container that contains 3 important fields:
 

@@ -30,6 +30,7 @@ import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
 import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
 import net.swisstech.bitly.model.v3.LinkCountriesRolledUp;
+import net.swisstech.bitly.model.v3.LinkEncodersCount;
 import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
@@ -245,7 +246,7 @@ public class BitlyClientIntegrationTest {
 	}
 
 	// disabled because this doesn't work as expected, the rollup parameter
-	// doesn't do anything for the response format.
+	// doesn't do anything for the response format. link clicks works though.
 	@Test(groups = TestGroup.INTTEST, enabled = false)
 	public void callLinkCountriesRolledUp() {
 		Response<LinkCountriesRolledUp> resp = client.linkCountriesRolledUp() //
@@ -262,5 +263,14 @@ public class BitlyClientIntegrationTest {
 		assertEquals(resp.data.tz_offset, 0);
 		assertEquals(resp.data.unit, "hour");
 		assertEquals(resp.data.units, -1);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkEncodersCount() {
+		Response<LinkEncodersCount> resp = client.linkEncodersCount() //
+				.setLink("http://bit.ly/cJ8Hst") //
+				.call();
+
+		printAndVerify(resp, LinkEncodersCount.class);
 	}
 }
