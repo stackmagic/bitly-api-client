@@ -23,13 +23,13 @@ import java.util.List;
 import java.util.Set;
 
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkEdit;
+import net.swisstech.bitly.model.v3.UserLinkEdit;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkEditRequestBuilder extends RequestBuilder<LinkEdit> {
+public class UserLinkEditRequestBuilder extends RequestBuilder<UserLinkEdit> {
 
-	public LinkEditRequestBuilder(String accessToken) {
+	public UserLinkEditRequestBuilder(String accessToken) {
 		super(accessToken);
 	}
 
@@ -40,36 +40,36 @@ public class LinkEditRequestBuilder extends RequestBuilder<LinkEdit> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkEdit>>() {
+		return new TypeToken<Response<UserLinkEdit>>() {
 		}.getType();
 	}
 
-	public LinkEditRequestBuilder setLink(String link) {
+	public UserLinkEditRequestBuilder setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkEditRequestBuilder setTitle(String title) {
+	public UserLinkEditRequestBuilder setTitle(String title) {
 		addQueryParameter("title", title);
 		return this;
 	}
 
-	public LinkEditRequestBuilder setNote(String note) {
+	public UserLinkEditRequestBuilder setNote(String note) {
 		addQueryParameter("note", note);
 		return this;
 	}
 
-	public LinkEditRequestBuilder setPrivate(boolean privat) {
+	public UserLinkEditRequestBuilder setPrivate(boolean privat) {
 		addQueryParameter("private", privat);
 		return this;
 	}
 
-	public LinkEditRequestBuilder setUserTs(long user_ts) {
+	public UserLinkEditRequestBuilder setUserTs(long user_ts) {
 		addQueryParameter("user_ts", user_ts);
 		return this;
 	}
 
-	public LinkEditRequestBuilder setArchived(boolean archived) {
+	public UserLinkEditRequestBuilder setArchived(boolean archived) {
 		addQueryParameter("archived", archived);
 		return this;
 	}

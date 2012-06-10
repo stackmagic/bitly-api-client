@@ -22,6 +22,8 @@ p. There are a bunch of integration tests that you can run and look at to get an
 
 p. In order to run the integration tests you must put your access token into a file with a single line and no leading or trailing spaces named @.accesstoken@ inside the project's root directory.
 
+p. Please note that some of the integration tests may fail for you since you don't have the correct access token and so you'll end up trying to manipulate some of "my" links which will of course fail, at least it should.
+
 h3. step 3: get cracking (fluent builders)
 
 p. The basic principle is simple: You create a BitlyClient with your access token. This is your factory and can be reused and passed around instead of passing around the access token String. Let the @BitlyClient@ create a @RequestBuilder@ for you and configure it, then make the call to bitly and work with the response. Simple, right? So here goes:

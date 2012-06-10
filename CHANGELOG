@@ -1,10 +1,11 @@
 [0.0.4-SNAPSHOT]
 
-* LinkLookup
+* FEATURE: LinkLookup
+* FEATURE: UserLinkLookup
 
 [0.0.3-SNAPSHOT]
 
-* Shorten request
+* FEATURE: Shorten request
 * add changelog
 
 [0.0.2-SNAPSHOT]
@@ -14,5 +15,5 @@
 
 [0.0.1-SNAPSHOT]
 
-* Expand request
-* Info request
+* FEATURE: Expand request
+* FEATURE: Info request

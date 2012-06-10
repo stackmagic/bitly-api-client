@@ -19,42 +19,42 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.Lookup;
+import net.swisstech.bitly.model.v3.UserLinkLookup;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LookupRequestBuilder extends RequestBuilder<Lookup> {
+public class UserLinkLookupRequestBuilder extends RequestBuilder<UserLinkLookup> {
 
-	public LookupRequestBuilder(String accessToken) {
+	public UserLinkLookupRequestBuilder(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/lookup";
+		return "https://api-ssl.bitly.com/v3/user/link_lookup";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<Lookup>>() {
+		return new TypeToken<Response<UserLinkLookup>>() {
 		}.getType();
 	}
 
-	public LookupRequestBuilder addUrl(String shortUrl) {
-		addQueryParameter("url", shortUrl);
+	public UserLinkLookupRequestBuilder addUrl(String url) {
+		addQueryParameter("url", url);
 		return this;
 	}
 
-	public LookupRequestBuilder addUrls(String... shortUrls) {
-		for (String shortUrl : shortUrls) {
-			addUrl(shortUrl);
+	public UserLinkLookupRequestBuilder addUrls(String... urls) {
+		for (String url : urls) {
+			addUrl(url);
 		}
 		return this;
 	}
 
-	public LookupRequestBuilder addUrls(Collection<String> shortUrls) {
-		for (String shortUrl : shortUrls) {
-			addUrl(shortUrl);
+	public UserLinkLookupRequestBuilder addUrls(Collection<String> urls) {
+		for (String url : urls) {
+			addUrl(url);
 		}
 		return this;
 	}

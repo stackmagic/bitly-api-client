@@ -26,22 +26,30 @@ import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
-import net.swisstech.bitly.model.v3.LinkEdit;
-import net.swisstech.bitly.model.v3.Lookup;
-import net.swisstech.bitly.model.v3.ShortUrl;
+import net.swisstech.bitly.model.v3.LinkLookup;
+import net.swisstech.bitly.model.v3.Shorten;
+import net.swisstech.bitly.model.v3.UserLinkEdit;
+import net.swisstech.bitly.model.v3.UserLinkLookup;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BitlyClientIntegrationTest {
 
+	private String accessToken;
+
 	private BitlyClient client;
 
+	@BeforeClass
+	public void beforeClass() throws IOException {
+		accessToken = AccessTokenUtil.readFrom(".accesstoken");
+	}
+
 	@BeforeMethod
-	public void beforeMethod() throws IOException {
-		String accessToken = AccessTokenUtil.readFrom(".accesstoken");
+	public void beforeMethod() {
 		client = new BitlyClient(accessToken);
 	}
 
@@ -82,14 +90,14 @@ public class BitlyClientIntegrationTest {
 	}
 
 	@Test(groups = TestGroup.INTTEST)
-	public void callLookup() {
-		Response<Lookup> resp = client.lookup() //
+	public void callLinkLookup() {
+		Response<LinkLookup> resp = client.linkLookup() //
 				.addUrl("https://www.example.com/") //
 				.addUrls("https://www.example.com/1", "https://www.example.com/2") //
 				.addUrls(Arrays.asList("https://www.example.com/1", "https://www.example.com/2")) //
 				.call();
 
-		verify(resp, Lookup.class);
+		verify(resp, LinkLookup.class);
 		print(resp);
 
 		// TODO verify the response
@@ -97,40 +105,43 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callShorten() throws IOException {
-		Response<ShortUrl> resp = client.shorten() //
+		Response<Shorten> resp = client.shorten() //
 				.setLongUrl("https://www.example.com/") //
 				.call();
 
-		verify(resp, ShortUrl.class);
+		verify(resp, Shorten.class);
 		print(resp);
 
 		// TODO verify the response
 	}
 
 	@Test(groups = TestGroup.INTTEST)
-	public void callShortenWithExtraParameters() {
-		Response<ShortUrl> resp = client.shorten() //
-				.setLongUrl("https://www.example.com/%s?%s=%s#%s", "test1", "test2", "test3", "test4") //
-				.call();
-
-		verify(resp, ShortUrl.class);
-		print(resp);
-
-		// TODO verify the response
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callLinkEdit() {
+	public void callUserLinkEdit() {
 		// test link to https://www.example.com/bitly-api-client-test
-		Response<LinkEdit> resp = client.linkEdit() //
+		Response<UserLinkEdit> resp = client.userLinkEdit() //
 				.setLink("http://bit.ly/MtVsf1") //
 				.setNote("Note: " + System.currentTimeMillis()) //
 				.setUserTs(System.currentTimeMillis()) //
 				.call();
 
-		verify(resp, LinkEdit.class);
+		verify(resp, UserLinkEdit.class);
 		print(resp);
 
 		assertEquals(resp.data.link_edit.link, "http://bit.ly/MtVsf1");
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserLinkLookup() {
+		Response<UserLinkLookup> resp = client.userLinkLookup() //
+				.addUrl("https://www.example.com/bitly-api-client-test") //
+				.call();
+
+		verify(resp, UserLinkLookup.class);
+		print(resp);
+
+		assertEquals(resp.data.link_lookup.size(), 1);
+		assertEquals(resp.data.link_lookup.get(0).aggregate_link, "http://bit.ly/MtVsf2");
+		assertEquals(resp.data.link_lookup.get(0).link, "http://bit.ly/MtVsf1");
+		assertEquals(resp.data.link_lookup.get(0).url, "https://www.example.com/bitly-api-client-test");
 	}
 }

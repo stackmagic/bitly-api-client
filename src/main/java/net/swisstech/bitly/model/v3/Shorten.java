@@ -15,26 +15,20 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import java.util.List;
+public class Shorten {
 
-public class Lookup {
+	public long new_hash;
 
-	public List<Element> link_lookup;
+	public String url;
 
-	public static class Element {
+	public String hash;
 
-		public String url;
+	public String global_hash;
 
-		public String aggregate_link;
-
-		@Override
-		public String toString() {
-			return String.format("Element { url=%s aggregate_link=%s }", url, aggregate_link);
-		}
-	}
+	public String long_url;
 
 	@Override
 	public String toString() {
-		return String.format("Lookup { link_lookup=%s }", link_lookup);
+		return String.format("ShortUrl { new_hash=%d url=%s hash=%s global_hash=%s long_url=%s }", new_hash, url, hash, global_hash, long_url);
 	}
 }

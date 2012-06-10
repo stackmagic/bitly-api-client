@@ -15,7 +15,7 @@
  */
 package net.swisstech.bitly.model.v3;
 
-public class LinkEdit {
+public class UserLinkEdit {
 
 	public Link link_edit;
 
