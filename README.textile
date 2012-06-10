@@ -12,6 +12,23 @@ p. This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api
 
 h2. get started right away
 
+h3. step 0: get the library
+
+p. if you build your project with maven (who doesn't?) you can add the following repository:
+
+bc.. <repository>
+    <id>stackmagic.github.maven-repo</id>
+    <url>http://stackmagic.github.com/maven-repo/</url>
+</repository>
+
+p. and here's the dependency, see the CHANGELOG file for the curent version
+
+bc.. <dependency>
+    <groupId>net.swisstech.bitly</groupId>
+    <artifactId>bitly-api-client</artifactId>
+    <version>...</version>
+</dependency>
+
 h3. step 1: get an oauth access token
 
 p. There is one prerequisite: you need to obtain an oauth access token from bit.ly (which also requires you to "have an account with bit.ly":https://bitly.com/a/sign_up and "register an app in the dev center":http://bitly.com/a/settings/advanced). You can do this with "scribe-java":https://github.com/fernandezpablo85/scribe-java but bit.ly support is not yet available. I made a fork of the scribe project and added bit.ly support. A pull request is currently pending. In the mean time: use my fork (or just the @BitlyApi@ class from it) which is available here: "https://github.com/stackmagic/scribe-java":https://github.com/stackmagic/scribe-java
@@ -67,7 +84,7 @@ p. right now this project is a rough skeleton. the api style is pretty much defi
 ** eliminate duplicate values. eg ?url=a&url=a should be collapsed into a sinlge url=a
 ** include api limits (e.g. a paramter x may only be added 15 times for batching)
 * implement the full api
-* set up a maven repo (possibly combined with my scribe-java fork)
+* refine maven repo and release/publish process, use that maven release repo like it's intended to be used
 * add some javadoc
 * throw exceptions when there is a @status_code@ that doesn't equal 200? make this optional (eg call() and callWithException()?)
 * add some debugging output (what's the smallest logging api in terms of size and further dependencies?)
