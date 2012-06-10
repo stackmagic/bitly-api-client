@@ -18,54 +18,54 @@ package net.swisstech.bitly.builder;
 import java.lang.reflect.Type;
 
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkReferrers;
+import net.swisstech.bitly.model.v3.LinkReferringDomains;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkReferrersRequestBuilder extends RequestBuilder<LinkReferrers> {
+public class LinkReferringDomainsRequestBuilder extends RequestBuilder<LinkReferringDomains> {
 
-	public LinkReferrersRequestBuilder(String accessToken) {
+	public LinkReferringDomainsRequestBuilder(String accessToken) {
 		super(accessToken);
 		addQueryParameter("rollup", false);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/referrers";
+		return "https://api-ssl.bitly.com/v3/link/referring_domains";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkReferrers>>() {
+		return new TypeToken<Response<LinkReferringDomains>>() {
 		}.getType();
 	}
 
-	public LinkReferrersRequestBuilder setLink(String link) {
+	public LinkReferringDomainsRequestBuilder setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkReferrersRequestBuilder setUnit(String unit) {
+	public LinkReferringDomainsRequestBuilder setUnit(String unit) {
 		addQueryParameter("unit", unit);
 		return this;
 	}
 
-	public LinkReferrersRequestBuilder setUnits(long units) {
+	public LinkReferringDomainsRequestBuilder setUnits(long units) {
 		addQueryParameter("units", units);
 		return this;
 	}
 
-	public LinkReferrersRequestBuilder setTimezone(long timezone) {
+	public LinkReferringDomainsRequestBuilder setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
 		return this;
 	}
 
-	public LinkReferrersRequestBuilder setLimit(long limit) {
+	public LinkReferringDomainsRequestBuilder setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public LinkReferrersRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
+	public LinkReferringDomainsRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return this;
 	}

@@ -4,6 +4,7 @@
 * FEATURE: LinkCountries
 * FEATURE: LinkEncodersCount
 * FEATURE: LinkReferrers
+* FEATURE: LinkReferringDomains
 
 [0.0.4]
 

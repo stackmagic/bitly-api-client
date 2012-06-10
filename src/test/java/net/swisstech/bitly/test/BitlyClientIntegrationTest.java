@@ -35,6 +35,7 @@ import net.swisstech.bitly.model.v3.LinkCountriesRolledUp;
 import net.swisstech.bitly.model.v3.LinkEncodersCount;
 import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.LinkReferrers;
+import net.swisstech.bitly.model.v3.LinkReferringDomains;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
@@ -327,5 +328,29 @@ public class BitlyClientIntegrationTest {
 		assertEquals(resp.data.unit, "hour");
 		assertEquals(resp.data.units, -1);
 		assertEquals(resp.data.tz_offset, 0);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkReferringDomains() {
+		Response<LinkReferringDomains> resp = client.linkReferringDomains() //
+				.setLink("http://bit.ly/LfXpbF") //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
+				.call();
+
+		printAndVerify(resp, LinkReferringDomains.class);
+
+		for (LinkReferringDomains.ReferringDomain rd : resp.data.referring_domains) {
+			assertTrue(rd.clicks > 0);
+			assertNotNull(rd.domain);
+			if ("direct".equals(rd.domain)) {
+				assertNull(rd.url);
+			}
+			else {
+				assertNotNull(rd.url);
+			}
+		}
 	}
 }
