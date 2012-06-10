@@ -15,8 +15,7 @@
  */
 package net.swisstech.bitly.test;
 
-import static net.swisstech.bitly.test.util.TestUtil.print;
-import static net.swisstech.bitly.test.util.TestUtil.verify;
+import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
@@ -52,11 +51,6 @@ public class BitlyClientIntegrationTest {
 	@BeforeMethod
 	public void beforeMethod() {
 		client = new BitlyClient(accessToken);
-	}
-
-	private static <T> void printAndVerify(Response<T> resp, Class<T> type) {
-		print(resp);
-		verify(resp, type);
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -146,16 +140,34 @@ public class BitlyClientIntegrationTest {
 	}
 
 	@Test(groups = TestGroup.INTTEST)
-	public void callUserLinkSave() {
+	public void callUserLinkSaveExistingLink() {
+		// must have a unique link and so we add milliseconds
+		Response<UserLinkSave> resp = client.userLinkSave() //
+				.setLongUrl("https://www.example.com/bitly-api-client-test") //
+				.setTitle("example user link save (existing)") //
+				.setNote("testing link save (existing)") //
+				.setPrivate(true) //
+				.setUserTs(0) //
+				.call();
+
+		printAndVerify(resp, UserLinkSave.class, 304, "LINK_ALREADY_EXISTS");
+
+		assertEquals(resp.data.link_save.new_link, 0);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserLinkSaveNewLink() {
 		// must have a unique link and so we add milliseconds
 		Response<UserLinkSave> resp = client.userLinkSave() //
 				.setLongUrl("https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis()) //
-				.setTitle("example user link save") //
-				.setNote("testing link save") //
+				.setTitle("example user link save (new)") //
+				.setNote("testing link save (new)") //
 				.setPrivate(true) //
 				.setUserTs(0) //
 				.call();
 
 		printAndVerify(resp, UserLinkSave.class);
+
+		assertEquals(resp.data.link_save.new_link, 1);
 	}
 }

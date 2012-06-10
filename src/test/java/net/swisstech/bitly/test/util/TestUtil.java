@@ -25,10 +25,19 @@ public final class TestUtil {
 	private TestUtil() {
 	}
 
-	public static <T> void verify(Response<T> response, Class<?> type) {
+	public static <T> void printAndVerify(Response<T> resp, Class<T> type) {
+		printAndVerify(resp, type, 200, "OK");
+	}
+
+	public static <T> void printAndVerify(Response<T> resp, Class<T> type, long respCode, String respTxt) {
+		print(resp);
+		verify(resp, type, respCode, respTxt);
+	}
+
+	public static <T> void verify(Response<T> response, Class<?> type, long respCode, String respTxt) {
 		assertNotNull(response);
-		assertEquals(response.status_code, 200);
-		assertEquals(response.status_txt, "OK");
+		assertEquals(response.status_code, respCode);
+		assertEquals(response.status_txt, respTxt);
 		assertNotNull(response.data);
 		assertEquals(response.data.getClass(), type);
 	}
