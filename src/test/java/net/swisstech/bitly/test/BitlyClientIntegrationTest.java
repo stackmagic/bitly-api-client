@@ -36,6 +36,7 @@ import net.swisstech.bitly.model.v3.LinkEncodersCount;
 import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
+import net.swisstech.bitly.model.v3.LinkShares;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
@@ -352,5 +353,25 @@ public class BitlyClientIntegrationTest {
 				assertNotNull(rd.url);
 			}
 		}
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkShares() {
+		Response<LinkShares> resp = client.linkShares() //
+				.setLink("http://bit.ly/cJ8Hst") //
+				.setUnit("month") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
+				.call();
+
+		printAndVerify(resp, LinkShares.class);
+
+		// the api doesn't seem to return any shares and total_shares data
+		assertEquals(resp.data.shares.size(), 0);
+		assertEquals(resp.data.total_shares, 0);
+		assertEquals(resp.data.unit, "month");
+		assertEquals(resp.data.units, -1);
+		assertEquals(resp.data.tz_offset, 0);
 	}
 }
