@@ -16,7 +16,7 @@
 package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,6 +25,7 @@ import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
+import net.swisstech.bitly.model.v3.LinkClicks;
 import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
@@ -152,14 +153,17 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, UserLinkSave.class, 304, "LINK_ALREADY_EXISTS");
 
+		assertEquals(resp.data.link_save.aggregate_link, "http://bit.ly/MtVsf2");
+		assertEquals(resp.data.link_save.link, "http://bit.ly/MtVsf1");
+		assertEquals(resp.data.link_save.long_url, "https://www.example.com/bitly-api-client-test");
 		assertEquals(resp.data.link_save.new_link, 0);
 	}
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkSaveNewLink() {
-		// must have a unique link and so we add milliseconds
+		String longUrl = "https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis();
 		Response<UserLinkSave> resp = client.userLinkSave() //
-				.setLongUrl("https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis()) //
+				.setLongUrl(longUrl) //
 				.setTitle("example user link save (new)") //
 				.setNote("testing link save (new)") //
 				.setPrivate(true) //
@@ -168,6 +172,35 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, UserLinkSave.class);
 
+		assertEquals(resp.data.link_save.long_url, longUrl);
 		assertEquals(resp.data.link_save.new_link, 1);
+
+		// can't have this showing up in my history so archive it
+		Response<UserLinkEdit> edit = client.userLinkEdit() //
+				.setLink(resp.data.link_save.link) //
+				.setArchived(true) //
+				.call();
+
+		printAndVerify(edit, UserLinkEdit.class);
+
+		assertEquals(edit.data.link_edit.link, resp.data.link_save.link);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkClicks() {
+		Response<LinkClicks> resp = client.linkClicks() //
+				.setLink("https://bitly.com/cJ8Hst") //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
+				.call();
+
+		printAndVerify(resp, LinkClicks.class);
+
+		assertTrue(resp.data.link_clicks > 250000);
+		assertEquals(resp.data.tz_offset, 0);
+		assertEquals(resp.data.unit, "hour");
+		assertEquals(resp.data.units, -1);
 	}
 }

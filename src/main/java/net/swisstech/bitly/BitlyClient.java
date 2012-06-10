@@ -17,6 +17,7 @@ package net.swisstech.bitly;
 
 import net.swisstech.bitly.builder.ExpandRequestBuilder;
 import net.swisstech.bitly.builder.InfoRequestBuilder;
+import net.swisstech.bitly.builder.LinkClicksRequestBuilder;
 import net.swisstech.bitly.builder.LinkLookupRequestBuilder;
 import net.swisstech.bitly.builder.ShortenRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkEditRequestBuilder;
@@ -57,5 +58,9 @@ public class BitlyClient {
 
 	public UserLinkSaveRequestBuilder userLinkSave() {
 		return new UserLinkSaveRequestBuilder(accessToken);
+	}
+
+	public LinkClicksRequestBuilder linkClicks() {
+		return new LinkClicksRequestBuilder(accessToken);
 	}
 }
