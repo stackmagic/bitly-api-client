@@ -23,6 +23,7 @@ import net.swisstech.bitly.builder.LinkCountriesExpandedRequestBuilder;
 import net.swisstech.bitly.builder.LinkCountriesRolledUpRequestBuilder;
 import net.swisstech.bitly.builder.LinkEncodersCountRequestBuilder;
 import net.swisstech.bitly.builder.LinkLookupRequestBuilder;
+import net.swisstech.bitly.builder.LinkReferrersRequestBuilder;
 import net.swisstech.bitly.builder.ShortenRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkEditRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkLookupRequestBuilder;
@@ -87,5 +88,9 @@ public class BitlyClient {
 
 	public LinkEncodersCountRequestBuilder linkEncodersCount() {
 		return new LinkEncodersCountRequestBuilder(accessToken);
+	}
+
+	public LinkReferrersRequestBuilder linkReferrers() {
+		return new LinkReferrersRequestBuilder(accessToken);
 	}
 }

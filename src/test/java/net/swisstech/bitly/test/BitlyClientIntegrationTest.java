@@ -17,6 +17,8 @@ package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
@@ -32,6 +34,7 @@ import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
 import net.swisstech.bitly.model.v3.LinkCountriesRolledUp;
 import net.swisstech.bitly.model.v3.LinkEncodersCount;
 import net.swisstech.bitly.model.v3.LinkLookup;
+import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
@@ -63,7 +66,7 @@ public class BitlyClientIntegrationTest {
 	public void callExpand() throws IOException {
 
 		Response<Expand> resp = client.expand() //
-				.addHash("phphotoWinterSun") //
+				.addHash("api-client") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
 				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
 				.addShortUrl("http://bit.ly/LCJq0b") //
@@ -73,14 +76,26 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, Expand.class);
 
-		// TODO verify the response
+		assertEquals(resp.data.expand.size(), 10);
+		for (Expand.Element e : resp.data.expand) {
+			assertNull(e.error);
+			assertNotNull(e.global_hash);
+			assertNotNull(e.long_url);
+			assertNotNull(e.user_hash);
+			if (e.short_url == null) {
+				assertNotNull(e.hash);
+			}
+			if (e.hash == null) {
+				assertNotNull(e.short_url);
+			}
+		}
 	}
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callInfo() throws IOException {
 		Response<Info> resp = client.info() //
 				.setExpandUser(false) //
-				.addHash("phphotoWinterSun") //
+				.addHash("phphotoLakeZurichAtDusk") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
 				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
 				.addShortUrl("http://bit.ly/LCJq0b") //
@@ -90,7 +105,13 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, Info.class);
 
-		// TODO verify the response
+		assertEquals(resp.data.info.size(), 10);
+		for (Info.Element i : resp.data.info) {
+			assertEquals(i.created_by, "stackmagic");
+			assertNotNull(i.global_hash);
+			assertNotNull(i.created_at);
+			assertNotNull(i.user_hash);
+		}
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -103,7 +124,14 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, LinkLookup.class);
 
-		// TODO verify the response
+		assertEquals(resp.data.link_lookup.size(), 5);
+		int foundCount = 0;
+		for (LinkLookup.Element lu : resp.data.link_lookup) {
+			if (lu.aggregate_link != null) {
+				foundCount++;
+			}
+		}
+		assertEquals(foundCount, 1);
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -114,7 +142,11 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, Shorten.class);
 
-		// TODO verify the response
+		assertEquals(resp.data.global_hash, "maiCS");
+		assertEquals(resp.data.hash, "MvuS15");
+		assertEquals(resp.data.long_url, "https://www.example.com/");
+		assertEquals(resp.data.new_hash, 0);
+		assertEquals(resp.data.url, "http://bit.ly/MvuS15");
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -177,6 +209,8 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, UserLinkSave.class);
 
+		assertNotNull(resp.data.link_save.link);
+		assertNotNull(resp.data.link_save.aggregate_link);
 		assertEquals(resp.data.link_save.long_url, longUrl);
 		assertEquals(resp.data.link_save.new_link, 1);
 
@@ -272,5 +306,26 @@ public class BitlyClientIntegrationTest {
 				.call();
 
 		printAndVerify(resp, LinkEncodersCount.class);
+
+		assertTrue(resp.data.count > 0);
+		assertEquals(resp.data.aggregate_link, "http://bitly.com/CjiA");
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkReferrers() {
+		Response<LinkReferrers> resp = client.linkReferrers() //
+				.setLink("http://bit.ly/LfXpbF") //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
+				.call();
+
+		printAndVerify(resp, LinkReferrers.class);
+
+		assertTrue(resp.data.referrers.size() > 0);
+		assertEquals(resp.data.unit, "hour");
+		assertEquals(resp.data.units, -1);
+		assertEquals(resp.data.tz_offset, 0);
 	}
 }

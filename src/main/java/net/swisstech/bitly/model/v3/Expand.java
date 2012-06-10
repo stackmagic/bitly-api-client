@@ -23,17 +23,22 @@ public class Expand {
 
 	public static class Element {
 
-		public String global_hash;
-
-		public String long_url;
-
 		public String short_url;
+
+		public String hash;
 
 		public String user_hash;
 
+		public String global_hash;
+
+		public String error;
+
+		public String long_url;
+
 		@Override
 		public String toString() {
-			return String.format("Element { global_hash=%s long_url=%s short_url=%s user_hash=%s }", global_hash, long_url, short_url, user_hash);
+			return String.format("Element { short_url=%s hash=%s user_hash=%s global_hash=%s error=%s }", short_url, hash, user_hash, global_hash,
+					error, long_url);
 		}
 	}
 

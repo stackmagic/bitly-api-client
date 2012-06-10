@@ -17,33 +17,30 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import org.joda.time.DateTime;
+public class LinkReferrers {
 
-public class Info {
+	public long tz_offset;
 
-	public List<Element> info;
+	public String unit;
 
-	public static class Element {
+	public long units;
 
-		public DateTime created_at;
+	public List<Referrer> referrers;
 
-		public String created_by;
+	public static class Referrer {
 
-		public String global_hash;
+		public long clicks;
 
-		public String title;
-
-		public String user_hash;
+		public String referrer;
 
 		@Override
 		public String toString() {
-			return String.format("Element { created_at=%s created_by=%s global_hash=%s title=%s user_hash=%s }", created_at, created_by, global_hash,
-					title, user_hash);
+			return String.format("Referer { clicks=%d referrer=%s }", clicks, referrer);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Info { info=%s }", info);
+		return String.format("LinkReferrers { tz_offset=%d unit=%s units=%d referrers=%s }", tz_offset, unit, units, referrers);
 	}
 }
