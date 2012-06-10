@@ -30,6 +30,7 @@ import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
+import net.swisstech.bitly.model.v3.UserLinkSave;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
 
@@ -53,6 +54,11 @@ public class BitlyClientIntegrationTest {
 		client = new BitlyClient(accessToken);
 	}
 
+	private static <T> void printAndVerify(Response<T> resp, Class<T> type) {
+		print(resp);
+		verify(resp, type);
+	}
+
 	@Test(groups = TestGroup.INTTEST)
 	public void callExpand() throws IOException {
 
@@ -65,8 +71,7 @@ public class BitlyClientIntegrationTest {
 				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
 				.call();
 
-		verify(resp, Expand.class);
-		print(resp);
+		printAndVerify(resp, Expand.class);
 
 		// TODO verify the response
 	}
@@ -83,8 +88,7 @@ public class BitlyClientIntegrationTest {
 				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
 				.call();
 
-		verify(resp, Info.class);
-		print(resp);
+		printAndVerify(resp, Info.class);
 
 		// TODO verify the response
 	}
@@ -97,8 +101,7 @@ public class BitlyClientIntegrationTest {
 				.addUrls(Arrays.asList("https://www.example.com/1", "https://www.example.com/2")) //
 				.call();
 
-		verify(resp, LinkLookup.class);
-		print(resp);
+		printAndVerify(resp, LinkLookup.class);
 
 		// TODO verify the response
 	}
@@ -109,8 +112,7 @@ public class BitlyClientIntegrationTest {
 				.setLongUrl("https://www.example.com/") //
 				.call();
 
-		verify(resp, Shorten.class);
-		print(resp);
+		printAndVerify(resp, Shorten.class);
 
 		// TODO verify the response
 	}
@@ -124,8 +126,7 @@ public class BitlyClientIntegrationTest {
 				.setUserTs(System.currentTimeMillis()) //
 				.call();
 
-		verify(resp, UserLinkEdit.class);
-		print(resp);
+		printAndVerify(resp, UserLinkEdit.class);
 
 		assertEquals(resp.data.link_edit.link, "http://bit.ly/MtVsf1");
 	}
@@ -136,12 +137,25 @@ public class BitlyClientIntegrationTest {
 				.addUrl("https://www.example.com/bitly-api-client-test") //
 				.call();
 
-		verify(resp, UserLinkLookup.class);
-		print(resp);
+		printAndVerify(resp, UserLinkLookup.class);
 
 		assertEquals(resp.data.link_lookup.size(), 1);
 		assertEquals(resp.data.link_lookup.get(0).aggregate_link, "http://bit.ly/MtVsf2");
 		assertEquals(resp.data.link_lookup.get(0).link, "http://bit.ly/MtVsf1");
 		assertEquals(resp.data.link_lookup.get(0).url, "https://www.example.com/bitly-api-client-test");
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserLinkSave() {
+		// must have a unique link and so we add milliseconds
+		Response<UserLinkSave> resp = client.userLinkSave() //
+				.setLongUrl("https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis()) //
+				.setTitle("example user link save") //
+				.setNote("testing link save") //
+				.setPrivate(true) //
+				.setUserTs(0) //
+				.call();
+
+		printAndVerify(resp, UserLinkSave.class);
 	}
 }

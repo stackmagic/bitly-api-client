@@ -33,12 +33,13 @@ public final class TestUtil {
 		assertEquals(response.data.getClass(), type);
 	}
 
-	public static <T> void print(Response<T> response) {
-		String caller = getCaller();
-		System.out.println(String.format("[%s] response.status_code = %d", caller, response.status_code));
-		System.out.println(String.format("[%s] response.status_txt  = %s", caller, response.status_txt));
-		System.out.println(String.format("[%s] response.data.class  = %s", caller, response.data.getClass().getName()));
-		System.out.println(String.format("[%s] response.data        = %s", caller, response.data));
+	public static <T> void print(Response<T> resp) {
+		String caller = getCaller().replace("net.swisstech.bitly", "n.s.b");
+		String prefix = String.format("[%s] response.", caller);
+		System.out.println(String.format("%sstatus_code = %d", prefix, resp.status_code));
+		System.out.println(String.format("%sstatus_txt  = %s", prefix, resp.status_txt));
+		System.out.println(String.format("%sdata.class  = %s", prefix, resp.data == null ? "null" : resp.data.getClass().getName()));
+		System.out.println(String.format("%sdata        = %s", prefix, resp.data));
 	}
 
 	private static String getCaller() {
