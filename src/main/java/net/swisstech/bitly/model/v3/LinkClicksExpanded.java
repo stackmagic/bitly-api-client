@@ -15,9 +15,23 @@
  */
 package net.swisstech.bitly.model.v3;
 
-public class LinkClicks {
+import java.util.List;
 
-	public long link_clicks;
+public class LinkClicksExpanded {
+
+	public List<LinkClick> link_clicks;
+
+	public static class LinkClick {
+
+		public long dt;
+
+		public long clicks;
+
+		@Override
+		public String toString() {
+			return String.format("LinkClick { dt=%d clicks=%d }", dt, clicks);
+		}
+	}
 
 	public long tz_offset;
 
@@ -27,6 +41,6 @@ public class LinkClicks {
 
 	@Override
 	public String toString() {
-		return String.format("LinkClicks { link_clicks=%d tz_offset=%d unit=%s units=%s }", link_clicks, tz_offset, unit, units);
+		return String.format("LinkClicks { link_clicks=%s tz_offset=%d unit=%s units=%s }", link_clicks, tz_offset, unit, units);
 	}
 }

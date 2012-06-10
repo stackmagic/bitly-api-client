@@ -18,58 +18,54 @@ package net.swisstech.bitly.builder;
 import java.lang.reflect.Type;
 
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkClicks;
+import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkClicksRequestBuilder extends RequestBuilder<LinkClicks> {
+public class LinkCountriesExpandedRequestBuilder extends RequestBuilder<LinkCountriesExpanded> {
 
-	public LinkClicksRequestBuilder(String accessToken) {
+	public LinkCountriesExpandedRequestBuilder(String accessToken) {
 		super(accessToken);
+		addQueryParameter("rollup", false);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/clicks";
+		return "https://api-ssl.bitly.com/v3/link/countries";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkClicks>>() {
+		return new TypeToken<Response<LinkCountriesExpanded>>() {
 		}.getType();
 	}
 
-	public LinkClicksRequestBuilder setLink(String link) {
+	public LinkCountriesExpandedRequestBuilder setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkClicksRequestBuilder setUnit(String unit) {
+	public LinkCountriesExpandedRequestBuilder setUnit(String unit) {
 		addQueryParameter("unit", unit);
 		return this;
 	}
 
-	public LinkClicksRequestBuilder setUnits(long units) {
+	public LinkCountriesExpandedRequestBuilder setUnits(long units) {
 		addQueryParameter("units", units);
 		return this;
 	}
 
-	public LinkClicksRequestBuilder setTimezone(long timezone) {
+	public LinkCountriesExpandedRequestBuilder setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
 		return this;
 	}
 
-	public LinkClicksRequestBuilder setRollup(boolean rollup) {
-		addQueryParameter("rollup", rollup);
-		return this;
-	}
-
-	public LinkClicksRequestBuilder setLimit(long limit) {
+	public LinkCountriesExpandedRequestBuilder setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public LinkClicksRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
+	public LinkCountriesExpandedRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return this;
 	}

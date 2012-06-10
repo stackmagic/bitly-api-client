@@ -16,7 +16,8 @@
 package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,7 +26,10 @@ import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
-import net.swisstech.bitly.model.v3.LinkClicks;
+import net.swisstech.bitly.model.v3.LinkClicksExpanded;
+import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
+import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
+import net.swisstech.bitly.model.v3.LinkCountriesRolledUp;
 import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
@@ -187,18 +191,74 @@ public class BitlyClientIntegrationTest {
 	}
 
 	@Test(groups = TestGroup.INTTEST)
-	public void callLinkClicks() {
-		Response<LinkClicks> resp = client.linkClicks() //
-				.setLink("https://bitly.com/cJ8Hst") //
+	public void callLinkClicksRolledUp() {
+		Response<LinkClicksRolledUp> resp = client.linkClicksRolledUp() //
+				.setLink("http://bit.ly/LfXpbF") //
 				.setUnit("hour") //
 				.setUnits(-1) //
 				.setTimezone(0) //
 				.setLimit(1000) //
 				.call();
 
-		printAndVerify(resp, LinkClicks.class);
+		printAndVerify(resp, LinkClicksRolledUp.class);
 
-		assertTrue(resp.data.link_clicks > 250000);
+		assertTrue(resp.data.link_clicks > 0);
+		assertEquals(resp.data.tz_offset, 0);
+		assertEquals(resp.data.unit, "hour");
+		assertEquals(resp.data.units, -1);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkClicksExpanded() {
+		Response<LinkClicksExpanded> resp = client.linkClicksExpanded() //
+				.setLink("http://bit.ly/LfXpbF") //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
+				.call();
+
+		printAndVerify(resp, LinkClicksExpanded.class);
+
+		assertTrue(resp.data.link_clicks.size() > 0);
+		assertEquals(resp.data.tz_offset, 0);
+		assertEquals(resp.data.unit, "hour");
+		assertEquals(resp.data.units, -1);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callLinkCountriesExpanded() {
+		Response<LinkCountriesExpanded> resp = client.linkCountriesExpanded() //
+				.setLink("http://bit.ly/LfXpbF") //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
+				.call();
+
+		printAndVerify(resp, LinkCountriesExpanded.class);
+
+		assertTrue(resp.data.countries.size() > 0);
+		assertEquals(resp.data.tz_offset, 0);
+		assertEquals(resp.data.unit, "hour");
+		assertEquals(resp.data.units, -1);
+	}
+
+	// disabled because this doesn't work as expected, the rollup parameter
+	// doesn't do anything for the response format.
+	@Test(groups = TestGroup.INTTEST, enabled = false)
+	public void callLinkCountriesRolledUp() {
+		Response<LinkCountriesRolledUp> resp = client.linkCountriesRolledUp() //
+				.setLink("http://bit.ly/LfXpbF") //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
+				.call();
+
+		printAndVerify(resp, LinkCountriesRolledUp.class);
+
+		assertTrue(resp.data.countries > 0);
 		assertEquals(resp.data.tz_offset, 0);
 		assertEquals(resp.data.unit, "hour");
 		assertEquals(resp.data.units, -1);
