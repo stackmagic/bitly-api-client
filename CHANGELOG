@@ -2,6 +2,7 @@
 
 * REFACTORING: LinkHistory => UserLinkHistory
 * REFACTORING: builder names, to string, lots more
+* REFACTORING: common base class for requests that get metrics
 
 [0.0.6]
 

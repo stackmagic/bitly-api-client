@@ -15,6 +15,8 @@
  */
 package net.swisstech.bitly.builder;
 
+import org.joda.time.DateTime;
+
 /**
  * <p>
  * Base Request for all Requests that have the common
@@ -64,7 +66,7 @@ public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, D
 	}
 
 	@SuppressWarnings("unchecked")
-	public REQ_TYPE setUnitReferenceTs(long unit_reference_ts) {
+	public REQ_TYPE setUnitReferenceTs(DateTime unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return (REQ_TYPE) this;
 	}
