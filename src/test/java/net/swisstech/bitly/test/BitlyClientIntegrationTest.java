@@ -33,7 +33,7 @@ import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
 import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
 import net.swisstech.bitly.model.v3.LinkCountriesRolledUp;
 import net.swisstech.bitly.model.v3.LinkEncodersCount;
-import net.swisstech.bitly.model.v3.LinkHistory;
+import net.swisstech.bitly.model.v3.UserLinkHistory;
 import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
@@ -403,28 +403,28 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkHistoryGeneral() {
-		Response<LinkHistory> resp = client.userLinkHistory() //
+		Response<UserLinkHistory> resp = client.userLinkHistory() //
 				.call();
 
-		printAndVerify(resp, LinkHistory.class);
+		printAndVerify(resp, UserLinkHistory.class);
 	}
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkHistoryForSingleLink() {
-		Response<LinkHistory> resp = client.userLinkHistory() //
+		Response<UserLinkHistory> resp = client.userLinkHistory() //
 				.setLink("http://bit.ly/LlpM8d") //
 				.call();
 
-		printAndVerify(resp, LinkHistory.class);
+		printAndVerify(resp, UserLinkHistory.class);
 	}
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkHistoryForAnotherUser() {
-		Response<LinkHistory> resp = client.userLinkHistory() //
+		Response<UserLinkHistory> resp = client.userLinkHistory() //
 				.setUser("bufferapp") //
 				.call();
 
-		printAndVerify(resp, LinkHistory.class);
+		printAndVerify(resp, UserLinkHistory.class);
 	}
 
 	@Test(groups = TestGroup.INTTEST)

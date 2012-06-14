@@ -18,11 +18,11 @@ package net.swisstech.bitly.builder;
 import java.lang.reflect.Type;
 
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkHistory;
+import net.swisstech.bitly.model.v3.UserLinkHistory;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserLinkHistoryRequestBuilder extends RequestBuilder<LinkHistory> {
+public class UserLinkHistoryRequestBuilder extends RequestBuilder<UserLinkHistory> {
 
 	public UserLinkHistoryRequestBuilder(String accessToken) {
 		super(accessToken);
@@ -35,7 +35,7 @@ public class UserLinkHistoryRequestBuilder extends RequestBuilder<LinkHistory> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkHistory>>() {
+		return new TypeToken<Response<UserLinkHistory>>() {
 		}.getType();
 	}
 

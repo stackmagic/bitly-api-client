@@ -21,13 +21,13 @@ import org.joda.time.DateTime;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LinkHistory {
+public class UserLinkHistory {
 
 	public long result_count;
 
-	public List<LinkHistoryElement> link_history;
+	public List<UserLinkHistoryElement> link_history;
 
-	public static class LinkHistoryElement {
+	public static class UserLinkHistoryElement {
 
 		public String aggregate_link;
 
@@ -50,14 +50,14 @@ public class LinkHistory {
 
 		@Override
 		public String toString() {
-			return String.format(
-					"LinkHistoryElement { aggregate_link=%s archived=%b created_at=%s link=%s long_url=%s modified_at=%s private=%b title=%s user_ts=%s }",
-					aggregate_link, archived, created_at, link, long_url, modified_at, privat, title, user_ts);
+			return String
+					.format("UserLinkHistoryElement { aggregate_link=%s archived=%b created_at=%s link=%s long_url=%s modified_at=%s private=%b title=%s user_ts=%s }",
+							aggregate_link, archived, created_at, link, long_url, modified_at, privat, title, user_ts);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return String.format("LinkHistory { result_count=%d link_history=%s }", result_count, link_history);
+		return String.format("UserLinkHistory { result_count=%d link_history=%s }", result_count, link_history);
 	}
 }
