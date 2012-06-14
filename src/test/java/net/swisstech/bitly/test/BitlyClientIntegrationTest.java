@@ -38,6 +38,7 @@ import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
 import net.swisstech.bitly.model.v3.LinkShares;
 import net.swisstech.bitly.model.v3.Shorten;
+import net.swisstech.bitly.model.v3.UserInfo;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
 import net.swisstech.bitly.model.v3.UserLinkSave;
@@ -373,5 +374,27 @@ public class BitlyClientIntegrationTest {
 		assertEquals(resp.data.unit, "month");
 		assertEquals(resp.data.units, -1);
 		assertEquals(resp.data.tz_offset, 0);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserInfoForAccessTokenUser() {
+		Response<UserInfo> resp = client.userInfo() //
+				.call();
+
+		printAndVerify(resp, UserInfo.class);
+
+		// you need to change this to your own user name
+		assertEquals(resp.data.login, "stackmagic");
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserInfoForAnotherLogin() {
+		Response<UserInfo> resp = client.userInfo() //
+				.setLogin("bufferapp") //
+				.call();
+
+		printAndVerify(resp, UserInfo.class);
+
+		assertEquals(resp.data.login, "bufferapp");
 	}
 }

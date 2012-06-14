@@ -27,6 +27,7 @@ import net.swisstech.bitly.builder.LinkReferrersRequestBuilder;
 import net.swisstech.bitly.builder.LinkReferringDomainsRequestBuilder;
 import net.swisstech.bitly.builder.LinkSharesRequestBuilder;
 import net.swisstech.bitly.builder.ShortenRequestBuilder;
+import net.swisstech.bitly.builder.UserInfoRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkEditRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkLookupRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkSaveRequestBuilder;
@@ -102,5 +103,9 @@ public class BitlyClient {
 
 	public LinkSharesRequestBuilder linkShares() {
 		return new LinkSharesRequestBuilder(accessToken);
+	}
+	
+	public UserInfoRequestBuilder userInfo() {
+		return new UserInfoRequestBuilder(accessToken);
 	}
 }
