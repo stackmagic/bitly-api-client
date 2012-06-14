@@ -3,6 +3,7 @@
 * FEATURE: UserInfo
 * FEATURE: UserLinkHistory
 * FEATURE: UserNetworkHistory
+* FEATURE: UserTrackingDomainList
 
 [0.0.5]
 

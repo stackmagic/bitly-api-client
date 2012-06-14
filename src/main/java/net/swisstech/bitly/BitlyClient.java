@@ -33,6 +33,7 @@ import net.swisstech.bitly.builder.UserLinkHistoryRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkLookupRequestBuilder;
 import net.swisstech.bitly.builder.UserLinkSaveRequestBuilder;
 import net.swisstech.bitly.builder.UserNetworkHistoryRequestBuilder;
+import net.swisstech.bitly.builder.UserTrackingDomainListRequestBuilder;
 
 public class BitlyClient {
 
@@ -117,5 +118,9 @@ public class BitlyClient {
 
 	public UserNetworkHistoryRequestBuilder userNetworkHistory() {
 		return new UserNetworkHistoryRequestBuilder(accessToken);
+	}
+
+	public UserTrackingDomainListRequestBuilder userTrackingDomainList() {
+		return new UserTrackingDomainListRequestBuilder(accessToken);
 	}
 }
