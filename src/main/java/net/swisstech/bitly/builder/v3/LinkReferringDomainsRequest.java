@@ -13,59 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
+import net.swisstech.bitly.model.v3.LinkReferringDomains;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkCountriesExpandedRequestBuilder extends RequestBuilder<LinkCountriesExpanded> {
+public class LinkReferringDomainsRequest extends RequestBuilder<LinkReferringDomains> {
 
-	public LinkCountriesExpandedRequestBuilder(String accessToken) {
+	public LinkReferringDomainsRequest(String accessToken) {
 		super(accessToken);
 		addQueryParameter("rollup", false);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/countries";
+		return "https://api-ssl.bitly.com/v3/link/referring_domains";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkCountriesExpanded>>() {
+		return new TypeToken<Response<LinkReferringDomains>>() {
 		}.getType();
 	}
 
-	public LinkCountriesExpandedRequestBuilder setLink(String link) {
+	public LinkReferringDomainsRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkCountriesExpandedRequestBuilder setUnit(String unit) {
+	public LinkReferringDomainsRequest setUnit(String unit) {
 		addQueryParameter("unit", unit);
 		return this;
 	}
 
-	public LinkCountriesExpandedRequestBuilder setUnits(long units) {
+	public LinkReferringDomainsRequest setUnits(long units) {
 		addQueryParameter("units", units);
 		return this;
 	}
 
-	public LinkCountriesExpandedRequestBuilder setTimezone(long timezone) {
+	public LinkReferringDomainsRequest setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
 		return this;
 	}
 
-	public LinkCountriesExpandedRequestBuilder setLimit(long limit) {
+	public LinkReferringDomainsRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public LinkCountriesExpandedRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
+	public LinkReferringDomainsRequest setUnitReferenceTs(long unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return this;
 	}

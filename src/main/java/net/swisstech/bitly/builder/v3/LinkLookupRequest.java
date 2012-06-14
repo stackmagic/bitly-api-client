@@ -13,39 +13,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
+import java.util.Collection;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.Shorten;
+import net.swisstech.bitly.model.v3.LinkLookup;
 
 import com.google.gson.reflect.TypeToken;
 
-public class ShortenRequestBuilder extends RequestBuilder<Shorten> {
+public class LinkLookupRequest extends RequestBuilder<LinkLookup> {
 
-	public ShortenRequestBuilder(String accessToken) {
+	public LinkLookupRequest(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/shorten";
+		return "https://api-ssl.bitly.com/v3/link/lookup";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<Shorten>>() {
+		return new TypeToken<Response<LinkLookup>>() {
 		}.getType();
 	}
 
-	public ShortenRequestBuilder setLongUrl(String longUrl) {
-		addQueryParameter("longUrl", longUrl);
+	public LinkLookupRequest addUrl(String shortUrl) {
+		addQueryParameter("url", shortUrl);
 		return this;
 	}
 
-	public ShortenRequestBuilder setDomain(String domain) {
-		addQueryParameter("domain", domain);
+	public LinkLookupRequest addUrls(String... shortUrls) {
+		for (String shortUrl : shortUrls) {
+			addUrl(shortUrl);
+		}
+		return this;
+	}
+
+	public LinkLookupRequest addUrls(Collection<String> shortUrls) {
+		for (String shortUrl : shortUrls) {
+			addUrl(shortUrl);
+		}
 		return this;
 	}
 }

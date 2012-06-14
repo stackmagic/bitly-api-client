@@ -15,25 +15,25 @@
  */
 package net.swisstech.bitly;
 
-import net.swisstech.bitly.builder.ExpandRequestBuilder;
-import net.swisstech.bitly.builder.InfoRequestBuilder;
-import net.swisstech.bitly.builder.LinkClicksExpandedRequestBuilder;
-import net.swisstech.bitly.builder.LinkClicksRolledUpRequestBuilder;
-import net.swisstech.bitly.builder.LinkCountriesExpandedRequestBuilder;
-import net.swisstech.bitly.builder.LinkCountriesRolledUpRequestBuilder;
-import net.swisstech.bitly.builder.LinkEncodersCountRequestBuilder;
-import net.swisstech.bitly.builder.LinkLookupRequestBuilder;
-import net.swisstech.bitly.builder.LinkReferrersRequestBuilder;
-import net.swisstech.bitly.builder.LinkReferringDomainsRequestBuilder;
-import net.swisstech.bitly.builder.LinkSharesRequestBuilder;
-import net.swisstech.bitly.builder.ShortenRequestBuilder;
-import net.swisstech.bitly.builder.UserInfoRequestBuilder;
-import net.swisstech.bitly.builder.UserLinkEditRequestBuilder;
-import net.swisstech.bitly.builder.UserLinkHistoryRequestBuilder;
-import net.swisstech.bitly.builder.UserLinkLookupRequestBuilder;
-import net.swisstech.bitly.builder.UserLinkSaveRequestBuilder;
-import net.swisstech.bitly.builder.UserNetworkHistoryRequestBuilder;
-import net.swisstech.bitly.builder.UserTrackingDomainListRequestBuilder;
+import net.swisstech.bitly.builder.v3.ExpandRequest;
+import net.swisstech.bitly.builder.v3.InfoRequest;
+import net.swisstech.bitly.builder.v3.LinkClicksExpandedRequest;
+import net.swisstech.bitly.builder.v3.LinkClicksRolledUpRequest;
+import net.swisstech.bitly.builder.v3.LinkCountriesExpandedRequest;
+import net.swisstech.bitly.builder.v3.LinkCountriesRolledUpRequest;
+import net.swisstech.bitly.builder.v3.LinkEncodersCountRequest;
+import net.swisstech.bitly.builder.v3.LinkLookupRequest;
+import net.swisstech.bitly.builder.v3.LinkReferrersRequest;
+import net.swisstech.bitly.builder.v3.LinkReferringDomainsRequest;
+import net.swisstech.bitly.builder.v3.LinkSharesRequest;
+import net.swisstech.bitly.builder.v3.ShortenRequest;
+import net.swisstech.bitly.builder.v3.UserInfoRequest;
+import net.swisstech.bitly.builder.v3.UserLinkEditRequest;
+import net.swisstech.bitly.builder.v3.UserLinkHistoryRequest;
+import net.swisstech.bitly.builder.v3.UserLinkLookupRequest;
+import net.swisstech.bitly.builder.v3.UserLinkSaveRequest;
+import net.swisstech.bitly.builder.v3.UserNetworkHistoryRequest;
+import net.swisstech.bitly.builder.v3.UserTrackingDomainListRequest;
 
 public class BitlyClient {
 
@@ -43,44 +43,44 @@ public class BitlyClient {
 		this.accessToken = accessToken;
 	}
 
-	public ExpandRequestBuilder expand() {
-		return new ExpandRequestBuilder(accessToken);
+	public ExpandRequest expand() {
+		return new ExpandRequest(accessToken);
 	}
 
-	public InfoRequestBuilder info() {
-		return new InfoRequestBuilder(accessToken);
+	public InfoRequest info() {
+		return new InfoRequest(accessToken);
 	}
 
-	public LinkLookupRequestBuilder linkLookup() {
-		return new LinkLookupRequestBuilder(accessToken);
+	public LinkLookupRequest linkLookup() {
+		return new LinkLookupRequest(accessToken);
 	}
 
-	public ShortenRequestBuilder shorten() {
-		return new ShortenRequestBuilder(accessToken);
+	public ShortenRequest shorten() {
+		return new ShortenRequest(accessToken);
 	}
 
-	public UserLinkEditRequestBuilder userLinkEdit() {
-		return new UserLinkEditRequestBuilder(accessToken);
+	public UserLinkEditRequest userLinkEdit() {
+		return new UserLinkEditRequest(accessToken);
 	}
 
-	public UserLinkLookupRequestBuilder userLinkLookup() {
-		return new UserLinkLookupRequestBuilder(accessToken);
+	public UserLinkLookupRequest userLinkLookup() {
+		return new UserLinkLookupRequest(accessToken);
 	}
 
-	public UserLinkSaveRequestBuilder userLinkSave() {
-		return new UserLinkSaveRequestBuilder(accessToken);
+	public UserLinkSaveRequest userLinkSave() {
+		return new UserLinkSaveRequest(accessToken);
 	}
 
-	public LinkClicksRolledUpRequestBuilder linkClicksRolledUp() {
-		return new LinkClicksRolledUpRequestBuilder(accessToken);
+	public LinkClicksRolledUpRequest linkClicksRolledUp() {
+		return new LinkClicksRolledUpRequest(accessToken);
 	}
 
-	public LinkClicksExpandedRequestBuilder linkClicksExpanded() {
-		return new LinkClicksExpandedRequestBuilder(accessToken);
+	public LinkClicksExpandedRequest linkClicksExpanded() {
+		return new LinkClicksExpandedRequest(accessToken);
 	}
 
-	public LinkCountriesExpandedRequestBuilder linkCountriesExpanded() {
-		return new LinkCountriesExpandedRequestBuilder(accessToken);
+	public LinkCountriesExpandedRequest linkCountriesExpanded() {
+		return new LinkCountriesExpandedRequest(accessToken);
 	}
 
 	/**
@@ -88,39 +88,39 @@ public class BitlyClient {
 	 * rollup works as expected
 	 */
 	@Deprecated
-	public LinkCountriesRolledUpRequestBuilder linkCountriesRolledUp() {
-		return new LinkCountriesRolledUpRequestBuilder(accessToken);
+	public LinkCountriesRolledUpRequest linkCountriesRolledUp() {
+		return new LinkCountriesRolledUpRequest(accessToken);
 	}
 
-	public LinkEncodersCountRequestBuilder linkEncodersCount() {
-		return new LinkEncodersCountRequestBuilder(accessToken);
+	public LinkEncodersCountRequest linkEncodersCount() {
+		return new LinkEncodersCountRequest(accessToken);
 	}
 
-	public LinkReferrersRequestBuilder linkReferrers() {
-		return new LinkReferrersRequestBuilder(accessToken);
+	public LinkReferrersRequest linkReferrers() {
+		return new LinkReferrersRequest(accessToken);
 	}
 
-	public LinkReferringDomainsRequestBuilder linkReferringDomains() {
-		return new LinkReferringDomainsRequestBuilder(accessToken);
+	public LinkReferringDomainsRequest linkReferringDomains() {
+		return new LinkReferringDomainsRequest(accessToken);
 	}
 
-	public LinkSharesRequestBuilder linkShares() {
-		return new LinkSharesRequestBuilder(accessToken);
+	public LinkSharesRequest linkShares() {
+		return new LinkSharesRequest(accessToken);
 	}
 
-	public UserInfoRequestBuilder userInfo() {
-		return new UserInfoRequestBuilder(accessToken);
+	public UserInfoRequest userInfo() {
+		return new UserInfoRequest(accessToken);
 	}
 
-	public UserLinkHistoryRequestBuilder userLinkHistory() {
-		return new UserLinkHistoryRequestBuilder(accessToken);
+	public UserLinkHistoryRequest userLinkHistory() {
+		return new UserLinkHistoryRequest(accessToken);
 	}
 
-	public UserNetworkHistoryRequestBuilder userNetworkHistory() {
-		return new UserNetworkHistoryRequestBuilder(accessToken);
+	public UserNetworkHistoryRequest userNetworkHistory() {
+		return new UserNetworkHistoryRequest(accessToken);
 	}
 
-	public UserTrackingDomainListRequestBuilder userTrackingDomainList() {
-		return new UserTrackingDomainListRequestBuilder(accessToken);
+	public UserTrackingDomainListRequest userTrackingDomainList() {
+		return new UserTrackingDomainListRequest(accessToken);
 	}
 }

@@ -13,59 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkShares;
+import net.swisstech.bitly.model.v3.LinkReferrers;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkSharesRequestBuilder extends RequestBuilder<LinkShares> {
+public class LinkReferrersRequest extends RequestBuilder<LinkReferrers> {
 
-	public LinkSharesRequestBuilder(String accessToken) {
+	public LinkReferrersRequest(String accessToken) {
 		super(accessToken);
 		addQueryParameter("rollup", false);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/shares";
+		return "https://api-ssl.bitly.com/v3/link/referrers";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkShares>>() {
+		return new TypeToken<Response<LinkReferrers>>() {
 		}.getType();
 	}
 
-	public LinkSharesRequestBuilder setLink(String link) {
+	public LinkReferrersRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkSharesRequestBuilder setUnit(String unit) {
+	public LinkReferrersRequest setUnit(String unit) {
 		addQueryParameter("unit", unit);
 		return this;
 	}
 
-	public LinkSharesRequestBuilder setUnits(long units) {
+	public LinkReferrersRequest setUnits(long units) {
 		addQueryParameter("units", units);
 		return this;
 	}
 
-	public LinkSharesRequestBuilder setTimezone(long timezone) {
+	public LinkReferrersRequest setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
 		return this;
 	}
 
-	public LinkSharesRequestBuilder setLimit(long limit) {
+	public LinkReferrersRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public LinkSharesRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
+	public LinkReferrersRequest setUnitReferenceTs(long unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return this;
 	}

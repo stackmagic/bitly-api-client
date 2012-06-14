@@ -13,29 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserTrackingDomainList;
+import net.swisstech.bitly.model.v3.Shorten;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserTrackingDomainListRequestBuilder extends RequestBuilder<UserTrackingDomainList> {
+public class ShortenRequest extends RequestBuilder<Shorten> {
 
-	public UserTrackingDomainListRequestBuilder(String accessToken) {
+	public ShortenRequest(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/user/tracking_domain_list";
+		return "https://api-ssl.bitly.com/v3/shorten";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserTrackingDomainList>>() {
+		return new TypeToken<Response<Shorten>>() {
 		}.getType();
+	}
+
+	public ShortenRequest setLongUrl(String longUrl) {
+		addQueryParameter("longUrl", longUrl);
+		return this;
+	}
+
+	public ShortenRequest setDomain(String domain) {
+		addQueryParameter("domain", domain);
+		return this;
 	}
 }

@@ -25,6 +25,6 @@ public class Response<T> {
 
 	@Override
 	public String toString() {
-		return String.format("ApiResponse { status_code=%d status_txt=%s data=%s }", status_code, status_txt, data);
+		return String.format("Response { status_code=%d status_txt=%s data=%s }", status_code, status_txt, data);
 	}
 }

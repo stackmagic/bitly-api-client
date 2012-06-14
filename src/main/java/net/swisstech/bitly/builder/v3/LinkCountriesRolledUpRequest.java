@@ -13,59 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkReferringDomains;
+import net.swisstech.bitly.model.v3.LinkCountriesRolledUp;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkReferringDomainsRequestBuilder extends RequestBuilder<LinkReferringDomains> {
+public class LinkCountriesRolledUpRequest extends RequestBuilder<LinkCountriesRolledUp> {
 
-	public LinkReferringDomainsRequestBuilder(String accessToken) {
+	public LinkCountriesRolledUpRequest(String accessToken) {
 		super(accessToken);
-		addQueryParameter("rollup", false);
+		addQueryParameter("rollup", true);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/referring_domains";
+		return "https://api-ssl.bitly.com/v3/link/countries";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkReferringDomains>>() {
+		return new TypeToken<Response<LinkCountriesRolledUp>>() {
 		}.getType();
 	}
 
-	public LinkReferringDomainsRequestBuilder setLink(String link) {
+	public LinkCountriesRolledUpRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkReferringDomainsRequestBuilder setUnit(String unit) {
+	public LinkCountriesRolledUpRequest setUnit(String unit) {
 		addQueryParameter("unit", unit);
 		return this;
 	}
 
-	public LinkReferringDomainsRequestBuilder setUnits(long units) {
+	public LinkCountriesRolledUpRequest setUnits(long units) {
 		addQueryParameter("units", units);
 		return this;
 	}
 
-	public LinkReferringDomainsRequestBuilder setTimezone(long timezone) {
+	public LinkCountriesRolledUpRequest setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
 		return this;
 	}
 
-	public LinkReferringDomainsRequestBuilder setLimit(long limit) {
+	public LinkCountriesRolledUpRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public LinkReferringDomainsRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
+	public LinkCountriesRolledUpRequest setUnitReferenceTs(long unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return this;
 	}

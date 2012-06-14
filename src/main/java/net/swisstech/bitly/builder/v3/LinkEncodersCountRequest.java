@@ -1,15 +1,16 @@
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkEncodersCount;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkEncodersCountRequestBuilder extends RequestBuilder<LinkEncodersCount> {
+public class LinkEncodersCountRequest extends RequestBuilder<LinkEncodersCount> {
 
-	public LinkEncodersCountRequestBuilder(String accessToken) {
+	public LinkEncodersCountRequest(String accessToken) {
 		super(accessToken);
 	}
 
@@ -24,7 +25,7 @@ public class LinkEncodersCountRequestBuilder extends RequestBuilder<LinkEncoders
 		}.getType();
 	}
 
-	public LinkEncodersCountRequestBuilder setLink(String link) {
+	public LinkEncodersCountRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}

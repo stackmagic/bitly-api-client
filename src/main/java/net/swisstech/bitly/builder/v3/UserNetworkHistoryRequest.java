@@ -13,39 +13,45 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserInfo;
+import net.swisstech.bitly.model.v3.UserNetworkHistory;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserInfoRequestBuilder extends RequestBuilder<UserInfo> {
+public class UserNetworkHistoryRequest extends RequestBuilder<UserNetworkHistory> {
 
-	public UserInfoRequestBuilder(String accessToken) {
+	public UserNetworkHistoryRequest(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/user/info";
+		return "https://api-ssl.bitly.com/v3/user/network_history";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserInfo>>() {
+		return new TypeToken<Response<UserNetworkHistory>>() {
 		}.getType();
 	}
 
-	public UserInfoRequestBuilder setLogin(String login) {
-		addQueryParameter("login", login);
+	public UserNetworkHistoryRequest setOffset(long offset) {
+		addQueryParameter("offset", offset);
 		return this;
 	}
 
-	public UserInfoRequestBuilder setFullName(String full_name) {
-		addQueryParameter("full_name", full_name);
+	public UserNetworkHistoryRequest setLimit(long limit) {
+		addQueryParameter("limit", limit);
+		return this;
+	}
+
+	public UserNetworkHistoryRequest setExpandUser(boolean expand_user) {
+		addQueryParameter("expand_user", expand_user);
 		return this;
 	}
 }

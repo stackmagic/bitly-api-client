@@ -13,59 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkCountriesRolledUp;
+import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkCountriesRolledUpRequestBuilder extends RequestBuilder<LinkCountriesRolledUp> {
+public class LinkClicksExpandedRequest extends RequestBuilder<LinkClicksExpanded> {
 
-	public LinkCountriesRolledUpRequestBuilder(String accessToken) {
+	public LinkClicksExpandedRequest(String accessToken) {
 		super(accessToken);
-		addQueryParameter("rollup", true);
+		addQueryParameter("rollup", false);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/countries";
+		return "https://api-ssl.bitly.com/v3/link/clicks";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkCountriesRolledUp>>() {
+		return new TypeToken<Response<LinkClicksExpanded>>() {
 		}.getType();
 	}
 
-	public LinkCountriesRolledUpRequestBuilder setLink(String link) {
+	public LinkClicksExpandedRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkCountriesRolledUpRequestBuilder setUnit(String unit) {
+	public LinkClicksExpandedRequest setUnit(String unit) {
 		addQueryParameter("unit", unit);
 		return this;
 	}
 
-	public LinkCountriesRolledUpRequestBuilder setUnits(long units) {
+	public LinkClicksExpandedRequest setUnits(long units) {
 		addQueryParameter("units", units);
 		return this;
 	}
 
-	public LinkCountriesRolledUpRequestBuilder setTimezone(long timezone) {
+	public LinkClicksExpandedRequest setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
 		return this;
 	}
 
-	public LinkCountriesRolledUpRequestBuilder setLimit(long limit) {
+	public LinkClicksExpandedRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public LinkCountriesRolledUpRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
+	public LinkClicksExpandedRequest setUnitReferenceTs(long unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return this;
 	}

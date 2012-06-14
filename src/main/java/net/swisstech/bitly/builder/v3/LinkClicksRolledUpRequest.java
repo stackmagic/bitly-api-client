@@ -13,20 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkClicksExpanded;
+import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkClicksExpandedRequestBuilder extends RequestBuilder<LinkClicksExpanded> {
+public class LinkClicksRolledUpRequest extends RequestBuilder<LinkClicksRolledUp> {
 
-	public LinkClicksExpandedRequestBuilder(String accessToken) {
+	public LinkClicksRolledUpRequest(String accessToken) {
 		super(accessToken);
-		addQueryParameter("rollup", false);
+		addQueryParameter("rollup", true);
 	}
 
 	@Override
@@ -36,36 +37,36 @@ public class LinkClicksExpandedRequestBuilder extends RequestBuilder<LinkClicksE
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkClicksExpanded>>() {
+		return new TypeToken<Response<LinkClicksRolledUp>>() {
 		}.getType();
 	}
 
-	public LinkClicksExpandedRequestBuilder setLink(String link) {
+	public LinkClicksRolledUpRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public LinkClicksExpandedRequestBuilder setUnit(String unit) {
+	public LinkClicksRolledUpRequest setUnit(String unit) {
 		addQueryParameter("unit", unit);
 		return this;
 	}
 
-	public LinkClicksExpandedRequestBuilder setUnits(long units) {
+	public LinkClicksRolledUpRequest setUnits(long units) {
 		addQueryParameter("units", units);
 		return this;
 	}
 
-	public LinkClicksExpandedRequestBuilder setTimezone(long timezone) {
+	public LinkClicksRolledUpRequest setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
 		return this;
 	}
 
-	public LinkClicksExpandedRequestBuilder setLimit(long limit) {
+	public LinkClicksRolledUpRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public LinkClicksExpandedRequestBuilder setUnitReferenceTs(long unit_reference_ts) {
+	public LinkClicksRolledUpRequest setUnitReferenceTs(long unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
 		return this;
 	}

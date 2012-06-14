@@ -13,18 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserLinkHistoryRequestBuilder extends RequestBuilder<UserLinkHistory> {
+public class UserLinkHistoryRequest extends RequestBuilder<UserLinkHistory> {
 
-	public UserLinkHistoryRequestBuilder(String accessToken) {
+	public UserLinkHistoryRequest(String accessToken) {
 		super(accessToken);
 	}
 
@@ -39,47 +40,47 @@ public class UserLinkHistoryRequestBuilder extends RequestBuilder<UserLinkHistor
 		}.getType();
 	}
 
-	public UserLinkHistoryRequestBuilder setLink(String link) {
+	public UserLinkHistoryRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setLimit(long limit) {
+	public UserLinkHistoryRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setOffset(long offset) {
+	public UserLinkHistoryRequest setOffset(long offset) {
 		addQueryParameter("offset", offset);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setCreatedBefore(long created_before) {
+	public UserLinkHistoryRequest setCreatedBefore(long created_before) {
 		addQueryParameter("created_before", created_before);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setCreatedAfter(long created_after) {
+	public UserLinkHistoryRequest setCreatedAfter(long created_after) {
 		addQueryParameter("created_after", created_after);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setModifiedAfter(long modified_after) {
+	public UserLinkHistoryRequest setModifiedAfter(long modified_after) {
 		addQueryParameter("modified_after", modified_after);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setArchived(boolean archived) {
+	public UserLinkHistoryRequest setArchived(boolean archived) {
 		addQueryParameter("archived", archived);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setPrivate(boolean privat) {
+	public UserLinkHistoryRequest setPrivate(boolean privat) {
 		addQueryParameter("private", privat);
 		return this;
 	}
 
-	public UserLinkHistoryRequestBuilder setUser(String user) {
+	public UserLinkHistoryRequest setUser(String user) {
 		addQueryParameter("user", user);
 		return this;
 	}

@@ -13,44 +13,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
+import java.util.Collection;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserNetworkHistory;
+import net.swisstech.bitly.model.v3.UserLinkLookup;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserNetworkHistoryRequestBuilder extends RequestBuilder<UserNetworkHistory> {
+public class UserLinkLookupRequest extends RequestBuilder<UserLinkLookup> {
 
-	public UserNetworkHistoryRequestBuilder(String accessToken) {
+	public UserLinkLookupRequest(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/user/network_history";
+		return "https://api-ssl.bitly.com/v3/user/link_lookup";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserNetworkHistory>>() {
+		return new TypeToken<Response<UserLinkLookup>>() {
 		}.getType();
 	}
 
-	public UserNetworkHistoryRequestBuilder setOffset(long offset) {
-		addQueryParameter("offset", offset);
+	public UserLinkLookupRequest addUrl(String url) {
+		addQueryParameter("url", url);
 		return this;
 	}
 
-	public UserNetworkHistoryRequestBuilder setLimit(long limit) {
-		addQueryParameter("limit", limit);
+	public UserLinkLookupRequest addUrls(String... urls) {
+		for (String url : urls) {
+			addUrl(url);
+		}
 		return this;
 	}
 
-	public UserNetworkHistoryRequestBuilder setExpandUser(boolean expand_user) {
-		addQueryParameter("expand_user", expand_user);
+	public UserLinkLookupRequest addUrls(Collection<String> urls) {
+		for (String url : urls) {
+			addUrl(url);
+		}
 		return this;
 	}
 }

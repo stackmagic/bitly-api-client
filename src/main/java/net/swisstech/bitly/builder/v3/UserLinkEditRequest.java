@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 import java.util.HashSet;
@@ -22,14 +22,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import net.swisstech.bitly.builder.QueryParameter;
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserLinkEditRequestBuilder extends RequestBuilder<UserLinkEdit> {
+public class UserLinkEditRequest extends RequestBuilder<UserLinkEdit> {
 
-	public UserLinkEditRequestBuilder(String accessToken) {
+	public UserLinkEditRequest(String accessToken) {
 		super(accessToken);
 	}
 
@@ -44,32 +46,32 @@ public class UserLinkEditRequestBuilder extends RequestBuilder<UserLinkEdit> {
 		}.getType();
 	}
 
-	public UserLinkEditRequestBuilder setLink(String link) {
+	public UserLinkEditRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
-	public UserLinkEditRequestBuilder setTitle(String title) {
+	public UserLinkEditRequest setTitle(String title) {
 		addQueryParameter("title", title);
 		return this;
 	}
 
-	public UserLinkEditRequestBuilder setNote(String note) {
+	public UserLinkEditRequest setNote(String note) {
 		addQueryParameter("note", note);
 		return this;
 	}
 
-	public UserLinkEditRequestBuilder setPrivate(boolean privat) {
+	public UserLinkEditRequest setPrivate(boolean privat) {
 		addQueryParameter("private", privat);
 		return this;
 	}
 
-	public UserLinkEditRequestBuilder setUserTs(long user_ts) {
+	public UserLinkEditRequest setUserTs(long user_ts) {
 		addQueryParameter("user_ts", user_ts);
 		return this;
 	}
 
-	public UserLinkEditRequestBuilder setArchived(boolean archived) {
+	public UserLinkEditRequest setArchived(boolean archived) {
 		addQueryParameter("archived", archived);
 		return this;
 	}

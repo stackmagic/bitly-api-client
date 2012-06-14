@@ -13,65 +13,71 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 import java.util.Collection;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.Expand;
+import net.swisstech.bitly.model.v3.Info;
 
 import com.google.gson.reflect.TypeToken;
 
-public class ExpandRequestBuilder extends RequestBuilder<Expand> {
+public class InfoRequest extends RequestBuilder<Info> {
 
-	public ExpandRequestBuilder(String accessToken) {
+	public InfoRequest(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/expand";
+		return "https://api-ssl.bitly.com/v3/info";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<Expand>>() {
+		return new TypeToken<Response<Info>>() {
 		}.getType();
 	}
 
-	public ExpandRequestBuilder addHash(String hash) {
+	public InfoRequest setExpandUser(boolean expand) {
+		addQueryParameter("expand_user", expand);
+		return this;
+	}
+
+	public InfoRequest addHash(String hash) {
 		addQueryParameter("hash", hash);
 		return this;
 	}
 
-	public ExpandRequestBuilder addHashes(String... hashes) {
+	public InfoRequest addHashes(String... hashes) {
 		for (String hash : hashes) {
 			addHash(hash);
 		}
 		return this;
 	}
 
-	public ExpandRequestBuilder addHashes(Collection<String> hashes) {
+	public InfoRequest addHashes(Collection<String> hashes) {
 		for (String hash : hashes) {
 			addHash(hash);
 		}
 		return this;
 	}
 
-	public ExpandRequestBuilder addShortUrl(String shortUrl) {
+	public InfoRequest addShortUrl(String shortUrl) {
 		addQueryParameter("shortUrl", shortUrl);
 		return this;
 	}
 
-	public ExpandRequestBuilder addShortUrls(String... shortUrls) {
+	public InfoRequest addShortUrls(String... shortUrls) {
 		for (String shortUrl : shortUrls) {
 			addShortUrl(shortUrl);
 		}
 		return this;
 	}
 
-	public ExpandRequestBuilder addShortUrls(Collection<String> shortUrls) {
+	public InfoRequest addShortUrls(Collection<String> shortUrls) {
 		for (String shortUrl : shortUrls) {
 			addShortUrl(shortUrl);
 		}

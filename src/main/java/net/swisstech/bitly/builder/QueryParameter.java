@@ -17,7 +17,7 @@ package net.swisstech.bitly.builder;
 
 import net.swisstech.bitly.util.EncodingUtil;
 
-class QueryParameter {
+public class QueryParameter {
 
 	private final String name;
 

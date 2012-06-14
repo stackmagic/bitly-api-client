@@ -13,18 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
+import net.swisstech.bitly.builder.RequestBuilder;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkSave;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserLinkSaveRequestBuilder extends RequestBuilder<UserLinkSave> {
+public class UserLinkSaveRequest extends RequestBuilder<UserLinkSave> {
 
-	public UserLinkSaveRequestBuilder(String accessToken) {
+	public UserLinkSaveRequest(String accessToken) {
 		super(accessToken);
 	}
 
@@ -39,27 +40,27 @@ public class UserLinkSaveRequestBuilder extends RequestBuilder<UserLinkSave> {
 		}.getType();
 	}
 
-	public UserLinkSaveRequestBuilder setLongUrl(String longUrl) {
+	public UserLinkSaveRequest setLongUrl(String longUrl) {
 		addQueryParameter("longUrl", longUrl);
 		return this;
 	}
 
-	public UserLinkSaveRequestBuilder setTitle(String title) {
+	public UserLinkSaveRequest setTitle(String title) {
 		addQueryParameter("title", title);
 		return this;
 	}
 
-	public UserLinkSaveRequestBuilder setNote(String note) {
+	public UserLinkSaveRequest setNote(String note) {
 		addQueryParameter("note", note);
 		return this;
 	}
 
-	public UserLinkSaveRequestBuilder setPrivate(boolean privat) {
+	public UserLinkSaveRequest setPrivate(boolean privat) {
 		addQueryParameter("privat", privat);
 		return this;
 	}
 
-	public UserLinkSaveRequestBuilder setUserTs(long user_ts) {
+	public UserLinkSaveRequest setUserTs(long user_ts) {
 		addQueryParameter("user_ts", user_ts);
 		return this;
 	}
