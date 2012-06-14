@@ -18,8 +18,6 @@ package net.swisstech.bitly.util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import net.swisstech.bitly.builder.RequestBuilderException;
-
 public final class EncodingUtil {
 
 	private static final String URLENCODING = "UTF-8";
@@ -32,7 +30,7 @@ public final class EncodingUtil {
 		try {
 			return URLEncoder.encode(string, URLENCODING);
 		} catch (UnsupportedEncodingException e) {
-			throw new RequestBuilderException(string);
+			throw new RuntimeException(string);
 		}
 	}
 }

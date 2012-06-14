@@ -15,6 +15,8 @@
  */
 package net.swisstech.bitly.util;
 
+import net.swisstech.bitly.gson.GsonFactory;
+
 import com.google.gson.Gson;
 
 public class ToStringUtil {

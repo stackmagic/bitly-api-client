@@ -25,8 +25,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import net.swisstech.bitly.gson.GsonFactory;
 import net.swisstech.bitly.model.ApiResponse;
-import net.swisstech.bitly.util.GsonFactory;
 
 import com.google.gson.Gson;
 
