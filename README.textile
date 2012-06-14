@@ -92,6 +92,16 @@ p. right now this project is a rough skeleton. the api style is pretty much defi
 * add some debugging output (what's the smallest logging api in terms of size and further dependencies?)
 * need to cleanup the model package(s) and model class name(s) but the api is kind of a mess with 2 and 3 level deep links so how do I name stuff? especially the response objects
 
+h2. design / naming conventions
+
+The client follows a few simple rules:
+
+* for each request there is a sinlge response dto class
+* the response dto may contain more inner classes if required to model the data structures returned from the api
+* all attributes of the dto's are public, no getters or setters to keep things as simple as possible (getter/setter might be introduced later on)
+* if an api url reads @/v3/hey/how_are_you@ then the corresponding classes' names will start with @HeyHowAreYou@ (for the request builder and response dtos)
+* dependencies to external libraries are kept to a minimum
+
 h2. questions / bugs
 
 p. Feel free to raise a bug or question here: "https://github.com/stackmagic/bitly-api-client/issues":https://github.com/stackmagic/bitly-api-client/issues
