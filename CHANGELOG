@@ -1,6 +1,7 @@
 [0.0.7-SNAPSHOT]
 
-* REFATORING: LinkHistory => UserLinkHistory
+* REFACTORING: LinkHistory => UserLinkHistory
+* REFACTORING: builder names, to string, lots more
 
 [0.0.6]
 
