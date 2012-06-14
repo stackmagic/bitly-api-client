@@ -47,6 +47,7 @@ import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
 
+import org.joda.time.DateTime;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -160,7 +161,7 @@ public class BitlyClientIntegrationTest {
 		ApiResponse<UserLinkEdit> resp = client.userLinkEdit() //
 				.setLink("http://bit.ly/MtVsf1") //
 				.setNote("Note: " + System.currentTimeMillis()) //
-				.setUserTs(System.currentTimeMillis()) //
+				.setUserTs(DateTime.now()) //
 				.call();
 
 		printAndVerify(resp, UserLinkEdit.class);
@@ -190,7 +191,7 @@ public class BitlyClientIntegrationTest {
 				.setTitle("example user link save (existing)") //
 				.setNote("testing link save (existing)") //
 				.setPrivate(true) //
-				.setUserTs(0) //
+				.setUserTs(DateTime.now()) //
 				.call();
 
 		printAndVerify(resp, UserLinkSave.class, 304, "LINK_ALREADY_EXISTS");
@@ -209,7 +210,7 @@ public class BitlyClientIntegrationTest {
 				.setTitle("example user link save (new)") //
 				.setNote("testing link save (new)") //
 				.setPrivate(true) //
-				.setUserTs(0) //
+				.setUserTs(DateTime.now()) //
 				.call();
 
 		printAndVerify(resp, UserLinkSave.class);

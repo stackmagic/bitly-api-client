@@ -17,9 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import org.joda.time.DateTime;
-
 import net.swisstech.bitly.model.DTO;
+
+import org.joda.time.DateTime;
 
 public class UserInfo extends DTO {
 

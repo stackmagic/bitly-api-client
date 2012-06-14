@@ -27,6 +27,8 @@ import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 
+import org.joda.time.DateTime;
+
 import com.google.gson.reflect.TypeToken;
 
 public class UserLinkEditRequest extends Request<UserLinkEdit> {
@@ -66,7 +68,7 @@ public class UserLinkEditRequest extends Request<UserLinkEdit> {
 		return this;
 	}
 
-	public UserLinkEditRequest setUserTs(long user_ts) {
+	public UserLinkEditRequest setUserTs(DateTime user_ts) {
 		addQueryParameter("user_ts", user_ts);
 		return this;
 	}

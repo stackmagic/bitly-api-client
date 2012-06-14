@@ -17,17 +17,16 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.Request;
+import net.swisstech.bitly.builder.MetricsRequest;
 import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkClicksExpandedRequest extends Request<LinkClicksExpanded> {
+public class LinkClicksExpandedRequest extends MetricsRequest<LinkClicksExpandedRequest, LinkClicksExpanded> {
 
 	public LinkClicksExpandedRequest(String accessToken) {
-		super(accessToken);
-		addQueryParameter("rollup", false);
+		super(accessToken, false);
 	}
 
 	@Override
@@ -39,35 +38,5 @@ public class LinkClicksExpandedRequest extends Request<LinkClicksExpanded> {
 	protected Type getTypeForGson() {
 		return new TypeToken<ApiResponse<LinkClicksExpanded>>() {
 		}.getType();
-	}
-
-	public LinkClicksExpandedRequest setLink(String link) {
-		addQueryParameter("link", link);
-		return this;
-	}
-
-	public LinkClicksExpandedRequest setUnit(String unit) {
-		addQueryParameter("unit", unit);
-		return this;
-	}
-
-	public LinkClicksExpandedRequest setUnits(long units) {
-		addQueryParameter("units", units);
-		return this;
-	}
-
-	public LinkClicksExpandedRequest setTimezone(long timezone) {
-		addQueryParameter("timezone", timezone);
-		return this;
-	}
-
-	public LinkClicksExpandedRequest setLimit(long limit) {
-		addQueryParameter("limit", limit);
-		return this;
-	}
-
-	public LinkClicksExpandedRequest setUnitReferenceTs(long unit_reference_ts) {
-		addQueryParameter("unit_reference_ts", unit_reference_ts);
-		return this;
 	}
 }

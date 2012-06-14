@@ -17,17 +17,16 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.Request;
+import net.swisstech.bitly.builder.MetricsRequest;
 import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.LinkReferrers;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkReferrersRequest extends Request<LinkReferrers> {
+public class LinkReferrersRequest extends MetricsRequest<LinkReferrersRequest, LinkReferrers> {
 
 	public LinkReferrersRequest(String accessToken) {
-		super(accessToken);
-		addQueryParameter("rollup", false);
+		super(accessToken, false);
 	}
 
 	@Override
@@ -39,35 +38,5 @@ public class LinkReferrersRequest extends Request<LinkReferrers> {
 	protected Type getTypeForGson() {
 		return new TypeToken<ApiResponse<LinkReferrers>>() {
 		}.getType();
-	}
-
-	public LinkReferrersRequest setLink(String link) {
-		addQueryParameter("link", link);
-		return this;
-	}
-
-	public LinkReferrersRequest setUnit(String unit) {
-		addQueryParameter("unit", unit);
-		return this;
-	}
-
-	public LinkReferrersRequest setUnits(long units) {
-		addQueryParameter("units", units);
-		return this;
-	}
-
-	public LinkReferrersRequest setTimezone(long timezone) {
-		addQueryParameter("timezone", timezone);
-		return this;
-	}
-
-	public LinkReferrersRequest setLimit(long limit) {
-		addQueryParameter("limit", limit);
-		return this;
-	}
-
-	public LinkReferrersRequest setUnitReferenceTs(long unit_reference_ts) {
-		addQueryParameter("unit_reference_ts", unit_reference_ts);
-		return this;
 	}
 }

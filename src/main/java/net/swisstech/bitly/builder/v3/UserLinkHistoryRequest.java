@@ -21,6 +21,8 @@ import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
 
+import org.joda.time.DateTime;
+
 import com.google.gson.reflect.TypeToken;
 
 public class UserLinkHistoryRequest extends Request<UserLinkHistory> {
@@ -55,17 +57,17 @@ public class UserLinkHistoryRequest extends Request<UserLinkHistory> {
 		return this;
 	}
 
-	public UserLinkHistoryRequest setCreatedBefore(long created_before) {
+	public UserLinkHistoryRequest setCreatedBefore(DateTime created_before) {
 		addQueryParameter("created_before", created_before);
 		return this;
 	}
 
-	public UserLinkHistoryRequest setCreatedAfter(long created_after) {
+	public UserLinkHistoryRequest setCreatedAfter(DateTime created_after) {
 		addQueryParameter("created_after", created_after);
 		return this;
 	}
 
-	public UserLinkHistoryRequest setModifiedAfter(long modified_after) {
+	public UserLinkHistoryRequest setModifiedAfter(DateTime modified_after) {
 		addQueryParameter("modified_after", modified_after);
 		return this;
 	}

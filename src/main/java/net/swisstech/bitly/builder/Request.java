@@ -28,6 +28,8 @@ import java.util.List;
 import net.swisstech.bitly.gson.GsonFactory;
 import net.swisstech.bitly.model.ApiResponse;
 
+import org.joda.time.DateTime;
+
 import com.google.gson.Gson;
 
 public abstract class Request<T> {
@@ -67,6 +69,10 @@ public abstract class Request<T> {
 
 	public void addQueryParameter(String name, long value) {
 		addQueryParameter(new QueryParameter(name, value));
+	}
+
+	public void addQueryParameter(String name, DateTime value) {
+		addQueryParameter(new QueryParameter(name, value.getMillis()));
 	}
 
 	public void addQueryParameter(QueryParameter queryParameter) {

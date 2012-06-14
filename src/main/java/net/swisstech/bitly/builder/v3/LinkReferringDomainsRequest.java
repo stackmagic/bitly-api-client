@@ -17,17 +17,16 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.Request;
+import net.swisstech.bitly.builder.MetricsRequest;
 import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkReferringDomainsRequest extends Request<LinkReferringDomains> {
+public class LinkReferringDomainsRequest extends MetricsRequest<LinkReferringDomainsRequest, LinkReferringDomains> {
 
 	public LinkReferringDomainsRequest(String accessToken) {
-		super(accessToken);
-		addQueryParameter("rollup", false);
+		super(accessToken, false);
 	}
 
 	@Override
@@ -39,35 +38,5 @@ public class LinkReferringDomainsRequest extends Request<LinkReferringDomains> {
 	protected Type getTypeForGson() {
 		return new TypeToken<ApiResponse<LinkReferringDomains>>() {
 		}.getType();
-	}
-
-	public LinkReferringDomainsRequest setLink(String link) {
-		addQueryParameter("link", link);
-		return this;
-	}
-
-	public LinkReferringDomainsRequest setUnit(String unit) {
-		addQueryParameter("unit", unit);
-		return this;
-	}
-
-	public LinkReferringDomainsRequest setUnits(long units) {
-		addQueryParameter("units", units);
-		return this;
-	}
-
-	public LinkReferringDomainsRequest setTimezone(long timezone) {
-		addQueryParameter("timezone", timezone);
-		return this;
-	}
-
-	public LinkReferringDomainsRequest setLimit(long limit) {
-		addQueryParameter("limit", limit);
-		return this;
-	}
-
-	public LinkReferringDomainsRequest setUnitReferenceTs(long unit_reference_ts) {
-		addQueryParameter("unit_reference_ts", unit_reference_ts);
-		return this;
 	}
 }

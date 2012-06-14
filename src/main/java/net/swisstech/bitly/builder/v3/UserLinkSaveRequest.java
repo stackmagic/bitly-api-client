@@ -21,6 +21,8 @@ import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.UserLinkSave;
 
+import org.joda.time.DateTime;
+
 import com.google.gson.reflect.TypeToken;
 
 public class UserLinkSaveRequest extends Request<UserLinkSave> {
@@ -60,7 +62,7 @@ public class UserLinkSaveRequest extends Request<UserLinkSave> {
 		return this;
 	}
 
-	public UserLinkSaveRequest setUserTs(long user_ts) {
+	public UserLinkSaveRequest setUserTs(DateTime user_ts) {
 		addQueryParameter("user_ts", user_ts);
 		return this;
 	}
