@@ -24,6 +24,13 @@ import net.swisstech.bitly.model.v3.LinkLookup;
 
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_link_lookup">/v3/link/lookup</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class LinkLookupRequest extends Request<LinkLookup> {
 
 	public LinkLookupRequest(String accessToken) {

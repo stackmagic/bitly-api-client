@@ -24,6 +24,13 @@ import net.swisstech.bitly.model.v3.Info;
 
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_info">/v3/info</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class InfoRequest extends Request<Info> {
 
 	public InfoRequest(String accessToken) {

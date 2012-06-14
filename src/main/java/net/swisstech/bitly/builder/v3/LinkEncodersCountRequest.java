@@ -8,6 +8,14 @@ import net.swisstech.bitly.model.v3.LinkEncodersCount;
 
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_encoders_count">/v3/link/encoders_count
+ *</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class LinkEncodersCountRequest extends Request<LinkEncodersCount> {
 
 	public LinkEncodersCountRequest(String accessToken) {

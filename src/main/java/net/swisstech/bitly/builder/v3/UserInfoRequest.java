@@ -23,6 +23,13 @@ import net.swisstech.bitly.model.v3.UserInfo;
 
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_info">/v3/user/info</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class UserInfoRequest extends Request<UserInfo> {
 
 	public UserInfoRequest(String accessToken) {

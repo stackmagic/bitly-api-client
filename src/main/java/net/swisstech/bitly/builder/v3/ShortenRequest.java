@@ -23,6 +23,13 @@ import net.swisstech.bitly.model.v3.Shorten;
 
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_shorten">/v3/shorten</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class ShortenRequest extends Request<Shorten> {
 
 	public ShortenRequest(String accessToken) {

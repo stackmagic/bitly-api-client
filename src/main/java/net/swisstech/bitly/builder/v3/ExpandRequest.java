@@ -24,6 +24,13 @@ import net.swisstech.bitly.model.v3.Expand;
 
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_expand">/v3/expand</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class ExpandRequest extends Request<Expand> {
 
 	public ExpandRequest(String accessToken) {
