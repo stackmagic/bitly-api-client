@@ -25,9 +25,9 @@ public class LinkHistory {
 
 	public long result_count;
 
-	public List<Element> link_history;
+	public List<LinkHistoryElement> link_history;
 
-	public static class Element {
+	public static class LinkHistoryElement {
 
 		public String aggregate_link;
 
@@ -50,7 +50,9 @@ public class LinkHistory {
 
 		@Override
 		public String toString() {
-			return String.format("LinkHistoryElement { aggregate_link=%s link=%s long_url=%s private=%b }", aggregate_link, link, long_url, privat);
+			return String.format(
+					"LinkHistoryElement { aggregate_link=%s archived=%b created_at=%s link=%s long_url=%s modified_at=%s private=%b title=%s user_ts=%s }",
+					aggregate_link, archived, created_at, link, long_url, modified_at, privat, title, user_ts);
 		}
 	}
 
@@ -58,5 +60,4 @@ public class LinkHistory {
 	public String toString() {
 		return String.format("LinkHistory { result_count=%d link_history=%s }", result_count, link_history);
 	}
-
 }
