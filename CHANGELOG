@@ -1,4 +1,4 @@
-[0.0.7-SNAPSHOT]
+[0.0.7]
 
 * REFACTORING: LinkHistory => UserLinkHistory
 * REFACTORING: builder names, to string, lots more
