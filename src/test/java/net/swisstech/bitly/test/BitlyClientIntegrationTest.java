@@ -43,6 +43,7 @@ import net.swisstech.bitly.model.v3.UserInfo;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
 import net.swisstech.bitly.model.v3.UserLinkSave;
+import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
 
@@ -423,5 +424,13 @@ public class BitlyClientIntegrationTest {
 				.call();
 
 		printAndVerify(resp, LinkHistory.class);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserNetworkHistory() {
+		Response<UserNetworkHistory> resp = client.userNetworkHistory() //
+				.call();
+
+		printAndVerify(resp, UserNetworkHistory.class);
 	}
 }
