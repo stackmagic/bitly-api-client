@@ -17,7 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-public class LinkShares {
+import net.swisstech.bitly.model.DTO;
+
+public class LinkShares extends DTO {
 
 	public long tz_offset;
 
@@ -30,11 +32,7 @@ public class LinkShares {
 	public List<Share> shares;
 
 	public static class Share {
-
-	}
-
-	@Override
-	public String toString() {
-		return String.format("LinkShares { tz_offset=%d unit=%s units=%d total_shares=%d shares=%s }", tz_offset, unit, units, total_shares, shares);
+		// TODO the docs don't say what's in here and the api returns no
+		// information
 	}
 }

@@ -15,14 +15,11 @@
  */
 package net.swisstech.bitly.model.v3;
 
-public class LinkEncodersCount {
+import net.swisstech.bitly.model.DTO;
+
+public class LinkEncodersCount extends DTO {
 
 	public String aggregate_link;
 
 	public long count;
-
-	@Override
-	public String toString() {
-		return String.format("LinkEncodersCount { aggregate_link=%S count=%s }", aggregate_link, count);
-	}
 }

@@ -17,13 +17,13 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.RequestBuilder;
-import net.swisstech.bitly.model.Response;
+import net.swisstech.bitly.builder.Request;
+import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.LinkShares;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkSharesRequest extends RequestBuilder<LinkShares> {
+public class LinkSharesRequest extends Request<LinkShares> {
 
 	public LinkSharesRequest(String accessToken) {
 		super(accessToken);
@@ -37,7 +37,7 @@ public class LinkSharesRequest extends RequestBuilder<LinkShares> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkShares>>() {
+		return new TypeToken<ApiResponse<LinkShares>>() {
 		}.getType();
 	}
 

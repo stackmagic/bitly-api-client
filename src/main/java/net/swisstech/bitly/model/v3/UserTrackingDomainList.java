@@ -17,12 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-public class UserTrackingDomainList {
+import net.swisstech.bitly.model.DTO;
+
+public class UserTrackingDomainList extends DTO {
 
 	public List<String> tracking_domains;
-
-	@Override
-	public String toString() {
-		return String.format("UserTrackingDomainList { tracking_domains=%s }", tracking_domains);
-	}
 }

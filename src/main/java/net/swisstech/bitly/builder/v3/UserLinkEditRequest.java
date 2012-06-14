@@ -23,13 +23,13 @@ import java.util.List;
 import java.util.Set;
 
 import net.swisstech.bitly.builder.QueryParameter;
-import net.swisstech.bitly.builder.RequestBuilder;
-import net.swisstech.bitly.model.Response;
+import net.swisstech.bitly.builder.Request;
+import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserLinkEditRequest extends RequestBuilder<UserLinkEdit> {
+public class UserLinkEditRequest extends Request<UserLinkEdit> {
 
 	public UserLinkEditRequest(String accessToken) {
 		super(accessToken);
@@ -42,7 +42,7 @@ public class UserLinkEditRequest extends RequestBuilder<UserLinkEdit> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkEdit>>() {
+		return new TypeToken<ApiResponse<UserLinkEdit>>() {
 		}.getType();
 	}
 

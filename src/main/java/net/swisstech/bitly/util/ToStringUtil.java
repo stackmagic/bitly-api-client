@@ -13,18 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.model;
+package net.swisstech.bitly.util;
 
-public class Response<T> {
+import com.google.gson.Gson;
 
-	public int status_code;
+public class ToStringUtil {
 
-	public String status_txt;
-
-	public T data;
-
-	@Override
-	public String toString() {
-		return String.format("Response { status_code=%d status_txt=%s data=%s }", status_code, status_txt, data);
+	public static <T> String convertToString(Object object) {
+		Gson gson = GsonFactory.getGson();
+		return gson.toJson(object);
 	}
 }

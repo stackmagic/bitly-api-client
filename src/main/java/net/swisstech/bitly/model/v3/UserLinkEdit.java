@@ -15,22 +15,14 @@
  */
 package net.swisstech.bitly.model.v3;
 
-public class UserLinkEdit {
+import net.swisstech.bitly.model.DTO;
+
+public class UserLinkEdit extends DTO {
 
 	public Link link_edit;
 
 	public static class Link {
 
 		public String link;
-
-		@Override
-		public String toString() {
-			return String.format("Link { link=%s }", link);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("LinkEdit { link_edit=%s }", link_edit);
 	}
 }

@@ -17,9 +17,13 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import org.joda.time.DateTime;
+
+import net.swisstech.bitly.model.DTO;
+
 import com.google.gson.annotations.SerializedName;
 
-public class UserNetworkHistory {
+public class UserNetworkHistory extends DTO {
 
 	public long total;
 
@@ -34,11 +38,6 @@ public class UserNetworkHistory {
 		public String global_hash;
 
 		public List<Save> saves;
-
-		@Override
-		public String toString() {
-			return String.format("Entry { global_hash=%s saves=%s }", global_hash, saves);
-		}
 	}
 
 	public static class Save {
@@ -56,24 +55,12 @@ public class UserNetworkHistory {
 		@SerializedName("private")
 		public boolean privat;
 
-		public long created_at;
+		public DateTime created_at;
 
-		public long user_ts;
+		public DateTime user_ts;
 
-		public long modified_at;
+		public DateTime modified_at;
 
 		public String title;
-
-		@Override
-		public String toString() {
-			return String.format(
-					"Save { link=%s aggregate_link=%s long_url=%s user=%s archived=%b private=%b created_at=%d user_ts=%d modified_at=%d title=%s",
-					link, aggregate_link, long_url, user, archived, privat, created_at, user, modified_at, title);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("UserNetworkHistory { total=%d limit=%d offset=%d entries=%s }", total, limit, offset, entries);
 	}
 }

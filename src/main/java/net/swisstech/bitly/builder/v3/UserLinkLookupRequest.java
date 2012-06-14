@@ -18,13 +18,13 @@ package net.swisstech.bitly.builder.v3;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
-import net.swisstech.bitly.builder.RequestBuilder;
-import net.swisstech.bitly.model.Response;
+import net.swisstech.bitly.builder.Request;
+import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserLinkLookupRequest extends RequestBuilder<UserLinkLookup> {
+public class UserLinkLookupRequest extends Request<UserLinkLookup> {
 
 	public UserLinkLookupRequest(String accessToken) {
 		super(accessToken);
@@ -37,7 +37,7 @@ public class UserLinkLookupRequest extends RequestBuilder<UserLinkLookup> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkLookup>>() {
+		return new TypeToken<ApiResponse<UserLinkLookup>>() {
 		}.getType();
 	}
 

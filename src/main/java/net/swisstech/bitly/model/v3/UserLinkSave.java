@@ -15,7 +15,9 @@
  */
 package net.swisstech.bitly.model.v3;
 
-public class UserLinkSave {
+import net.swisstech.bitly.model.DTO;
+
+public class UserLinkSave extends DTO {
 
 	public LinkSave link_save;
 
@@ -28,15 +30,5 @@ public class UserLinkSave {
 		public String long_url;
 
 		public long new_link;
-
-		@Override
-		public String toString() {
-			return String.format("LinkSave { aggregate_link=%s link=%s long_url=%s new_link=%d }", aggregate_link, link, long_url, new_link);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("UserLinkSave { link_save=%s }", link_save);
 	}
 }

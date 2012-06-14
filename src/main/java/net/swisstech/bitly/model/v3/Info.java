@@ -17,9 +17,11 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.DTO;
+
 import org.joda.time.DateTime;
 
-public class Info {
+public class Info extends DTO {
 
 	public List<Element> info;
 
@@ -34,16 +36,5 @@ public class Info {
 		public String title;
 
 		public String user_hash;
-
-		@Override
-		public String toString() {
-			return String.format("Element { created_at=%s created_by=%s global_hash=%s title=%s user_hash=%s }", created_at, created_by, global_hash,
-					title, user_hash);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Info { info=%s }", info);
 	}
 }

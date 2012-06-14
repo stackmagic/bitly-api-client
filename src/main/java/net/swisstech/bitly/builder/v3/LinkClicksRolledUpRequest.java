@@ -17,13 +17,13 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.RequestBuilder;
-import net.swisstech.bitly.model.Response;
+import net.swisstech.bitly.builder.Request;
+import net.swisstech.bitly.model.ApiResponse;
 import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
 
 import com.google.gson.reflect.TypeToken;
 
-public class LinkClicksRolledUpRequest extends RequestBuilder<LinkClicksRolledUp> {
+public class LinkClicksRolledUpRequest extends Request<LinkClicksRolledUp> {
 
 	public LinkClicksRolledUpRequest(String accessToken) {
 		super(accessToken);
@@ -37,7 +37,7 @@ public class LinkClicksRolledUpRequest extends RequestBuilder<LinkClicksRolledUp
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkClicksRolledUp>>() {
+		return new TypeToken<ApiResponse<LinkClicksRolledUp>>() {
 		}.getType();
 	}
 

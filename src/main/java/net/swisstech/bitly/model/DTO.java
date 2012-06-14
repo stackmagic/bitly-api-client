@@ -13,28 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.model.v3;
+package net.swisstech.bitly.model;
 
-import java.util.List;
+import net.swisstech.bitly.util.ToStringUtil;
 
-import net.swisstech.bitly.model.DTO;
+public abstract class DTO {
 
-public class Expand extends DTO {
-
-	public List<Element> expand;
-
-	public static class Element {
-
-		public String short_url;
-
-		public String hash;
-
-		public String user_hash;
-
-		public String global_hash;
-
-		public String error;
-
-		public String long_url;
+	@Override
+	public String toString() {
+		return ToStringUtil.convertToString(this);
 	}
 }

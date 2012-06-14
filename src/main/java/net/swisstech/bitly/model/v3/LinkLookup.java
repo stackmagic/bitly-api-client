@@ -17,7 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-public class LinkLookup {
+import net.swisstech.bitly.model.DTO;
+
+public class LinkLookup extends DTO {
 
 	public List<Element> link_lookup;
 
@@ -26,15 +28,5 @@ public class LinkLookup {
 		public String url;
 
 		public String aggregate_link;
-
-		@Override
-		public String toString() {
-			return String.format("Element { url=%s aggregate_link=%s }", url, aggregate_link);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Lookup { link_lookup=%s }", link_lookup);
 	}
 }

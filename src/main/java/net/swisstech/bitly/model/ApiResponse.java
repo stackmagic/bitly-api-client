@@ -13,20 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.model.v3;
+package net.swisstech.bitly.model;
 
-public class LinkCountriesRolledUp {
+public class ApiResponse<T> extends DTO {
 
-	public long tz_offset;
+	public int status_code;
 
-	public String unit;
+	public String status_txt;
 
-	public long units;
+	public T data;
 
-	public long countries;
-
-	@Override
-	public String toString() {
-		return String.format("LinkCountries { tz_offset=%d unit=%s units=%d countries=%d }", tz_offset, unit, units, countries);
-	}
 }

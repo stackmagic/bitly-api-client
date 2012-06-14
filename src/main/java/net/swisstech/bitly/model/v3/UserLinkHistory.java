@@ -17,11 +17,13 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.DTO;
+
 import org.joda.time.DateTime;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserLinkHistory {
+public class UserLinkHistory extends DTO {
 
 	public long result_count;
 
@@ -47,17 +49,5 @@ public class UserLinkHistory {
 		public String title;
 
 		public DateTime user_ts;
-
-		@Override
-		public String toString() {
-			return String
-					.format("UserLinkHistoryElement { aggregate_link=%s archived=%b created_at=%s link=%s long_url=%s modified_at=%s private=%b title=%s user_ts=%s }",
-							aggregate_link, archived, created_at, link, long_url, modified_at, privat, title, user_ts);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("UserLinkHistory { result_count=%d link_history=%s }", result_count, link_history);
 	}
 }

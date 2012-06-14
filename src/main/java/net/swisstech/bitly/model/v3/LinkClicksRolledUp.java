@@ -15,7 +15,9 @@
  */
 package net.swisstech.bitly.model.v3;
 
-public class LinkClicksRolledUp {
+import net.swisstech.bitly.model.DTO;
+
+public class LinkClicksRolledUp extends DTO {
 
 	public long link_clicks;
 
@@ -24,9 +26,4 @@ public class LinkClicksRolledUp {
 	public String unit;
 
 	public long units;
-
-	@Override
-	public String toString() {
-		return String.format("LinkClicks { link_clicks=%d tz_offset=%d unit=%s units=%s }", link_clicks, tz_offset, unit, units);
-	}
 }

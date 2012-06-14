@@ -25,23 +25,18 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.swisstech.bitly.gson.converter.DateTimeTypeConverter;
-import net.swisstech.bitly.gson.converter.InstantTypeConverter;
-import net.swisstech.bitly.model.Response;
-
-import org.joda.time.DateTime;
-import org.joda.time.Instant;
+import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.util.GsonFactory;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-public abstract class RequestBuilder<T> {
+public abstract class Request<T> {
 
 	private final String accessToken;
 
 	private List<QueryParameter> queryParameters = new LinkedList<QueryParameter>();
 
-	public RequestBuilder(String accessToken) {
+	public Request(String accessToken) {
 		this.accessToken = accessToken;
 	}
 
@@ -105,7 +100,7 @@ public abstract class RequestBuilder<T> {
 		return url.toString();
 	}
 
-	public Response<T> call() {
+	public ApiResponse<T> call() {
 		try {
 
 			// make the call
@@ -121,14 +116,10 @@ public abstract class RequestBuilder<T> {
 			}
 			String resp = respBuf.toString();
 
-			// get gson json impl
-			GsonBuilder builder = new GsonBuilder();
-			builder.registerTypeAdapter(DateTime.class, new DateTimeTypeConverter());
-			builder.registerTypeAdapter(Instant.class, new InstantTypeConverter());
-			Gson gson = builder.create();
-
 			// deserialize
-			Response<T> response = gson.fromJson(resp, getTypeForGson());
+			Gson gson = GsonFactory.getGson();
+			Type type = getTypeForGson();
+			ApiResponse<T> response = gson.fromJson(resp, type);
 			return response;
 
 		} catch (Throwable t) {

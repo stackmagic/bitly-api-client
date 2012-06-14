@@ -15,7 +15,9 @@
  */
 package net.swisstech.bitly.model.v3;
 
-public class Shorten {
+import net.swisstech.bitly.model.DTO;
+
+public class Shorten extends DTO {
 
 	public long new_hash;
 
@@ -26,9 +28,4 @@ public class Shorten {
 	public String global_hash;
 
 	public String long_url;
-
-	@Override
-	public String toString() {
-		return String.format("ShortUrl { new_hash=%d url=%s hash=%s global_hash=%s long_url=%s }", new_hash, url, hash, global_hash, long_url);
-	}
 }

@@ -17,7 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-public class LinkCountriesExpanded {
+import net.swisstech.bitly.model.DTO;
+
+public class LinkCountriesExpanded extends DTO {
 
 	public long tz_offset;
 
@@ -32,15 +34,5 @@ public class LinkCountriesExpanded {
 		public long clicks;
 
 		public String country;
-
-		@Override
-		public String toString() {
-			return String.format("Country { clicks=%d country=%s }", clicks, country);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("LinkCountries { tz_offset=%d unit=%s units=%d countries=%s }", tz_offset, unit, units, countries);
 	}
 }

@@ -17,7 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-public class LinkReferrers {
+import net.swisstech.bitly.model.DTO;
+
+public class LinkReferrers extends DTO {
 
 	public long tz_offset;
 
@@ -32,15 +34,5 @@ public class LinkReferrers {
 		public long clicks;
 
 		public String referrer;
-
-		@Override
-		public String toString() {
-			return String.format("Referer { clicks=%d referrer=%s }", clicks, referrer);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String.format("LinkReferrers { tz_offset=%d unit=%s units=%d referrers=%s }", tz_offset, unit, units, referrers);
 	}
 }

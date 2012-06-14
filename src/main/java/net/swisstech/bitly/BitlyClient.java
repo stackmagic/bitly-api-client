@@ -20,7 +20,6 @@ import net.swisstech.bitly.builder.v3.InfoRequest;
 import net.swisstech.bitly.builder.v3.LinkClicksExpandedRequest;
 import net.swisstech.bitly.builder.v3.LinkClicksRolledUpRequest;
 import net.swisstech.bitly.builder.v3.LinkCountriesExpandedRequest;
-import net.swisstech.bitly.builder.v3.LinkCountriesRolledUpRequest;
 import net.swisstech.bitly.builder.v3.LinkEncodersCountRequest;
 import net.swisstech.bitly.builder.v3.LinkLookupRequest;
 import net.swisstech.bitly.builder.v3.LinkReferrersRequest;
@@ -81,15 +80,6 @@ public class BitlyClient {
 
 	public LinkCountriesExpandedRequest linkCountriesExpanded() {
 		return new LinkCountriesExpandedRequest(accessToken);
-	}
-
-	/**
-	 * don't use this call will fail because the api behaves strange, linkclicks
-	 * rollup works as expected
-	 */
-	@Deprecated
-	public LinkCountriesRolledUpRequest linkCountriesRolledUp() {
-		return new LinkCountriesRolledUpRequest(accessToken);
 	}
 
 	public LinkEncodersCountRequest linkEncodersCount() {

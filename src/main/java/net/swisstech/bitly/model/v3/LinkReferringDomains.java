@@ -17,7 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-public class LinkReferringDomains {
+import net.swisstech.bitly.model.DTO;
+
+public class LinkReferringDomains extends DTO {
 
 	public long tz_offset;
 
@@ -34,16 +36,5 @@ public class LinkReferringDomains {
 		public String domain;
 
 		public String url;
-
-		@Override
-		public String toString() {
-			return String.format("ReferringDomain { clicks=%d domain=%s url=%s }", clicks, domain, url);
-		}
-	}
-
-	@Override
-	public String toString() {
-		return String
-				.format("LinkReferringDomains { tz_offset=%d unit=%s units=%d referring_domains=%s }", tz_offset, unit, units, referring_domains);
 	}
 }
