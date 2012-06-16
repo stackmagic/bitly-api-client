@@ -49,6 +49,7 @@ import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
 import net.swisstech.bitly.model.v3.UserReferrersExpanded;
 import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
+import net.swisstech.bitly.model.v3.UserShareCountsByShareTypeExpanded;
 import net.swisstech.bitly.model.v3.UserShareCountsExpanded;
 import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
@@ -489,13 +490,24 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, UserReferringDomainsExpanded.class);
 	}
+
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserShareCountsExpanded() {
 		Response<UserShareCountsExpanded> resp = client.userShareCountsExpanded() //
 				.setUnit("hour") //
 				.setUnits(-1) //
 				.call();
-		
+
 		printAndVerify(resp, UserShareCountsExpanded.class);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserShareCountsByShareTypeExpanded() {
+		Response<UserShareCountsByShareTypeExpanded> resp = client.userShareCountyByShareTypeExpanded() //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.call();
+
+		printAndVerify(resp, UserShareCountsByShareTypeExpanded.class);
 	}
 }

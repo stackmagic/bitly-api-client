@@ -17,9 +17,10 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.MetricsResponse;
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class UserReferringDomainsExpanded extends ToStringSupport {
+public class UserReferringDomainsExpanded extends MetricsResponse {
 
 	public List<ReferringDomain> referring_domains;
 

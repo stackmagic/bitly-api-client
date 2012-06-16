@@ -17,11 +17,12 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.MetricsResponse;
 import net.swisstech.bitly.model.ToStringSupport;
 
 import org.joda.time.DateTime;
 
-public class UserShareCountsExpanded extends ToStringSupport {
+public class UserShareCountsExpanded extends MetricsResponse {
 
 	public List<ShareCount> share_counts;
 
