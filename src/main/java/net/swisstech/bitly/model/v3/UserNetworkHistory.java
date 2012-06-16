@@ -33,14 +33,14 @@ public class UserNetworkHistory extends DTO {
 
 	public List<Entry> entries;
 
-	public static class Entry {
+	public static class Entry extends DTO {
 
 		public String global_hash;
 
 		public List<Save> saves;
 	}
 
-	public static class Save {
+	public static class Save extends DTO {
 
 		public String link;
 

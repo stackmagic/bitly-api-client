@@ -21,7 +21,7 @@ public class UserLinkEdit extends DTO {
 
 	public Link link_edit;
 
-	public static class Link {
+	public static class Link extends DTO {
 
 		public String link;
 	}

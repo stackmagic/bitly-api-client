@@ -21,7 +21,7 @@ public class UserLinkSave extends DTO {
 
 	public LinkSave link_save;
 
-	public static class LinkSave {
+	public static class LinkSave extends DTO {
 
 		public String aggregate_link;
 

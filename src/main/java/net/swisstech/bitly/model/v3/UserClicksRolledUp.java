@@ -15,11 +15,9 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import java.util.List;
-
 import net.swisstech.bitly.model.DTO;
 
-public class LinkReferringDomains extends DTO {
+public class UserClicksRolledUp extends DTO {
 
 	public long tz_offset;
 
@@ -27,14 +25,9 @@ public class LinkReferringDomains extends DTO {
 
 	public long units;
 
-	public List<ReferringDomain> referring_domains;
+	public long days;
 
-	public static class ReferringDomain extends DTO {
+	public long total_clicks;
 
-		public long clicks;
-
-		public String domain;
-
-		public String url;
-	}
+	public long user_clicks;
 }

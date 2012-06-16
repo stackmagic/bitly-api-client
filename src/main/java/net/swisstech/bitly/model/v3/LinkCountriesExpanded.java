@@ -29,7 +29,7 @@ public class LinkCountriesExpanded extends DTO {
 
 	public List<Country> countries;
 
-	public static class Country {
+	public static class Country extends DTO {
 
 		public long clicks;
 

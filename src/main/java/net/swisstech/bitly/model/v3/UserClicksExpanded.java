@@ -19,7 +19,9 @@ import java.util.List;
 
 import net.swisstech.bitly.model.DTO;
 
-public class LinkReferringDomains extends DTO {
+import org.joda.time.DateTime;
+
+public class UserClicksExpanded extends DTO {
 
 	public long tz_offset;
 
@@ -27,14 +29,18 @@ public class LinkReferringDomains extends DTO {
 
 	public long units;
 
-	public List<ReferringDomain> referring_domains;
+	public long days;
 
-	public static class ReferringDomain extends DTO {
+	public long total_clicks;
+
+	public List<UserClick> user_clicks;
+
+	public static class UserClick extends DTO {
+
+		public DateTime dt;
+
+		public DateTime day_start;
 
 		public long clicks;
-
-		public String domain;
-
-		public String url;
 	}
 }

@@ -31,7 +31,7 @@ public class LinkShares extends DTO {
 
 	public List<Share> shares;
 
-	public static class Share {
+	public static class Share extends DTO {
 		// TODO the docs don't say what's in here and the api returns no
 		// information
 	}

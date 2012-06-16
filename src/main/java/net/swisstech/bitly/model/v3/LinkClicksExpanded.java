@@ -29,7 +29,7 @@ public class LinkClicksExpanded extends DTO {
 
 	public long units;
 
-	public static class LinkClick {
+	public static class LinkClick extends DTO {
 
 		public long dt;
 

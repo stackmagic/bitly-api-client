@@ -23,7 +23,7 @@ public class UserLinkLookup extends DTO {
 
 	public List<Element> link_lookup;
 
-	public static class Element {
+	public static class Element extends DTO {
 
 		public String aggregate_link;
 

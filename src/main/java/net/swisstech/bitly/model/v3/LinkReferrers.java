@@ -29,7 +29,7 @@ public class LinkReferrers extends DTO {
 
 	public List<Referrer> referrers;
 
-	public static class Referrer {
+	public static class Referrer extends DTO {
 
 		public long clicks;
 

@@ -37,6 +37,8 @@ import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
 import net.swisstech.bitly.model.v3.LinkShares;
 import net.swisstech.bitly.model.v3.Shorten;
+import net.swisstech.bitly.model.v3.UserClicksExpanded;
+import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 import net.swisstech.bitly.model.v3.UserInfo;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
@@ -421,5 +423,25 @@ public class BitlyClientIntegrationTest {
 				.call();
 
 		printAndVerify(resp, UserTrackingDomainList.class);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserClicksExpanded() {
+		ApiResponse<UserClicksExpanded> resp = client.userClicksExpanded() //
+				.setUnit("day") //
+				.setUnits(500) //
+				.call();
+
+		printAndVerify(resp, UserClicksExpanded.class);
+	}
+	
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserClicksRolledUp() {
+		ApiResponse<UserClicksRolledUp> resp = client.userClicksRolledUp() //
+				.setUnit("day") //
+				.setUnits(500) //
+				.call();
+		
+		printAndVerify(resp, UserClicksRolledUp.class);
 	}
 }

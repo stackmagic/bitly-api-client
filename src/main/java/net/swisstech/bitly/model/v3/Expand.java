@@ -23,7 +23,7 @@ public class Expand extends DTO {
 
 	public List<Element> expand;
 
-	public static class Element {
+	public static class Element extends DTO {
 
 		public String short_url;
 

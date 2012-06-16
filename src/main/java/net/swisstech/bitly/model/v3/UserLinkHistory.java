@@ -29,7 +29,7 @@ public class UserLinkHistory extends DTO {
 
 	public List<UserLinkHistoryElement> link_history;
 
-	public static class UserLinkHistoryElement {
+	public static class UserLinkHistoryElement extends DTO {
 
 		public String aggregate_link;
 

@@ -25,7 +25,7 @@ public class Info extends DTO {
 
 	public List<Element> info;
 
-	public static class Element {
+	public static class Element extends DTO {
 
 		public DateTime created_at;
 
