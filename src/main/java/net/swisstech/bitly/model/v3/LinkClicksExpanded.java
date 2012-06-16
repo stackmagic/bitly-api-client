@@ -19,15 +19,9 @@ import java.util.List;
 
 import net.swisstech.bitly.model.DTO;
 
-public class LinkClicksExpanded extends DTO {
+public class LinkClicksExpanded extends MetricsResponse {
 
 	public List<LinkClick> link_clicks;
-
-	public long tz_offset;
-
-	public String unit;
-
-	public long units;
 
 	public static class LinkClick extends DTO {
 

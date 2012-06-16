@@ -17,16 +17,14 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+public class UserReferrersExpanded extends MetricsResponse {
 
-public class LinkCountriesExpanded extends MetricsResponse {
+	public List<Referrer> user_referrers;
 
-	public List<Country> countries;
+	public static class Referrer {
 
-	public static class Country extends DTO {
+		public String referrer;
 
 		public long clicks;
-
-		public String country;
 	}
 }

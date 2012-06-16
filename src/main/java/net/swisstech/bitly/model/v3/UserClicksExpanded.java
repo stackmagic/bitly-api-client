@@ -21,15 +21,7 @@ import net.swisstech.bitly.model.DTO;
 
 import org.joda.time.DateTime;
 
-public class UserClicksExpanded extends DTO {
-
-	public long tz_offset;
-
-	public String unit;
-
-	public long units;
-
-	public long days;
+public class UserClicksExpanded extends MetricsResponse {
 
 	public long total_clicks;
 

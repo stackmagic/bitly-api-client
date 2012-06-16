@@ -19,13 +19,7 @@ import java.util.List;
 
 import net.swisstech.bitly.model.DTO;
 
-public class UserCountriesExpanded extends DTO {
-
-	public long tz_offset;
-
-	public String unit;
-
-	public long units;
+public class UserCountriesExpanded extends MetricsResponse {
 
 	public List<UserCountry> user_countries;
 

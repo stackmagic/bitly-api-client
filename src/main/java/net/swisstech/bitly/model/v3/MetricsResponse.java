@@ -15,18 +15,16 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import java.util.List;
-
 import net.swisstech.bitly.model.DTO;
 
-public class LinkCountriesExpanded extends MetricsResponse {
+public abstract class MetricsResponse extends DTO {
 
-	public List<Country> countries;
+	public long tz_offset;
 
-	public static class Country extends DTO {
+	public long units;
 
-		public long clicks;
+	public String unit;
 
-		public String country;
-	}
+	public long days;
+
 }

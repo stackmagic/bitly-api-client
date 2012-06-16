@@ -19,13 +19,7 @@ import java.util.List;
 
 import net.swisstech.bitly.model.DTO;
 
-public class UserPopularLinksExpanded extends DTO {
-
-	public long units;
-
-	public String unit;
-
-	public long tz_offset;
+public class UserPopularLinksExpanded extends MetricsResponse {
 
 	public List<PopularLink> popular_links;
 

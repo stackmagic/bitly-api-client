@@ -15,17 +15,8 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import net.swisstech.bitly.model.DTO;
 
-public class UserClicksRolledUp extends DTO {
-
-	public long tz_offset;
-
-	public String unit;
-
-	public long units;
-
-	public long days;
+public class UserClicksRolledUp extends MetricsResponse {
 
 	public long total_clicks;
 
