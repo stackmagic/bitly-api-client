@@ -51,6 +51,7 @@ import net.swisstech.bitly.model.v3.UserReferrersExpanded;
 import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
 import net.swisstech.bitly.model.v3.UserShareCountsByShareTypeExpanded;
 import net.swisstech.bitly.model.v3.UserShareCountsExpanded;
+import net.swisstech.bitly.model.v3.UserShortenCounts;
 import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
@@ -509,5 +510,15 @@ public class BitlyClientIntegrationTest {
 				.call();
 
 		printAndVerify(resp, UserShareCountsByShareTypeExpanded.class);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserShortenCounts() {
+		Response<UserShortenCounts> resp = client.userShortenCounts() //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.call();
+
+		printAndVerify(resp, UserShortenCounts.class);
 	}
 }

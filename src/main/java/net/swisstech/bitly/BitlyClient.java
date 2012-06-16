@@ -40,6 +40,7 @@ import net.swisstech.bitly.builder.v3.UserReferrersExpandedRequest;
 import net.swisstech.bitly.builder.v3.UserReferringDomainsExpandedRequest;
 import net.swisstech.bitly.builder.v3.UserShareCountsByShareTypeExpandedRequest;
 import net.swisstech.bitly.builder.v3.UserShareCountsExpandedRequest;
+import net.swisstech.bitly.builder.v3.UserShortenCountsRequest;
 import net.swisstech.bitly.builder.v3.UserTrackingDomainListRequest;
 
 public class BitlyClient {
@@ -145,12 +146,16 @@ public class BitlyClient {
 	public UserReferringDomainsExpandedRequest userReferringDomainsExpanded() {
 		return new UserReferringDomainsExpandedRequest(accessToken);
 	}
-	
+
 	public UserShareCountsExpandedRequest userShareCountsExpanded() {
 		return new UserShareCountsExpandedRequest(accessToken);
 	}
 
 	public UserShareCountsByShareTypeExpandedRequest userShareCountyByShareTypeExpanded() {
 		return new UserShareCountsByShareTypeExpandedRequest(accessToken);
+	}
+
+	public UserShortenCountsRequest userShortenCounts() {
+		return new UserShortenCountsRequest(accessToken);
 	}
 }
