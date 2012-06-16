@@ -48,6 +48,7 @@ import net.swisstech.bitly.model.v3.UserLinkSave;
 import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
 import net.swisstech.bitly.model.v3.UserReferrersExpanded;
+import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
 import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
@@ -75,7 +76,6 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callExpand() throws IOException {
-
 		Response<Expand> resp = client.expand() //
 				.addHash("api-client") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
@@ -472,9 +472,20 @@ public class BitlyClientIntegrationTest {
 	public void callUserReferrersExpanded() {
 		Response<UserReferrersExpanded> resp = client.userReferersExpanded() //
 				.setUnit("hour") //
-				.setUnits(240) //
+				.setUnits(-1) //
 				.call();
 
 		printAndVerify(resp, UserReferrersExpanded.class);
+	}
+
+	// this returns a 404
+	@Test(groups = TestGroup.INTTEST, enabled = false)
+	public void callUserReferringDomainsExpanded() {
+		Response<UserReferringDomainsExpanded> resp = client.userReferringDomainsExpanded() //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.call();
+
+		printAndVerify(resp, UserReferringDomainsExpanded.class);
 	}
 }
