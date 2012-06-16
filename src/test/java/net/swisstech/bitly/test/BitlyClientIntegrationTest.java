@@ -39,6 +39,7 @@ import net.swisstech.bitly.model.v3.LinkShares;
 import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
+import net.swisstech.bitly.model.v3.UserCountriesExpanded;
 import net.swisstech.bitly.model.v3.UserInfo;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
@@ -434,14 +435,24 @@ public class BitlyClientIntegrationTest {
 
 		printAndVerify(resp, UserClicksExpanded.class);
 	}
-	
+
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserClicksRolledUp() {
 		ApiResponse<UserClicksRolledUp> resp = client.userClicksRolledUp() //
 				.setUnit("day") //
 				.setUnits(500) //
 				.call();
-		
+
 		printAndVerify(resp, UserClicksRolledUp.class);
+	}
+
+	@Test(groups = TestGroup.INTTEST)
+	public void callUserCountriesExpanded() {
+		ApiResponse<UserCountriesExpanded> resp = client.userCountriesExpanded() //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.call();
+
+		printAndVerify(resp, UserCountriesExpanded.class);
 	}
 }
