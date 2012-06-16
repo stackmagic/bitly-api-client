@@ -23,9 +23,9 @@ import net.swisstech.bitly.model.v3.UserCountriesExpanded;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserCountriesRolledExpandedRequest extends MetricsRequest<UserCountriesRolledExpandedRequest, UserCountriesExpanded> {
+public class UserCountriesExpandedRequest extends MetricsRequest<UserCountriesExpandedRequest, UserCountriesExpanded> {
 
-	public UserCountriesRolledExpandedRequest(String accessToken) {
+	public UserCountriesExpandedRequest(String accessToken) {
 		super(accessToken, false);
 	}
 
