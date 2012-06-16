@@ -1,6 +1,15 @@
-[0.0.8-SNAPSHOT]
+[0.5.0]
 
-* ...
+more or less feature complete. most metrics are there with an expanded variant, the rolledup one needs a closer look and once I've figured out how this stuff actually works I'll add it too but for the moment this is a pretty usable state right now.
+
+* FEATURE: UserClicks
+* FEATURE: UserCountries
+* FEATURE: UserPopularLinks
+* FEATURE: UserReferrers
+* FEATURE: UserReferringDomains
+* FEATURE: UserShareCounts
+* FEATURE: UserShareCountsByShareType
+* FEATURE: UserShortenCounts
 
 [0.0.7]
 
