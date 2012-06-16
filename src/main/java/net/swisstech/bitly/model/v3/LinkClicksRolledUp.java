@@ -15,6 +15,8 @@
  */
 package net.swisstech.bitly.model.v3;
 
+import net.swisstech.bitly.model.MetricsResponse;
+
 
 public class LinkClicksRolledUp extends MetricsResponse {
 

@@ -17,6 +17,8 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.MetricsResponse;
+
 public class UserReferrersExpanded extends MetricsResponse {
 
 	public List<Referrer> user_referrers;

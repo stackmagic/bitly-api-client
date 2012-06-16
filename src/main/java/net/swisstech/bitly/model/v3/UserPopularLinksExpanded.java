@@ -18,6 +18,7 @@ package net.swisstech.bitly.model.v3;
 import java.util.List;
 
 import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.MetricsResponse;
 
 public class UserPopularLinksExpanded extends MetricsResponse {
 
