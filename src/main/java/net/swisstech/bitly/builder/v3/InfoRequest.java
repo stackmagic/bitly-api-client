@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 
 import net.swisstech.bitly.builder.Request;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Info;
 
 import com.google.gson.reflect.TypeToken;
@@ -44,7 +44,7 @@ public class InfoRequest extends Request<Info> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<ApiResponse<Info>>() {
+		return new TypeToken<Response<Info>>() {
 		}.getType();
 	}
 

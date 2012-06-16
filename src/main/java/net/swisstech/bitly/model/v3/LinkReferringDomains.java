@@ -17,9 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkReferringDomains extends DTO {
+public class LinkReferringDomains extends ToStringSupport {
 
 	public long tz_offset;
 
@@ -29,7 +29,7 @@ public class LinkReferringDomains extends DTO {
 
 	public List<ReferringDomain> referring_domains;
 
-	public static class ReferringDomain extends DTO {
+	public static class ReferringDomain extends ToStringSupport {
 
 		public long clicks;
 

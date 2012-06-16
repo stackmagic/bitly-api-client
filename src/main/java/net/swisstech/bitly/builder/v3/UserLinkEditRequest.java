@@ -24,7 +24,7 @@ import java.util.Set;
 
 import net.swisstech.bitly.builder.QueryParameter;
 import net.swisstech.bitly.builder.Request;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkEdit;
 
 import org.joda.time.DateTime;
@@ -51,7 +51,7 @@ public class UserLinkEditRequest extends Request<UserLinkEdit> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<ApiResponse<UserLinkEdit>>() {
+		return new TypeToken<Response<UserLinkEdit>>() {
 		}.getType();
 	}
 

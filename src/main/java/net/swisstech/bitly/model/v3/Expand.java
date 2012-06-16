@@ -17,13 +17,13 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class Expand extends DTO {
+public class Expand extends ToStringSupport {
 
 	public List<Element> expand;
 
-	public static class Element extends DTO {
+	public static class Element extends ToStringSupport {
 
 		public String short_url;
 

@@ -18,7 +18,7 @@ package net.swisstech.bitly.builder.v3;
 import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
 
 import org.joda.time.DateTime;
@@ -45,7 +45,7 @@ public class UserLinkHistoryRequest extends Request<UserLinkHistory> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<ApiResponse<UserLinkHistory>>() {
+		return new TypeToken<Response<UserLinkHistory>>() {
 		}.getType();
 	}
 

@@ -17,7 +17,7 @@ package net.swisstech.bitly.test.util;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 
 public final class TestUtil {
 
@@ -25,16 +25,16 @@ public final class TestUtil {
 	private TestUtil() {
 	}
 
-	public static <T> void printAndVerify(ApiResponse<T> resp, Class<T> type) {
+	public static <T> void printAndVerify(Response<T> resp, Class<T> type) {
 		printAndVerify(resp, type, 200, "OK");
 	}
 
-	public static <T> void printAndVerify(ApiResponse<T> resp, Class<T> type, long respCode, String respTxt) {
+	public static <T> void printAndVerify(Response<T> resp, Class<T> type, long respCode, String respTxt) {
 		print(resp);
 		verify(resp, type, respCode, respTxt);
 	}
 
-	public static <T> void verify(ApiResponse<T> response, Class<?> type, long respCode, String respTxt) {
+	public static <T> void verify(Response<T> response, Class<?> type, long respCode, String respTxt) {
 		assertNotNull(response);
 		assertEquals(response.status_code, respCode);
 		assertEquals(response.status_txt, respTxt);
@@ -42,7 +42,7 @@ public final class TestUtil {
 		assertEquals(response.data.getClass(), type);
 	}
 
-	public static <T> void print(ApiResponse<T> resp) {
+	public static <T> void print(Response<T> resp) {
 		System.out.println(String.format("response.status_code = %d", resp.status_code));
 		System.out.println(String.format("response.status_txt  = %s", resp.status_txt));
 		System.out.println(String.format("response.data.class  = %s", resp.data == null ? "null" : resp.data.getClass().getName()));

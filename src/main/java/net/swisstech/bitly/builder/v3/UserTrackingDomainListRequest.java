@@ -18,7 +18,7 @@ package net.swisstech.bitly.builder.v3;
 import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 
 import com.google.gson.reflect.TypeToken;
@@ -44,7 +44,7 @@ public class UserTrackingDomainListRequest extends Request<UserTrackingDomainLis
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<ApiResponse<UserTrackingDomainList>>() {
+		return new TypeToken<Response<UserTrackingDomainList>>() {
 		}.getType();
 	}
 }

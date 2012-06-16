@@ -17,7 +17,7 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 import net.swisstech.bitly.model.MetricsResponse;
 
 import org.joda.time.DateTime;
@@ -28,7 +28,7 @@ public class UserClicksExpanded extends MetricsResponse {
 
 	public List<UserClick> user_clicks;
 
-	public static class UserClick extends DTO {
+	public static class UserClick extends ToStringSupport {
 
 		public DateTime dt;
 

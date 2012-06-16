@@ -17,13 +17,13 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
 import org.joda.time.DateTime;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserNetworkHistory extends DTO {
+public class UserNetworkHistory extends ToStringSupport {
 
 	public long total;
 
@@ -33,14 +33,14 @@ public class UserNetworkHistory extends DTO {
 
 	public List<Entry> entries;
 
-	public static class Entry extends DTO {
+	public static class Entry extends ToStringSupport {
 
 		public String global_hash;
 
 		public List<Save> saves;
 	}
 
-	public static class Save extends DTO {
+	public static class Save extends ToStringSupport {
 
 		public String link;
 

@@ -17,11 +17,11 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
 import org.joda.time.DateTime;
 
-public class UserInfo extends DTO {
+public class UserInfo extends ToStringSupport {
 
 	// always returned in the response
 	public String login;

@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import net.swisstech.bitly.BitlyClient;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.Expand;
 import net.swisstech.bitly.model.v3.Info;
 import net.swisstech.bitly.model.v3.LinkClicksExpanded;
@@ -76,7 +76,7 @@ public class BitlyClientIntegrationTest {
 	@Test(groups = TestGroup.INTTEST)
 	public void callExpand() throws IOException {
 
-		ApiResponse<Expand> resp = client.expand() //
+		Response<Expand> resp = client.expand() //
 				.addHash("api-client") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
 				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
@@ -104,7 +104,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callInfo() throws IOException {
-		ApiResponse<Info> resp = client.info() //
+		Response<Info> resp = client.info() //
 				.setExpandUser(false) //
 				.addHash("phphotoLakeZurichAtDusk") //
 				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
@@ -127,7 +127,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkLookup() {
-		ApiResponse<LinkLookup> resp = client.linkLookup() //
+		Response<LinkLookup> resp = client.linkLookup() //
 				.addUrl("https://www.example.com/") //
 				.addUrls("https://www.example.com/1", "https://www.example.com/2") //
 				.addUrls(Arrays.asList("https://www.example.com/1", "https://www.example.com/2")) //
@@ -147,7 +147,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callShorten() throws IOException {
-		ApiResponse<Shorten> resp = client.shorten() //
+		Response<Shorten> resp = client.shorten() //
 				.setLongUrl("https://www.example.com/") //
 				.call();
 
@@ -163,7 +163,7 @@ public class BitlyClientIntegrationTest {
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkEdit() {
 		// test link to https://www.example.com/bitly-api-client-test
-		ApiResponse<UserLinkEdit> resp = client.userLinkEdit() //
+		Response<UserLinkEdit> resp = client.userLinkEdit() //
 				.setLink("http://bit.ly/MtVsf1") //
 				.setNote("Note: " + System.currentTimeMillis()) //
 				.setUserTs(DateTime.now()) //
@@ -176,7 +176,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkLookup() {
-		ApiResponse<UserLinkLookup> resp = client.userLinkLookup() //
+		Response<UserLinkLookup> resp = client.userLinkLookup() //
 				.addUrl("https://www.example.com/bitly-api-client-test") //
 				.call();
 
@@ -191,7 +191,7 @@ public class BitlyClientIntegrationTest {
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkSaveExistingLink() {
 		// must have a unique link and so we add milliseconds
-		ApiResponse<UserLinkSave> resp = client.userLinkSave() //
+		Response<UserLinkSave> resp = client.userLinkSave() //
 				.setLongUrl("https://www.example.com/bitly-api-client-test") //
 				.setTitle("example user link save (existing)") //
 				.setNote("testing link save (existing)") //
@@ -210,7 +210,7 @@ public class BitlyClientIntegrationTest {
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkSaveNewLink() {
 		String longUrl = "https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis();
-		ApiResponse<UserLinkSave> resp = client.userLinkSave() //
+		Response<UserLinkSave> resp = client.userLinkSave() //
 				.setLongUrl(longUrl) //
 				.setTitle("example user link save (new)") //
 				.setNote("testing link save (new)") //
@@ -226,7 +226,7 @@ public class BitlyClientIntegrationTest {
 		assertEquals(resp.data.link_save.new_link, 1);
 
 		// can't have this showing up in my history so archive it
-		ApiResponse<UserLinkEdit> edit = client.userLinkEdit() //
+		Response<UserLinkEdit> edit = client.userLinkEdit() //
 				.setLink(resp.data.link_save.link) //
 				.setArchived(true) //
 				.call();
@@ -238,7 +238,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkClicksRolledUp() {
-		ApiResponse<LinkClicksRolledUp> resp = client.linkClicksRolledUp() //
+		Response<LinkClicksRolledUp> resp = client.linkClicksRolledUp() //
 				.setLink("http://bit.ly/LfXpbF") //
 				.setUnit("hour") //
 				.setUnits(-1) //
@@ -256,7 +256,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkClicksExpanded() {
-		ApiResponse<LinkClicksExpanded> resp = client.linkClicksExpanded() //
+		Response<LinkClicksExpanded> resp = client.linkClicksExpanded() //
 				.setLink("http://bit.ly/LfXpbF") //
 				.setUnit("hour") //
 				.setUnits(-1) //
@@ -274,7 +274,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkCountriesExpanded() {
-		ApiResponse<LinkCountriesExpanded> resp = client.linkCountriesExpanded() //
+		Response<LinkCountriesExpanded> resp = client.linkCountriesExpanded() //
 				.setLink("http://bit.ly/LfXpbF") //
 				.setUnit("hour") //
 				.setUnits(-1) //
@@ -292,7 +292,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkEncodersCount() {
-		ApiResponse<LinkEncodersCount> resp = client.linkEncodersCount() //
+		Response<LinkEncodersCount> resp = client.linkEncodersCount() //
 				.setLink("http://bit.ly/cJ8Hst") //
 				.call();
 
@@ -304,7 +304,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkReferrers() {
-		ApiResponse<LinkReferrers> resp = client.linkReferrers() //
+		Response<LinkReferrers> resp = client.linkReferrers() //
 				.setLink("http://bit.ly/LfXpbF") //
 				.setUnit("hour") //
 				.setUnits(-1) //
@@ -322,7 +322,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkReferringDomains() {
-		ApiResponse<LinkReferringDomains> resp = client.linkReferringDomains() //
+		Response<LinkReferringDomains> resp = client.linkReferringDomains() //
 				.setLink("http://bit.ly/LfXpbF") //
 				.setUnit("hour") //
 				.setUnits(-1) //
@@ -346,7 +346,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkShares() {
-		ApiResponse<LinkShares> resp = client.linkShares() //
+		Response<LinkShares> resp = client.linkShares() //
 				.setLink("http://bit.ly/cJ8Hst") //
 				.setUnit("month") //
 				.setUnits(-1) //
@@ -366,7 +366,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserInfoForAccessTokenUser() {
-		ApiResponse<UserInfo> resp = client.userInfo() //
+		Response<UserInfo> resp = client.userInfo() //
 				.call();
 
 		printAndVerify(resp, UserInfo.class);
@@ -377,7 +377,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserInfoForAnotherLogin() {
-		ApiResponse<UserInfo> resp = client.userInfo() //
+		Response<UserInfo> resp = client.userInfo() //
 				.setLogin("bufferapp") //
 				.call();
 
@@ -388,7 +388,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkHistoryGeneral() {
-		ApiResponse<UserLinkHistory> resp = client.userLinkHistory() //
+		Response<UserLinkHistory> resp = client.userLinkHistory() //
 				.call();
 
 		printAndVerify(resp, UserLinkHistory.class);
@@ -396,7 +396,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkHistoryForSingleLink() {
-		ApiResponse<UserLinkHistory> resp = client.userLinkHistory() //
+		Response<UserLinkHistory> resp = client.userLinkHistory() //
 				.setLink("http://bit.ly/LlpM8d") //
 				.call();
 
@@ -405,7 +405,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkHistoryForAnotherUser() {
-		ApiResponse<UserLinkHistory> resp = client.userLinkHistory() //
+		Response<UserLinkHistory> resp = client.userLinkHistory() //
 				.setUser("bufferapp") //
 				.call();
 
@@ -414,7 +414,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserNetworkHistory() {
-		ApiResponse<UserNetworkHistory> resp = client.userNetworkHistory() //
+		Response<UserNetworkHistory> resp = client.userNetworkHistory() //
 				.call();
 
 		printAndVerify(resp, UserNetworkHistory.class);
@@ -422,7 +422,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserTrackingDomainList() {
-		ApiResponse<UserTrackingDomainList> resp = client.userTrackingDomainList() //
+		Response<UserTrackingDomainList> resp = client.userTrackingDomainList() //
 				.call();
 
 		printAndVerify(resp, UserTrackingDomainList.class);
@@ -430,7 +430,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserClicksExpanded() {
-		ApiResponse<UserClicksExpanded> resp = client.userClicksExpanded() //
+		Response<UserClicksExpanded> resp = client.userClicksExpanded() //
 				.setUnit("day") //
 				.setUnits(500) //
 				.call();
@@ -440,7 +440,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserClicksRolledUp() {
-		ApiResponse<UserClicksRolledUp> resp = client.userClicksRolledUp() //
+		Response<UserClicksRolledUp> resp = client.userClicksRolledUp() //
 				.setUnit("day") //
 				.setUnits(500) //
 				.call();
@@ -450,7 +450,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserCountriesExpanded() {
-		ApiResponse<UserCountriesExpanded> resp = client.userCountriesExpanded() //
+		Response<UserCountriesExpanded> resp = client.userCountriesExpanded() //
 				.setUnit("hour") //
 				.setUnits(-1) //
 				.call();
@@ -460,7 +460,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserPopularLinksExpanded() {
-		ApiResponse<UserPopularLinksExpanded> resp = client.userPopularLinksExpanded() //
+		Response<UserPopularLinksExpanded> resp = client.userPopularLinksExpanded() //
 				.setUnit("hour") //
 				.setUnits(-1) //
 				.call();
@@ -470,7 +470,7 @@ public class BitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserReferrersExpanded() {
-		ApiResponse<UserReferrersExpanded> resp = client.userReferersExpanded() //
+		Response<UserReferrersExpanded> resp = client.userReferersExpanded() //
 				.setUnit("hour") //
 				.setUnits(240) //
 				.call();

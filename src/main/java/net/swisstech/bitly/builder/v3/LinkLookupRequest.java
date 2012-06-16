@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 
 import net.swisstech.bitly.builder.Request;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkLookup;
 
 import com.google.gson.reflect.TypeToken;
@@ -44,7 +44,7 @@ public class LinkLookupRequest extends Request<LinkLookup> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<ApiResponse<LinkLookup>>() {
+		return new TypeToken<Response<LinkLookup>>() {
 		}.getType();
 	}
 

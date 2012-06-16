@@ -17,14 +17,14 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 import net.swisstech.bitly.model.MetricsResponse;
 
 public class UserPopularLinksExpanded extends MetricsResponse {
 
 	public List<PopularLink> popular_links;
 
-	public static class PopularLink extends DTO {
+	public static class PopularLink extends ToStringSupport {
 
 		public String link;
 

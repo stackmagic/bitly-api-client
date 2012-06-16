@@ -18,7 +18,7 @@ package net.swisstech.bitly.builder.v3;
 import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.MetricsRequest;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
 
 import com.google.gson.reflect.TypeToken;
@@ -36,7 +36,7 @@ public class UserCountriesExpandedRequest extends MetricsRequest<UserCountriesEx
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<ApiResponse<UserCountriesExpanded>>() {
+		return new TypeToken<Response<UserCountriesExpanded>>() {
 		}.getType();
 	}
 }

@@ -15,9 +15,9 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class Shorten extends DTO {
+public class Shorten extends ToStringSupport {
 
 	public long new_hash;
 

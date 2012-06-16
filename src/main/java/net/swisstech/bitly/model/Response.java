@@ -15,7 +15,7 @@
  */
 package net.swisstech.bitly.model;
 
-public class ApiResponse<T> extends DTO {
+public class Response<T> extends ToStringSupport {
 
 	public int status_code;
 

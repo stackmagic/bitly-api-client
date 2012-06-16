@@ -18,7 +18,7 @@ package net.swisstech.bitly.builder.v3;
 import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.MetricsRequest;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 
 import com.google.gson.reflect.TypeToken;
@@ -43,7 +43,7 @@ public class LinkClicksExpandedRequest extends MetricsRequest<LinkClicksExpanded
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<ApiResponse<LinkClicksExpanded>>() {
+		return new TypeToken<Response<LinkClicksExpanded>>() {
 		}.getType();
 	}
 }

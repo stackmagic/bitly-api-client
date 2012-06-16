@@ -17,9 +17,9 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkShares extends DTO {
+public class LinkShares extends ToStringSupport {
 
 	public long tz_offset;
 
@@ -31,7 +31,7 @@ public class LinkShares extends DTO {
 
 	public List<Share> shares;
 
-	public static class Share extends DTO {
+	public static class Share extends ToStringSupport {
 		// TODO the docs don't say what's in here and the api returns no
 		// information
 	}

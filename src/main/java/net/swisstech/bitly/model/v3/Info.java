@@ -17,15 +17,15 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
 import org.joda.time.DateTime;
 
-public class Info extends DTO {
+public class Info extends ToStringSupport {
 
 	public List<Element> info;
 
-	public static class Element extends DTO {
+	public static class Element extends ToStringSupport {
 
 		public DateTime created_at;
 

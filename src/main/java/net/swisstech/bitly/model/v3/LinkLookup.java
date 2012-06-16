@@ -17,13 +17,13 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkLookup extends DTO {
+public class LinkLookup extends ToStringSupport {
 
 	public List<Element> link_lookup;
 
-	public static class Element extends DTO {
+	public static class Element extends ToStringSupport {
 
 		public String url;
 

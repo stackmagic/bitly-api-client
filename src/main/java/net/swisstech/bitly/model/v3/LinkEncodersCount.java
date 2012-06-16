@@ -15,9 +15,9 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkEncodersCount extends DTO {
+public class LinkEncodersCount extends ToStringSupport {
 
 	public String aggregate_link;
 

@@ -15,12 +15,12 @@
  */
 package net.swisstech.bitly.model;
 
-import net.swisstech.bitly.util.ToStringUtil;
+import net.swisstech.bitly.gson.GsonFactory;
 
-public abstract class DTO {
+public abstract class ToStringSupport {
 
 	@Override
 	public String toString() {
-		return ToStringUtil.convertToString(this);
+		return GsonFactory.getGson().toJson(this);
 	}
 }

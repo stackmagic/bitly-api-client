@@ -15,13 +15,13 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class UserLinkSave extends DTO {
+public class UserLinkSave extends ToStringSupport {
 
 	public LinkSave link_save;
 
-	public static class LinkSave extends DTO {
+	public static class LinkSave extends ToStringSupport {
 
 		public String aggregate_link;
 

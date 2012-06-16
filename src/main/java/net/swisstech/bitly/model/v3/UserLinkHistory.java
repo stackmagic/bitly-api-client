@@ -17,19 +17,19 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
 import org.joda.time.DateTime;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserLinkHistory extends DTO {
+public class UserLinkHistory extends ToStringSupport {
 
 	public long result_count;
 
 	public List<UserLinkHistoryElement> link_history;
 
-	public static class UserLinkHistoryElement extends DTO {
+	public static class UserLinkHistoryElement extends ToStringSupport {
 
 		public String aggregate_link;
 

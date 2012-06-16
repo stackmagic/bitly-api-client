@@ -26,7 +26,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import net.swisstech.bitly.gson.GsonFactory;
-import net.swisstech.bitly.model.ApiResponse;
+import net.swisstech.bitly.model.Response;
 
 import org.joda.time.DateTime;
 
@@ -106,7 +106,7 @@ public abstract class Request<T> {
 		return url.toString();
 	}
 
-	public ApiResponse<T> call() {
+	public Response<T> call() {
 		try {
 
 			// make the call
@@ -125,7 +125,7 @@ public abstract class Request<T> {
 			// deserialize
 			Gson gson = GsonFactory.getGson();
 			Type type = getTypeForGson();
-			ApiResponse<T> response = gson.fromJson(resp, type);
+			Response<T> response = gson.fromJson(resp, type);
 			return response;
 
 		} catch (Throwable t) {

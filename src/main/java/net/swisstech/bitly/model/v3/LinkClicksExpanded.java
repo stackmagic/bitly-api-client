@@ -17,14 +17,14 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 import net.swisstech.bitly.model.MetricsResponse;
 
 public class LinkClicksExpanded extends MetricsResponse {
 
 	public List<LinkClick> link_clicks;
 
-	public static class LinkClick extends DTO {
+	public static class LinkClick extends ToStringSupport {
 
 		public long dt;
 

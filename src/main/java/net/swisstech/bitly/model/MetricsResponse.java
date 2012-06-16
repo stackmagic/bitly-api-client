@@ -16,7 +16,7 @@
 package net.swisstech.bitly.model;
 
 
-public abstract class MetricsResponse extends DTO {
+public abstract class MetricsResponse extends ToStringSupport {
 
 	public long tz_offset;
 

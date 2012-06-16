@@ -15,13 +15,13 @@
  */
 package net.swisstech.bitly.model.v3;
 
-import net.swisstech.bitly.model.DTO;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class UserLinkEdit extends DTO {
+public class UserLinkEdit extends ToStringSupport {
 
 	public Link link_edit;
 
-	public static class Link extends DTO {
+	public static class Link extends ToStringSupport {
 
 		public String link;
 	}
