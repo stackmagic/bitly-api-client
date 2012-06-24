@@ -1,6 +1,8 @@
 
 h1. bit.ly api client built in java
 
+p. Build Status: !https://secure.travis-ci.org/stackmagic/bitly-api-client.png?branch=master!
+
 p. This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api.html. It is:
 
 * small
