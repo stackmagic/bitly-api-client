@@ -25,5 +25,4 @@ public abstract class MetricsResponse extends ToStringSupport {
 	public String unit;
 
 	public long days;
-
 }

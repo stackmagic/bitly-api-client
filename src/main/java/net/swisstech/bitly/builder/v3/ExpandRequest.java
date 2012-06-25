@@ -20,7 +20,7 @@ import java.util.Collection;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.Expand;
+import net.swisstech.bitly.model.v3.ExpandResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,8 +31,12 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class ExpandRequest extends Request<Expand> {
+public class ExpandRequest extends Request<ExpandResponse> {
 
+	/**
+	 * Create a new ExpandRequest Builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public ExpandRequest(String accessToken) {
 		super(accessToken);
 	}
@@ -44,15 +48,25 @@ public class ExpandRequest extends Request<Expand> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<Expand>>() {
+		return new TypeToken<Response<ExpandResponse>>() {
 		}.getType();
 	}
+	/**
+	 * Add a hash
+	 * @param hash refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name )
+	 * @return this builder
+	 */
 
 	public ExpandRequest addHash(String hash) {
 		addQueryParameter("hash", hash);
 		return this;
 	}
 
+	/**
+	 * Add hashes
+	 * @param hashes refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name )
+	 * @return this builder
+	 */
 	public ExpandRequest addHashes(String... hashes) {
 		for (String hash : hashes) {
 			addHash(hash);
@@ -60,6 +74,11 @@ public class ExpandRequest extends Request<Expand> {
 		return this;
 	}
 
+	/**
+	 * Add hashes
+	 * @param hashes refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name )
+	 * @return this builder
+	 */
 	public ExpandRequest addHashes(Collection<String> hashes) {
 		for (String hash : hashes) {
 			addHash(hash);
@@ -67,11 +86,21 @@ public class ExpandRequest extends Request<Expand> {
 		return this;
 	}
 
+	/**
+	 * Add shortUrl
+	 * @param shortUrl refers to one or more bitly links e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT
+	 * @return this builder
+	 */
 	public ExpandRequest addShortUrl(String shortUrl) {
 		addQueryParameter("shortUrl", shortUrl);
 		return this;
 	}
 
+	/**
+	 * Add shortUrls
+	 * @param shortUrls refers to one or more bitly links e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT
+	 * @return this builder
+	 */
 	public ExpandRequest addShortUrls(String... shortUrls) {
 		for (String shortUrl : shortUrls) {
 			addShortUrl(shortUrl);
@@ -79,6 +108,11 @@ public class ExpandRequest extends Request<Expand> {
 		return this;
 	}
 
+	/**
+	 * Add shortUrls
+	 * @param shortUrls refers to one or more bitly links e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT
+	 * @return this builder
+	 */
 	public ExpandRequest addShortUrls(Collection<String> shortUrls) {
 		for (String shortUrl : shortUrls) {
 			addShortUrl(shortUrl);

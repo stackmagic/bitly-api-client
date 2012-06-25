@@ -26,8 +26,6 @@ import java.util.Arrays;
 
 import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.Expand;
-import net.swisstech.bitly.model.v3.Info;
 import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
 import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
@@ -61,7 +59,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class BitlyClientIntegrationTest {
+public abstract class BitlyClientIntegrationTest {
 
 	private String accessToken;
 
@@ -77,55 +75,8 @@ public class BitlyClientIntegrationTest {
 		client = new BitlyClient(accessToken);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
-	public void callExpand() throws IOException {
-		Response<Expand> resp = client.expand() //
-				.addHash("api-client") //
-				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
-				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
-				.addShortUrl("http://bit.ly/LCJq0b") //
-				.addShortUrls("http://bit.ly/phphotoCrossroads", "http://bit.ly/springFever") //
-				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
-				.call();
-
-		printAndVerify(resp, Expand.class);
-
-		assertEquals(resp.data.expand.size(), 10);
-		for (Expand.Element e : resp.data.expand) {
-			assertNull(e.error);
-			assertNotNull(e.global_hash);
-			assertNotNull(e.long_url);
-			assertNotNull(e.user_hash);
-			if (e.short_url == null) {
-				assertNotNull(e.hash);
-			}
-			if (e.hash == null) {
-				assertNotNull(e.short_url);
-			}
-		}
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callInfo() throws IOException {
-		Response<Info> resp = client.info() //
-				.setExpandUser(false) //
-				.addHash("phphotoLakeZurichAtDusk") //
-				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
-				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
-				.addShortUrl("http://bit.ly/LCJq0b") //
-				.addShortUrls("http://bit.ly/phphotoCrossroads", "http://bit.ly/springFever") //
-				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
-				.call();
-
-		printAndVerify(resp, Info.class);
-
-		assertEquals(resp.data.info.size(), 10);
-		for (Info.Element i : resp.data.info) {
-			assertEquals(i.created_by, "stackmagic");
-			assertNotNull(i.global_hash);
-			assertNotNull(i.created_at);
-			assertNotNull(i.user_hash);
-		}
+	public BitlyClient getClient() {
+		return client;
 	}
 
 	@Test(groups = TestGroup.INTTEST)

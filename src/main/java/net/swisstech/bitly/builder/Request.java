@@ -32,6 +32,13 @@ import org.joda.time.DateTime;
 
 import com.google.gson.Gson;
 
+/**
+ * Base Request Builder and logic to make the actual call, add query parameters etc.
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ *
+ * @param <T> Type of the Response
+ */
 public abstract class Request<T> {
 
 	private final String accessToken;
@@ -55,6 +62,7 @@ public abstract class Request<T> {
 	 * to return an explicit type here, no T parameters or anything because that
 	 * won't work and then GSON will serialize the responsee's data as a
 	 * StringMap.
+	 * 
 	 * @return Type for GSON deserializer
 	 */
 	protected abstract Type getTypeForGson();

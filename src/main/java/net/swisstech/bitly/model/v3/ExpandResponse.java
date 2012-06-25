@@ -19,22 +19,37 @@ import java.util.List;
 
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class Expand extends ToStringSupport {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_expand">/v3/expand</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class ExpandResponse extends ToStringSupport {
 
-	public List<Element> expand;
+	/** list of the expanded shortUrls or hashes */
+	public List<Expand> expand;
 
-	public static class Element extends ToStringSupport {
+	/** an individual expanded shortUrl or hash */
+	public static class Expand extends ToStringSupport {
 
+		/** an echo back of the shortUrl request parameter */
 		public String short_url;
 
+		/** an echo back of the hash request parameter */
 		public String hash;
 
+		/** the corresponding bitly user identifier */
 		public String user_hash;
 
+		/** the corresponding bitly aggregate identifier */
 		public String global_hash;
 
+		/** indicates there was an error retrieving data for a given shortUrl or hash. An example error is "NOT_FOUND" */
 		public String error;
 
+		/** the URL that the requested short_url or hash points to */
 		public String long_url;
 	}
 }
