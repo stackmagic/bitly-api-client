@@ -32,6 +32,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class LinkClicksRolledUpRequest extends MetricsRequest<LinkClicksRolledUpRequest, LinkClicksRolledUp> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public LinkClicksRolledUpRequest(String accessToken) {
 		super(accessToken, true);
 	}

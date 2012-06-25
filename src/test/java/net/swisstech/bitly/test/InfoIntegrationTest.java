@@ -39,7 +39,7 @@ import org.testng.annotations.Test;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class InfoIntegrationTest extends BitlyClientIntegrationTest {
+public class InfoIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callInfo() throws IOException {

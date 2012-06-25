@@ -37,7 +37,7 @@ import org.testng.annotations.Test;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserLinkSaveIntegrationTest extends BitlyClientIntegrationTest {
+public class UserLinkSaveIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkSaveExistingLink() {

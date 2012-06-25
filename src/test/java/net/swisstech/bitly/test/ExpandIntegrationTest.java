@@ -40,7 +40,7 @@ import org.testng.annotations.Test;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class ExpandIntegrationTest extends BitlyClientIntegrationTest {
+public class ExpandIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callExpand() throws IOException {

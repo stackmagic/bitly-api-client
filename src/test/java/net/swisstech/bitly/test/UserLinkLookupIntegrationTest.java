@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserLinkLookupIntegrationTest extends BitlyClientIntegrationTest {
+public class UserLinkLookupIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callUserLinkLookup() {

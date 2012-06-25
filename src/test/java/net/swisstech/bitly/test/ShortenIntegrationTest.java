@@ -37,7 +37,7 @@ import org.testng.annotations.Test;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class ShortenIntegrationTest extends BitlyClientIntegrationTest {
+public class ShortenIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callShorten() throws IOException {
