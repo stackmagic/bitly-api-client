@@ -20,7 +20,7 @@ import java.util.Collection;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserLinkLookup;
+import net.swisstech.bitly.model.v3.UserLinkLookupResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,7 +31,7 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserLinkLookupRequest extends Request<UserLinkLookup> {
+public class UserLinkLookupRequest extends Request<UserLinkLookupResponse> {
 
 	public UserLinkLookupRequest(String accessToken) {
 		super(accessToken);
@@ -44,24 +44,39 @@ public class UserLinkLookupRequest extends Request<UserLinkLookup> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkLookup>>() {
+		return new TypeToken<Response<UserLinkLookupResponse>>() {
 		}.getType();
 	}
 
-	public UserLinkLookupRequest addUrl(String url) {
-		addQueryParameter("url", url);
+	/**
+	 * Add longUrl
+	 * @param longUrl the longUrl to be looked up
+	 * @return this builder
+	 */
+	public UserLinkLookupRequest addUrl(String longUrl) {
+		addQueryParameter("url", longUrl);
 		return this;
 	}
 
-	public UserLinkLookupRequest addUrls(String... urls) {
-		for (String url : urls) {
+	/**
+	 * Add longUrls
+	 * @param longUrls the longUrls to be looked up
+	 * @return this builder
+	 */
+	public UserLinkLookupRequest addUrls(String... longUrls) {
+		for (String url : longUrls) {
 			addUrl(url);
 		}
 		return this;
 	}
 
-	public UserLinkLookupRequest addUrls(Collection<String> urls) {
-		for (String url : urls) {
+	/**
+	 * Add longUrls
+	 * @param longUrls the longUrls to be looked up
+	 * @return this builder
+	 */
+	public UserLinkLookupRequest addUrls(Collection<String> longUrls) {
+		for (String url : longUrls) {
 			addUrl(url);
 		}
 		return this;

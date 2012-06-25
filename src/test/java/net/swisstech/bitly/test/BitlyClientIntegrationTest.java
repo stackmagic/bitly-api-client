@@ -38,7 +38,6 @@ import net.swisstech.bitly.model.v3.UserCountriesExpanded;
 import net.swisstech.bitly.model.v3.UserInfo;
 import net.swisstech.bitly.model.v3.UserLinkEditResponse;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
-import net.swisstech.bitly.model.v3.UserLinkLookup;
 import net.swisstech.bitly.model.v3.UserLinkSave;
 import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
@@ -56,6 +55,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+/**
+ * <p>
+ * Please note, that, in order to run, all integration tests require a file called <code>.accesstoken</code> in the root directory of the project
+ * which contains a valid working access token on a single line, no newlines, nothing.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public abstract class BitlyClientIntegrationTest {
 
 	private String accessToken;
@@ -74,20 +81,6 @@ public abstract class BitlyClientIntegrationTest {
 
 	public BitlyClient getClient() {
 		return client;
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callUserLinkLookup() {
-		Response<UserLinkLookup> resp = client.userLinkLookup() //
-				.addUrl("https://www.example.com/bitly-api-client-test") //
-				.call();
-
-		printAndVerify(resp, UserLinkLookup.class);
-
-		assertEquals(resp.data.link_lookup.size(), 1);
-		assertEquals(resp.data.link_lookup.get(0).aggregate_link, "http://bit.ly/MtVsf2");
-		assertEquals(resp.data.link_lookup.get(0).link, "http://bit.ly/MtVsf1");
-		assertEquals(resp.data.link_lookup.get(0).url, "https://www.example.com/bitly-api-client-test");
 	}
 
 	@Test(groups = TestGroup.INTTEST)
