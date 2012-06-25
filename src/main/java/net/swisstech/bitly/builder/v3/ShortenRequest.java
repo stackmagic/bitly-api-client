@@ -67,7 +67,7 @@ public class ShortenRequest extends Request<ShortenResponse> {
 	 * </p>
 	 * 
 	 * <p>
-	 * Notes
+	 * Notes (by bitly)
 	 * <ul>
 	 * <li>Long URLs should be <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoded</a>. You can not include a longUrl in the request
 	 * that has <code>&amp;</code>, <code>?</code>, <code>#</code>, or other reserved parameters without first encoding it.</li>

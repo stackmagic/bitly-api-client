@@ -17,12 +17,22 @@ package net.swisstech.bitly.model.v3;
 
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class UserLinkEdit extends ToStringSupport {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_edit">/v3/user/link_edit</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserLinkEditResponse extends ToStringSupport {
 
+	/** The edited link */
 	public Link link_edit;
 
+	/** The edited link */
 	public static class Link extends ToStringSupport {
 
+		/** an echo back of the edited bitly link */
 		public String link;
 	}
 }

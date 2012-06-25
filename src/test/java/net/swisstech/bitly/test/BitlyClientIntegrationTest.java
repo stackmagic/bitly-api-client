@@ -36,7 +36,7 @@ import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
 import net.swisstech.bitly.model.v3.UserInfo;
-import net.swisstech.bitly.model.v3.UserLinkEdit;
+import net.swisstech.bitly.model.v3.UserLinkEditResponse;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
 import net.swisstech.bitly.model.v3.UserLinkLookup;
 import net.swisstech.bitly.model.v3.UserLinkSave;
@@ -74,20 +74,6 @@ public abstract class BitlyClientIntegrationTest {
 
 	public BitlyClient getClient() {
 		return client;
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callUserLinkEdit() {
-		// test link to https://www.example.com/bitly-api-client-test
-		Response<UserLinkEdit> resp = client.userLinkEdit() //
-				.setLink("http://bit.ly/MtVsf1") //
-				.setNote("Note: " + System.currentTimeMillis()) //
-				.setUserTs(DateTime.now()) //
-				.call();
-
-		printAndVerify(resp, UserLinkEdit.class);
-
-		assertEquals(resp.data.link_edit.link, "http://bit.ly/MtVsf1");
 	}
 
 	@Test(groups = TestGroup.INTTEST)
@@ -142,12 +128,12 @@ public abstract class BitlyClientIntegrationTest {
 		assertEquals(resp.data.link_save.new_link, 1);
 
 		// can't have this showing up in my history so archive it
-		Response<UserLinkEdit> edit = client.userLinkEdit() //
+		Response<UserLinkEditResponse> edit = client.userLinkEdit() //
 				.setLink(resp.data.link_save.link) //
 				.setArchived(true) //
 				.call();
 
-		printAndVerify(edit, UserLinkEdit.class);
+		printAndVerify(edit, UserLinkEditResponse.class);
 
 		assertEquals(edit.data.link_edit.link, resp.data.link_save.link);
 	}

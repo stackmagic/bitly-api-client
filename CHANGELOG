@@ -1,9 +1,10 @@
 [?.?.?]
 
-* IMPROVEMENT: Expand     Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: Info       Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: LinkLookup Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: Shorten    Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: Expand       Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: Info         Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkLookup   Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: Shorten      Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkEdit Refactoring and Javadoc (partially copied directly from bitly)
 
 [0.5.0]
 
