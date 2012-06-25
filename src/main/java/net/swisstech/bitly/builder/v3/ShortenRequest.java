@@ -32,6 +32,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class ShortenRequest extends Request<ShortenResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public ShortenRequest(String accessToken) {
 		super(accessToken);
 	}

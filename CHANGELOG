@@ -6,6 +6,7 @@
 * IMPROVEMENT: Shorten        Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserLinkEdit   Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserLinkLookup Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkSave   Refactoring and Javadoc (partially copied directly from bitly)
 
 [0.5.0]
 

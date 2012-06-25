@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserLinkSave;
+import net.swisstech.bitly.model.v3.UserLinkSaveResponse;
 
 import org.joda.time.DateTime;
 
@@ -32,8 +32,12 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserLinkSaveRequest extends Request<UserLinkSave> {
+public class UserLinkSaveRequest extends Request<UserLinkSaveResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserLinkSaveRequest(String accessToken) {
 		super(accessToken);
 	}
@@ -45,30 +49,55 @@ public class UserLinkSaveRequest extends Request<UserLinkSave> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkSave>>() {
+		return new TypeToken<Response<UserLinkSaveResponse>>() {
 		}.getType();
 	}
 
+	/**
+	 * required: set the long Url
+	 * @param longUrl the URL to be saved as a bitmark
+	 * @return this builder
+	 */
 	public UserLinkSaveRequest setLongUrl(String longUrl) {
 		addQueryParameter("longUrl", longUrl);
 		return this;
 	}
 
+	/**
+	 * optional: set the title
+	 * @param title the title of this bitmark
+	 * @return
+	 */
 	public UserLinkSaveRequest setTitle(String title) {
 		addQueryParameter("title", title);
 		return this;
 	}
 
+	/**
+	 * optional: set the note
+	 * @param note a description of, or note about, this bitmark
+	 * @return this builder
+	 */
 	public UserLinkSaveRequest setNote(String note) {
 		addQueryParameter("note", note);
 		return this;
 	}
 
+	/**
+	 * optional: set if this link is private
+	 * @param privat boolean <code>true</code> or <code>false</code> indicating privacy setting (defaults to user-level setting)
+	 * @return this builder
+	 */
 	public UserLinkSaveRequest setPrivate(boolean privat) {
 		addQueryParameter("privat", privat);
 		return this;
 	}
 
+	/**
+	 * optional: set the timestamp
+	 * @param user_ts timestamp as an integer epoch
+	 * @return this builder
+	 */
 	public UserLinkSaveRequest setUserTs(DateTime user_ts) {
 		addQueryParameter("user_ts", user_ts);
 		return this;

@@ -1,3 +1,4 @@
 * Expand: Eliminate duplicate parameters
 * Expand: Throw exception when exceeding max of 15 hash/shortUrls
 * Expand: Throw exception when not at least 1 hash/shortUrls
+* ALL: check required parameters are present before making the call?

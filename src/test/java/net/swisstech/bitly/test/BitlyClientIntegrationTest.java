@@ -36,9 +36,7 @@ import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
 import net.swisstech.bitly.model.v3.UserInfo;
-import net.swisstech.bitly.model.v3.UserLinkEditResponse;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
-import net.swisstech.bitly.model.v3.UserLinkSave;
 import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
 import net.swisstech.bitly.model.v3.UserReferrersExpanded;
@@ -50,7 +48,6 @@ import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import net.swisstech.bitly.test.util.AccessTokenUtil;
 import net.swisstech.bitly.test.util.TestGroup;
 
-import org.joda.time.DateTime;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -81,54 +78,6 @@ public abstract class BitlyClientIntegrationTest {
 
 	public BitlyClient getClient() {
 		return client;
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callUserLinkSaveExistingLink() {
-		// must have a unique link and so we add milliseconds
-		Response<UserLinkSave> resp = client.userLinkSave() //
-				.setLongUrl("https://www.example.com/bitly-api-client-test") //
-				.setTitle("example user link save (existing)") //
-				.setNote("testing link save (existing)") //
-				.setPrivate(true) //
-				.setUserTs(DateTime.now()) //
-				.call();
-
-		printAndVerify(resp, UserLinkSave.class, 304, "LINK_ALREADY_EXISTS");
-
-		assertEquals(resp.data.link_save.aggregate_link, "http://bit.ly/MtVsf2");
-		assertEquals(resp.data.link_save.link, "http://bit.ly/MtVsf1");
-		assertEquals(resp.data.link_save.long_url, "https://www.example.com/bitly-api-client-test");
-		assertEquals(resp.data.link_save.new_link, 0);
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callUserLinkSaveNewLink() {
-		String longUrl = "https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis();
-		Response<UserLinkSave> resp = client.userLinkSave() //
-				.setLongUrl(longUrl) //
-				.setTitle("example user link save (new)") //
-				.setNote("testing link save (new)") //
-				.setPrivate(true) //
-				.setUserTs(DateTime.now()) //
-				.call();
-
-		printAndVerify(resp, UserLinkSave.class);
-
-		assertNotNull(resp.data.link_save.link);
-		assertNotNull(resp.data.link_save.aggregate_link);
-		assertEquals(resp.data.link_save.long_url, longUrl);
-		assertEquals(resp.data.link_save.new_link, 1);
-
-		// can't have this showing up in my history so archive it
-		Response<UserLinkEditResponse> edit = client.userLinkEdit() //
-				.setLink(resp.data.link_save.link) //
-				.setArchived(true) //
-				.call();
-
-		printAndVerify(edit, UserLinkEditResponse.class);
-
-		assertEquals(edit.data.link_edit.link, resp.data.link_save.link);
 	}
 
 	@Test(groups = TestGroup.INTTEST)

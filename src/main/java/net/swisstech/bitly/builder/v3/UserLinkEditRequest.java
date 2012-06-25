@@ -53,6 +53,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class UserLinkEditRequest extends Request<UserLinkEditResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserLinkEditRequest(String accessToken) {
 		super(accessToken);
 	}
