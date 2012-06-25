@@ -34,7 +34,7 @@ import com.google.gson.reflect.TypeToken;
 public class InfoRequest extends Request<InfoResponse> {
 
 	/**
-	 * Create new InfoRequest Builder
+	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
 	public InfoRequest(String accessToken) {

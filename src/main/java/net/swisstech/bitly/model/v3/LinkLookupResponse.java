@@ -19,14 +19,25 @@ import java.util.List;
 
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkLookup extends ToStringSupport {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_link_lookup">/v3/link/lookup</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class LinkLookupResponse extends ToStringSupport {
 
-	public List<Element> link_lookup;
+	/** list of the lookup results for each <code>url</code> from the request */
+	public List<LinkLookup> link_lookup;
 
-	public static class Element extends ToStringSupport {
+	/** a sinlge link lookup result */
+	public static class LinkLookup extends ToStringSupport {
 
+		/** an echo back of the url parameter */
 		public String url;
 
+		/** the corresponding bitly aggregate link (global hash) */
 		public String aggregate_link;
 	}
 }

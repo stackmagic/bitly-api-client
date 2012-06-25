@@ -20,7 +20,7 @@ import java.util.Collection;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkLookup;
+import net.swisstech.bitly.model.v3.LinkLookupResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,8 +31,12 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkLookupRequest extends Request<LinkLookup> {
+public class LinkLookupRequest extends Request<LinkLookupResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public LinkLookupRequest(String accessToken) {
 		super(accessToken);
 	}
@@ -44,24 +48,39 @@ public class LinkLookupRequest extends Request<LinkLookup> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkLookup>>() {
+		return new TypeToken<Response<LinkLookupResponse>>() {
 		}.getType();
 	}
 
-	public LinkLookupRequest addUrl(String shortUrl) {
-		addQueryParameter("url", shortUrl);
+	/**
+	 * Add longUrl
+	 * @param longUrl longUrl to look up
+	 * @return this builder
+	 */
+	public LinkLookupRequest addUrl(String longUrl) {
+		addQueryParameter("url", longUrl);
 		return this;
 	}
 
-	public LinkLookupRequest addUrls(String... shortUrls) {
-		for (String shortUrl : shortUrls) {
+	/**
+	 * Add longUrls
+	 * @param longUrls longUrls to look up
+	 * @return this builder
+	 */
+	public LinkLookupRequest addUrls(String... longUrls) {
+		for (String shortUrl : longUrls) {
 			addUrl(shortUrl);
 		}
 		return this;
 	}
 
-	public LinkLookupRequest addUrls(Collection<String> shortUrls) {
-		for (String shortUrl : shortUrls) {
+	/**
+	 * Add longUrls
+	 * @param longUrls longUrls to look up
+	 * @return this builder
+	 */
+	public LinkLookupRequest addUrls(Collection<String> longUrls) {
+		for (String shortUrl : longUrls) {
 			addUrl(shortUrl);
 		}
 		return this;

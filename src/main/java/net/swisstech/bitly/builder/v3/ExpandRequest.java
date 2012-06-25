@@ -34,7 +34,7 @@ import com.google.gson.reflect.TypeToken;
 public class ExpandRequest extends Request<ExpandResponse> {
 
 	/**
-	 * Create a new ExpandRequest Builder
+	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
 	public ExpandRequest(String accessToken) {

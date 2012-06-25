@@ -22,7 +22,6 @@ import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import net.swisstech.bitly.BitlyClient;
 import net.swisstech.bitly.model.Response;
@@ -30,7 +29,6 @@ import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
 import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
 import net.swisstech.bitly.model.v3.LinkEncodersCount;
-import net.swisstech.bitly.model.v3.LinkLookup;
 import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
 import net.swisstech.bitly.model.v3.LinkShares;
@@ -77,26 +75,6 @@ public abstract class BitlyClientIntegrationTest {
 
 	public BitlyClient getClient() {
 		return client;
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callLinkLookup() {
-		Response<LinkLookup> resp = client.linkLookup() //
-				.addUrl("https://www.example.com/") //
-				.addUrls("https://www.example.com/1", "https://www.example.com/2") //
-				.addUrls(Arrays.asList("https://www.example.com/1", "https://www.example.com/2")) //
-				.call();
-
-		printAndVerify(resp, LinkLookup.class);
-
-		assertEquals(resp.data.link_lookup.size(), 5);
-		int foundCount = 0;
-		for (LinkLookup.Element lu : resp.data.link_lookup) {
-			if (lu.aggregate_link != null) {
-				foundCount++;
-			}
-		}
-		assertEquals(foundCount, 1);
 	}
 
 	@Test(groups = TestGroup.INTTEST)
