@@ -32,7 +32,6 @@ import net.swisstech.bitly.model.v3.LinkEncodersCount;
 import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
 import net.swisstech.bitly.model.v3.LinkShares;
-import net.swisstech.bitly.model.v3.Shorten;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
@@ -75,21 +74,6 @@ public abstract class BitlyClientIntegrationTest {
 
 	public BitlyClient getClient() {
 		return client;
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callShorten() throws IOException {
-		Response<Shorten> resp = client.shorten() //
-				.setLongUrl("https://www.example.com/") //
-				.call();
-
-		printAndVerify(resp, Shorten.class);
-
-		assertEquals(resp.data.global_hash, "maiCS");
-		assertEquals(resp.data.hash, "MvuS15");
-		assertEquals(resp.data.long_url, "https://www.example.com/");
-		assertEquals(resp.data.new_hash, 0);
-		assertEquals(resp.data.url, "http://bit.ly/MvuS15");
 	}
 
 	@Test(groups = TestGroup.INTTEST)
