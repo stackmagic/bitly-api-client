@@ -21,7 +21,6 @@ import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkEncodersCount;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
 import net.swisstech.bitly.model.v3.LinkShares;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
@@ -41,18 +40,6 @@ import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callLinkEncodersCount() {
-		Response<LinkEncodersCount> resp = getClient().linkEncodersCount() //
-				.setLink("http://bit.ly/cJ8Hst") //
-				.call();
-
-		printAndVerify(resp, LinkEncodersCount.class);
-
-		assertTrue(resp.data.count > 0);
-		assertEquals(resp.data.aggregate_link, "http://bitly.com/CjiA");
-	}
 
 	@Test
 	public void callLinkReferringDomains() {

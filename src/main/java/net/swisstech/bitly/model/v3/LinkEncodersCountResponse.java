@@ -17,9 +17,19 @@ package net.swisstech.bitly.model.v3;
 
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkEncodersCount extends ToStringSupport {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_encoders_count">/v3/link/encoders_count</a>
+ * request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class LinkEncodersCountResponse extends ToStringSupport {
 
+	/** the aggregate (global) bitly link for the provided bitly link */
 	public String aggregate_link;
 
+	/** the number of bitly users who have shortened (encoded) this link */
 	public long count;
 }

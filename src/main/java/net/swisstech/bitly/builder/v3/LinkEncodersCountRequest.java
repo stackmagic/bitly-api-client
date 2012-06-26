@@ -4,19 +4,19 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkEncodersCount;
+import net.swisstech.bitly.model.v3.LinkEncodersCountResponse;
 
 import com.google.gson.reflect.TypeToken;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_encoders_count">/v3/link/encoders_count
- *</a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_encoders_count">/v3/link/encoders_count </a>
+ * request.
  * </p>
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkEncodersCountRequest extends Request<LinkEncodersCount> {
+public class LinkEncodersCountRequest extends Request<LinkEncodersCountResponse> {
 
 	public LinkEncodersCountRequest(String accessToken) {
 		super(accessToken);
@@ -29,10 +29,15 @@ public class LinkEncodersCountRequest extends Request<LinkEncodersCount> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkEncodersCount>>() {
+		return new TypeToken<Response<LinkEncodersCountResponse>>() {
 		}.getType();
 	}
 
+	/**
+	 * Set the link
+	 * @param link a bitly link
+	 * @return this builder
+	 */
 	public LinkEncodersCountRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
