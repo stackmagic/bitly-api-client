@@ -21,7 +21,7 @@ import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkReferringDomains;
+import net.swisstech.bitly.model.v3.LinkReferringDomainsResponse;
 import net.swisstech.bitly.model.v3.LinkShares;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
@@ -40,30 +40,6 @@ import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callLinkReferringDomains() {
-		Response<LinkReferringDomains> resp = getClient().linkReferringDomains() //
-				.setLink("http://bit.ly/LfXpbF") //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.setTimezone(0) //
-				.setLimit(1000) //
-				.call();
-
-		printAndVerify(resp, LinkReferringDomains.class);
-
-		for (LinkReferringDomains.ReferringDomain rd : resp.data.referring_domains) {
-			assertTrue(rd.clicks > 0);
-			assertNotNull(rd.domain);
-			if ("direct".equals(rd.domain)) {
-				assertNull(rd.url);
-			}
-			else {
-				assertNotNull(rd.url);
-			}
-		}
-	}
 
 	@Test
 	public void callLinkShares() {

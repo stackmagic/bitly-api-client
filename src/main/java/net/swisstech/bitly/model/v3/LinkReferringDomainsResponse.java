@@ -17,24 +17,32 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.MetricsResponse;
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkReferringDomains extends ToStringSupport {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referring_domains" >/v3/link/referring_domains
+ * </a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class LinkReferringDomainsResponse extends MetricsResponse {
 
-	public long tz_offset;
+	/** list of referring domains with click counts */
+	public List<LinkReferringDomain> referring_domains;
 
-	public String unit;
+	/** a single referring domain to a link with click counts */
+	public static class LinkReferringDomain extends ToStringSupport {
 
-	public long units;
-
-	public List<ReferringDomain> referring_domains;
-
-	public static class ReferringDomain extends ToStringSupport {
-
+		/** the number of clicks referred from this domain */
 		public long clicks;
 
+		/** the domain referring clicks */
 		public String domain;
 
+		/** the complete URL of the domain referring clicks */
 		public String url;
 	}
 }
