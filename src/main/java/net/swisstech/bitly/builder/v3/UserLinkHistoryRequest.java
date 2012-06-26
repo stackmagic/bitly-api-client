@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserLinkHistory;
+import net.swisstech.bitly.model.v3.UserLinkHistoryResponse;
 
 import org.joda.time.DateTime;
 
@@ -32,7 +32,7 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserLinkHistoryRequest extends Request<UserLinkHistory> {
+public class UserLinkHistoryRequest extends Request<UserLinkHistoryResponse> {
 
 	public UserLinkHistoryRequest(String accessToken) {
 		super(accessToken);
@@ -45,50 +45,95 @@ public class UserLinkHistoryRequest extends Request<UserLinkHistory> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkHistory>>() {
+		return new TypeToken<Response<UserLinkHistoryResponse>>() {
 		}.getType();
 	}
 
+	/**
+	 * optional: set the link
+	 * @param link the bitly link to return metadata for (when specified, overrides all other options)
+	 * @return this builder
+	 */
 	public UserLinkHistoryRequest setLink(String link) {
 		addQueryParameter("link", link);
 		return this;
 	}
 
+	/**
+	 * optional: set the limit
+	 * @param limit integer in the range 1;100 default:50, specifying the max number of results to return
+	 * @return this builder
+	 */
 	public UserLinkHistoryRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
+	/**
+	 * optional: set the offset
+	 * @param offset integer specifying the numbered result at which to start (for pagination)
+	 * @return this builder
+	 */
 	public UserLinkHistoryRequest setOffset(long offset) {
 		addQueryParameter("offset", offset);
 		return this;
 	}
 
+	/**
+	 * optional: set created_before
+	 * @param created_before timestamp as an integer unix epoch
+	 * @return this builder
+	 */
 	public UserLinkHistoryRequest setCreatedBefore(DateTime created_before) {
 		addQueryParameter("created_before", created_before);
 		return this;
 	}
 
+	/**
+	 * optional: set created_after
+	 * @param created_after timestamp as an integer unix epoch
+	 * @return this builder
+	 */
 	public UserLinkHistoryRequest setCreatedAfter(DateTime created_after) {
 		addQueryParameter("created_after", created_after);
 		return this;
 	}
 
+	/**
+	 * optional: set modified_after
+	 * @param modified_after timestamp as an integer unix epoch
+	 * @return this builder
+	 */
 	public UserLinkHistoryRequest setModifiedAfter(DateTime modified_after) {
 		addQueryParameter("modified_after", modified_after);
 		return this;
 	}
 
-	public UserLinkHistoryRequest setArchived(boolean archived) {
+	/**
+	 * optional: set archived
+	 * @param archived on|off|both whether to include or exclude archived history entries. (on = return only archived history entries) default: off
+	 * @return this builder
+	 */
+	public UserLinkHistoryRequest setArchived(String archived) {
 		addQueryParameter("archived", archived);
 		return this;
 	}
 
-	public UserLinkHistoryRequest setPrivate(boolean privat) {
+	/**
+	 * optional: set privat
+	 * @param privat on|off|both whether to include or exclude private history entries. (on = return only private history entries) default: both
+	 * @return this builder
+	 */
+	public UserLinkHistoryRequest setPrivate(String privat) {
 		addQueryParameter("private", privat);
 		return this;
 	}
 
+	/**
+	 * optional: set user
+	 * @param user the user for whom to retrieve history entries (if different from authenticated user)
+	 * @return this builder
+	 */
 	public UserLinkHistoryRequest setUser(String user) {
 		addQueryParameter("user", user);
 		return this;

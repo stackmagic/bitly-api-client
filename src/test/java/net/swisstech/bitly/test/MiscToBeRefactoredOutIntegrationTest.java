@@ -20,7 +20,6 @@ import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
-import net.swisstech.bitly.model.v3.UserLinkHistory;
 import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
 import net.swisstech.bitly.model.v3.UserReferrersExpanded;
@@ -33,32 +32,6 @@ import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callUserLinkHistoryGeneral() {
-		Response<UserLinkHistory> resp = getClient().userLinkHistory() //
-				.call();
-
-		printAndVerify(resp, UserLinkHistory.class);
-	}
-
-	@Test
-	public void callUserLinkHistoryForSingleLink() {
-		Response<UserLinkHistory> resp = getClient().userLinkHistory() //
-				.setLink("http://bit.ly/LlpM8d") //
-				.call();
-
-		printAndVerify(resp, UserLinkHistory.class);
-	}
-
-	@Test
-	public void callUserLinkHistoryForAnotherUser() {
-		Response<UserLinkHistory> resp = getClient().userLinkHistory() //
-				.setUser("bufferapp") //
-				.call();
-
-		printAndVerify(resp, UserLinkHistory.class);
-	}
 
 	@Test
 	public void callUserNetworkHistory() {
