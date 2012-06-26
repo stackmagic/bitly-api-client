@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.MetricsRequest;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkShares;
+import net.swisstech.bitly.model.v3.LinkSharesResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -30,7 +30,7 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkSharesRequest extends MetricsRequest<LinkSharesRequest, LinkShares> {
+public class LinkSharesRequest extends MetricsRequest<LinkSharesRequest, LinkSharesResponse> {
 
 	/**
 	 * Create a new request builder
@@ -47,7 +47,7 @@ public class LinkSharesRequest extends MetricsRequest<LinkSharesRequest, LinkSha
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkShares>>() {
+		return new TypeToken<Response<LinkSharesResponse>>() {
 		}.getType();
 	}
 }

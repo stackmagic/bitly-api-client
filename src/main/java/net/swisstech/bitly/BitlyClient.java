@@ -103,6 +103,11 @@ public class BitlyClient {
 		return new LinkReferringDomainsRequest(accessToken);
 	}
 
+	/**
+	 * TODO this does not return any data and must be revisited, mail to the bitly guys has been sent. also, the documentation is incomplete and once
+	 * they fix it, it will be a rollup + expanded call
+	 */
+	@Deprecated
 	public LinkSharesRequest linkShares() {
 		return new LinkSharesRequest(accessToken);
 	}

@@ -17,21 +17,23 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.MetricsResponse;
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkShares extends ToStringSupport {
-
-	public long tz_offset;
-
-	public String unit;
-
-	public long units;
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_shares">/v3/link/shares</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class LinkSharesResponse extends MetricsResponse {
 
 	public long total_shares;
 
-	public List<Share> shares;
+	public List<LinkShare> shares;
 
-	public static class Share extends ToStringSupport {
+	public static class LinkShare extends ToStringSupport {
 		// TODO the docs don't say what's in here and the api returns no
 		// information
 	}
