@@ -19,28 +19,27 @@ import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkClicksExpanded;
-import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
+import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
 import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/link/clicks</code> call
+ * Integration Test for the <code>/v3/link/countries</code> call
  * </p>
  * 
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_clicks">/v3/link/clicks</a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_countries">/v3/link/countries</a> request.
  * </p>
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkClicksIntegrationTest extends AbstractBitlyClientIntegrationTest {
+public class LinkCountriesIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test(groups = TestGroup.INTTEST)
-	public void callLinkClicksRolledUp() {
-		Response<LinkClicksRolledUp> resp = getClient().linkClicksRolledUp() //
+	public void callLinkCountriesExpanded() {
+		Response<LinkCountriesExpanded> resp = getClient().linkCountriesExpanded() //
 				.setLink("http://bit.ly/LfXpbF") //
 				.setUnit("hour") //
 				.setUnits(-1) //
@@ -48,27 +47,9 @@ public class LinkClicksIntegrationTest extends AbstractBitlyClientIntegrationTes
 				.setLimit(1000) //
 				.call();
 
-		printAndVerify(resp, LinkClicksRolledUp.class);
+		printAndVerify(resp, LinkCountriesExpanded.class);
 
-		assertTrue(resp.data.link_clicks > 0);
-		assertEquals(resp.data.tz_offset, 0);
-		assertEquals(resp.data.unit, "hour");
-		assertEquals(resp.data.units, -1);
-	}
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callLinkClicksExpanded() {
-		Response<LinkClicksExpanded> resp = getClient().linkClicksExpanded() //
-				.setLink("http://bit.ly/LfXpbF") //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.setTimezone(0) //
-				.setLimit(1000) //
-				.call();
-
-		printAndVerify(resp, LinkClicksExpanded.class);
-
-		assertTrue(resp.data.link_clicks.size() > 0);
+		assertTrue(resp.data.countries.size() > 0);
 		assertEquals(resp.data.tz_offset, 0);
 		assertEquals(resp.data.unit, "hour");
 		assertEquals(resp.data.units, -1);

@@ -21,7 +21,6 @@ import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
 import net.swisstech.bitly.model.v3.LinkEncodersCount;
 import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
@@ -44,24 +43,6 @@ import net.swisstech.bitly.test.util.TestGroup;
 import org.testng.annotations.Test;
 
 public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIntegrationTest {
-
-	@Test(groups = TestGroup.INTTEST)
-	public void callLinkCountriesExpanded() {
-		Response<LinkCountriesExpanded> resp = getClient().linkCountriesExpanded() //
-				.setLink("http://bit.ly/LfXpbF") //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.setTimezone(0) //
-				.setLimit(1000) //
-				.call();
-
-		printAndVerify(resp, LinkCountriesExpanded.class);
-
-		assertTrue(resp.data.countries.size() > 0);
-		assertEquals(resp.data.tz_offset, 0);
-		assertEquals(resp.data.unit, "hour");
-		assertEquals(resp.data.units, -1);
-	}
 
 	@Test(groups = TestGroup.INTTEST)
 	public void callLinkEncodersCount() {

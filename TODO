@@ -3,3 +3,4 @@
 * Expand: Throw exception when not at least 1 hash/shortUrls
 * ALL: check required parameters are present before making the call?
 * ALL: verify rollup behaviour
+* ALL: verify day parameter, not all metrics request have it

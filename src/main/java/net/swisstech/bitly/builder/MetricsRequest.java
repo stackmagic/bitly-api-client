@@ -19,14 +19,14 @@ import org.joda.time.DateTime;
 
 /**
  * <p>
- * Base Request for all Requests that have the common link/unit/units/timezone/limit/unit_reference_ts parameters. Uses two generic types for the
- * return type so we can keep the fluent builder pattern and for the data type.
+ * Base Request for all Metrics Requests that have the common link/unit/units/timezone/limit/unit_reference_ts parameters. Uses two generic types for
+ * the return type (so we can keep the fluent builder pattern) and for the data type.
  * </p>
  * 
- * @param <REQ_TYPE> Type of the Request Builder
- * @param <DATA_TYPE> Type of the Response DTO
+ * @param <REQ> Type of the Request Builder
+ * @param <DATA> Type of the Response DTO
  */
-public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, DATA_TYPE>, DATA_TYPE> extends Request<DATA_TYPE> {
+public abstract class MetricsRequest<REQ extends MetricsRequest<REQ, DATA>, DATA> extends Request<DATA> {
 
 	/**
 	 * Create a new request builder
@@ -44,9 +44,9 @@ public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, D
 	 * @return this builder
 	 */
 	@SuppressWarnings("unchecked")
-	public REQ_TYPE setLink(String link) {
+	public REQ setLink(String link) {
 		addQueryParameter("link", link);
-		return (REQ_TYPE) this;
+		return (REQ) this;
 	}
 
 	/**
@@ -56,9 +56,9 @@ public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, D
 	 * @return this builder
 	 */
 	@SuppressWarnings("unchecked")
-	public REQ_TYPE setUnit(String unit) {
+	public REQ setUnit(String unit) {
 		addQueryParameter("unit", unit);
-		return (REQ_TYPE) this;
+		return (REQ) this;
 	}
 
 	/**
@@ -67,9 +67,9 @@ public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, D
 	 * @return this builder
 	 */
 	@SuppressWarnings("unchecked")
-	public REQ_TYPE setUnits(long units) {
+	public REQ setUnits(long units) {
 		addQueryParameter("units", units);
-		return (REQ_TYPE) this;
+		return (REQ) this;
 	}
 
 	/**
@@ -78,9 +78,9 @@ public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, D
 	 * @return this builder
 	 */
 	@SuppressWarnings("unchecked")
-	public REQ_TYPE setTimezone(long timezone) {
+	public REQ setTimezone(long timezone) {
 		addQueryParameter("timezone", timezone);
-		return (REQ_TYPE) this;
+		return (REQ) this;
 	}
 
 	/**
@@ -89,9 +89,9 @@ public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, D
 	 * @return this builder
 	 */
 	@SuppressWarnings("unchecked")
-	public REQ_TYPE setLimit(long limit) {
+	public REQ setLimit(long limit) {
 		addQueryParameter("limit", limit);
-		return (REQ_TYPE) this;
+		return (REQ) this;
 	}
 
 	/**
@@ -103,8 +103,8 @@ public abstract class MetricsRequest<REQ_TYPE extends MetricsRequest<REQ_TYPE, D
 	 * @return this builder
 	 */
 	@SuppressWarnings("unchecked")
-	public REQ_TYPE setUnitReferenceTs(DateTime unit_reference_ts) {
+	public REQ setUnitReferenceTs(DateTime unit_reference_ts) {
 		addQueryParameter("unit_reference_ts", unit_reference_ts);
-		return (REQ_TYPE) this;
+		return (REQ) this;
 	}
 }
