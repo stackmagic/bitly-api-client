@@ -3,7 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.swisstech.bitly</groupId>
 	<artifactId>bitly-api-client</artifactId>
-	<version>0.5.0</version>
+	<version>0.5.1-SNAPSHOT</version>
+	<name>bit.ly API Client in Java</name>
 
 	<distributionManagement>
 		<repository>
@@ -78,6 +79,30 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<version>2.12</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>sonar</id>
+			<properties>
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+				<sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar</sonar.jdbc.url>
+				<sonar.jdbc.username>sonar</sonar.jdbc.username>
+				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+				<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.12</version>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.sonar</groupId>
+						<artifactId>sonar-maven3-plugin</artifactId>
+						<version>2.14</version>
 					</plugin>
 				</plugins>
 			</build>
