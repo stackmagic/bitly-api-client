@@ -24,13 +24,14 @@ package net.swisstech.bitly.builder;
  * @param <REQ> Type of the Request Builder
  * @param <DATA> Type of the Response DTO
  */
-public abstract class MetricsRolledUpRequest<REQ extends MetricsExpandedRequest<REQ, DATA>, DATA> extends MetricsRequest<REQ, DATA> {
+public abstract class MetricsRolledUpRequest<REQ extends MetricsRolledUpRequest<REQ, DATA>, DATA> extends MetricsRequest<REQ, DATA> {
 
 	/**
 	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
 	public MetricsRolledUpRequest(String accessToken) {
-		super(accessToken, true);
+		super(accessToken);
+		addQueryParameter("rollup", true);
 	}
 }

@@ -32,8 +32,12 @@ import com.google.gson.reflect.TypeToken;
  */
 public class LinkSharesRequest extends MetricsRequest<LinkSharesRequest, LinkShares> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public LinkSharesRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override

@@ -24,7 +24,6 @@ import java.util.Arrays;
 
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.InfoResponse;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
@@ -41,7 +40,7 @@ import org.testng.annotations.Test;
  */
 public class InfoIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callInfo() throws IOException {
 		Response<InfoResponse> resp = getClient().info() //
 				.setExpandUser(false) //

@@ -22,7 +22,6 @@ import java.util.Arrays;
 
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkLookupResponse;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
@@ -39,7 +38,7 @@ import org.testng.annotations.Test;
  */
 public class LinkLookupIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callLinkLookup() {
 		Response<LinkLookupResponse> resp = getClient().linkLookup() //
 				.addUrl("https://www.example.com/") //

@@ -25,7 +25,6 @@ import java.util.Arrays;
 
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.ExpandResponse;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
@@ -42,7 +41,7 @@ import org.testng.annotations.Test;
  */
 public class ExpandIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callExpand() throws IOException {
 		Response<ExpandResponse> resp = getClient().expand() //
 				.addHash("api-client") //

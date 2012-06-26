@@ -22,7 +22,6 @@ import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkEncodersCount;
-import net.swisstech.bitly.model.v3.LinkReferrers;
 import net.swisstech.bitly.model.v3.LinkReferringDomains;
 import net.swisstech.bitly.model.v3.LinkShares;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
@@ -38,13 +37,12 @@ import net.swisstech.bitly.model.v3.UserShareCountsByShareTypeExpanded;
 import net.swisstech.bitly.model.v3.UserShareCountsExpanded;
 import net.swisstech.bitly.model.v3.UserShortenCounts;
 import net.swisstech.bitly.model.v3.UserTrackingDomainList;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
-public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIntegrationTest {
+public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callLinkEncodersCount() {
 		Response<LinkEncodersCount> resp = getClient().linkEncodersCount() //
 				.setLink("http://bit.ly/cJ8Hst") //
@@ -56,25 +54,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		assertEquals(resp.data.aggregate_link, "http://bitly.com/CjiA");
 	}
 
-	@Test(groups = TestGroup.INTTEST)
-	public void callLinkReferrers() {
-		Response<LinkReferrers> resp = getClient().linkReferrers() //
-				.setLink("http://bit.ly/LfXpbF") //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.setTimezone(0) //
-				.setLimit(1000) //
-				.call();
-
-		printAndVerify(resp, LinkReferrers.class);
-
-		assertTrue(resp.data.referrers.size() > 0);
-		assertEquals(resp.data.unit, "hour");
-		assertEquals(resp.data.units, -1);
-		assertEquals(resp.data.tz_offset, 0);
-	}
-
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callLinkReferringDomains() {
 		Response<LinkReferringDomains> resp = getClient().linkReferringDomains() //
 				.setLink("http://bit.ly/LfXpbF") //
@@ -98,7 +78,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		}
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callLinkShares() {
 		Response<LinkShares> resp = getClient().linkShares() //
 				.setLink("http://bit.ly/cJ8Hst") //
@@ -118,7 +98,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		assertEquals(resp.data.tz_offset, 0);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserInfoForAccessTokenUser() {
 		Response<UserInfo> resp = getClient().userInfo() //
 				.call();
@@ -129,7 +109,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		assertEquals(resp.data.login, "stackmagic");
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserInfoForAnotherLogin() {
 		Response<UserInfo> resp = getClient().userInfo() //
 				.setLogin("bufferapp") //
@@ -140,7 +120,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		assertEquals(resp.data.login, "bufferapp");
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserLinkHistoryGeneral() {
 		Response<UserLinkHistory> resp = getClient().userLinkHistory() //
 				.call();
@@ -148,7 +128,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserLinkHistory.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserLinkHistoryForSingleLink() {
 		Response<UserLinkHistory> resp = getClient().userLinkHistory() //
 				.setLink("http://bit.ly/LlpM8d") //
@@ -157,7 +137,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserLinkHistory.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserLinkHistoryForAnotherUser() {
 		Response<UserLinkHistory> resp = getClient().userLinkHistory() //
 				.setUser("bufferapp") //
@@ -166,7 +146,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserLinkHistory.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserNetworkHistory() {
 		Response<UserNetworkHistory> resp = getClient().userNetworkHistory() //
 				.call();
@@ -174,7 +154,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserNetworkHistory.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserTrackingDomainList() {
 		Response<UserTrackingDomainList> resp = getClient().userTrackingDomainList() //
 				.call();
@@ -182,7 +162,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserTrackingDomainList.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserClicksExpanded() {
 		Response<UserClicksExpanded> resp = getClient().userClicksExpanded() //
 				.setUnit("day") //
@@ -192,7 +172,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserClicksExpanded.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserClicksRolledUp() {
 		Response<UserClicksRolledUp> resp = getClient().userClicksRolledUp() //
 				.setUnit("day") //
@@ -202,7 +182,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserClicksRolledUp.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserCountriesExpanded() {
 		Response<UserCountriesExpanded> resp = getClient().userCountriesExpanded() //
 				.setUnit("hour") //
@@ -212,7 +192,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserCountriesExpanded.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserPopularLinksExpanded() {
 		Response<UserPopularLinksExpanded> resp = getClient().userPopularLinksExpanded() //
 				.setUnit("hour") //
@@ -222,7 +202,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserPopularLinksExpanded.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserReferrersExpanded() {
 		Response<UserReferrersExpanded> resp = getClient().userReferersExpanded() //
 				.setUnit("hour") //
@@ -233,7 +213,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 	}
 
 	// this returns a 404
-	@Test(groups = TestGroup.INTTEST, enabled = false)
+	@Test(enabled = false)
 	public void callUserReferringDomainsExpanded() {
 		Response<UserReferringDomainsExpanded> resp = getClient().userReferringDomainsExpanded() //
 				.setUnit("hour") //
@@ -243,7 +223,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserReferringDomainsExpanded.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserShareCountsExpanded() {
 		Response<UserShareCountsExpanded> resp = getClient().userShareCountsExpanded() //
 				.setUnit("hour") //
@@ -253,7 +233,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserShareCountsExpanded.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserShareCountsByShareTypeExpanded() {
 		Response<UserShareCountsByShareTypeExpanded> resp = getClient().userShareCountyByShareTypeExpanded() //
 				.setUnit("hour") //
@@ -263,7 +243,7 @@ public class MiscIntegrationTestsToBeRefactoredOut extends AbstractBitlyClientIn
 		printAndVerify(resp, UserShareCountsByShareTypeExpanded.class);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserShortenCounts() {
 		Response<UserShortenCounts> resp = getClient().userShortenCounts() //
 				.setUnit("hour") //

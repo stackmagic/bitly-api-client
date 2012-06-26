@@ -17,39 +17,40 @@ package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
-
-import java.io.IOException;
-
+import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.ShortenResponse;
+import net.swisstech.bitly.model.v3.LinkReferrersResponse;
 
 import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/shorten</code> call
+ * Integration Test for the <code>/v3/link/lookup</code> call
  * </p>
  * 
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_shorten">/v3/shorten</a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referrers">/v3/link/referrers</a> request.
  * </p>
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class ShortenIntegrationTest extends AbstractBitlyClientIntegrationTest {
+public class LinkReferrersIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test
-	public void callShorten() throws IOException {
-		Response<ShortenResponse> resp = getClient().shorten() //
-				.setLongUrl("https://www.example.com/") //
+	public void callLinkReferrers() {
+		Response<LinkReferrersResponse> resp = getClient().linkReferrers() //
+				.setLink("http://bit.ly/LfXpbF") //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.setTimezone(0) //
+				.setLimit(1000) //
 				.call();
 
-		printAndVerify(resp, ShortenResponse.class);
+		printAndVerify(resp, LinkReferrersResponse.class);
 
-		assertEquals(resp.data.global_hash, "maiCS");
-		assertEquals(resp.data.hash, "MvuS15");
-		assertEquals(resp.data.long_url, "https://www.example.com/");
-		assertEquals(resp.data.new_hash, 0);
-		assertEquals(resp.data.url, "http://bit.ly/MvuS15");
+		assertTrue(resp.data.referrers.size() > 0);
+		assertEquals(resp.data.unit, "hour");
+		assertEquals(resp.data.units, -1);
+		assertEquals(resp.data.tz_offset, 0);
 	}
 }

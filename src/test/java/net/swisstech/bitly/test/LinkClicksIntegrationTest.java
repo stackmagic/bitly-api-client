@@ -21,7 +21,6 @@ import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 import net.swisstech.bitly.model.v3.LinkClicksRolledUp;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
@@ -38,7 +37,7 @@ import org.testng.annotations.Test;
  */
 public class LinkClicksIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callLinkClicksRolledUp() {
 		Response<LinkClicksRolledUp> resp = getClient().linkClicksRolledUp() //
 				.setLink("http://bit.ly/LfXpbF") //
@@ -56,7 +55,7 @@ public class LinkClicksIntegrationTest extends AbstractBitlyClientIntegrationTes
 		assertEquals(resp.data.units, -1);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callLinkClicksExpanded() {
 		Response<LinkClicksExpanded> resp = getClient().linkClicksExpanded() //
 				.setLink("http://bit.ly/LfXpbF") //

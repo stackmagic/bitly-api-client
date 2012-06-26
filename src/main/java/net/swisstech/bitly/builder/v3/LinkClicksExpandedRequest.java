@@ -17,7 +17,7 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsRequest;
+import net.swisstech.bitly.builder.MetricsExpandedRequest;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkClicksExpanded;
 
@@ -30,14 +30,14 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkClicksExpandedRequest extends MetricsRequest<LinkClicksExpandedRequest, LinkClicksExpanded> {
+public class LinkClicksExpandedRequest extends MetricsExpandedRequest<LinkClicksExpandedRequest, LinkClicksExpanded> {
 
 	/**
 	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
 	public LinkClicksExpandedRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override

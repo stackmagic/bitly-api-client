@@ -17,16 +17,27 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsRequest;
+import net.swisstech.bitly.builder.MetricsExpandedRequest;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserCountriesExpandedRequest extends MetricsRequest<UserCountriesExpandedRequest, UserCountriesExpanded> {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_countries">/v3/user/countries</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserCountriesExpandedRequest extends MetricsExpandedRequest<UserCountriesExpandedRequest, UserCountriesExpanded> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserCountriesExpandedRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override

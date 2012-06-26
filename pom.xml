@@ -62,7 +62,7 @@
 						<version>2.12</version>
 						<configuration>
 							<excludes>
-								<exclude>**/**IntegrationTest*</exclude>
+								<exclude>**/**IntegrationTest.java</exclude>
 							</excludes>
 						</configuration>
 					</plugin>

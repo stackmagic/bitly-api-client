@@ -17,16 +17,28 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsRequest;
+import net.swisstech.bitly.builder.MetricsExpandedRequest;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserShortenCounts;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserShortenCountsRequest extends MetricsRequest<UserShortenCountsRequest, UserShortenCounts> {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts">/v3/user/shorten_counts</a>
+ * request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserShortenCountsRequest extends MetricsExpandedRequest<UserShortenCountsRequest, UserShortenCounts> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserShortenCountsRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override

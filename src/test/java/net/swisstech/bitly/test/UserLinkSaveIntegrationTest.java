@@ -21,7 +21,6 @@ import static org.testng.Assert.assertNotNull;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkEditResponse;
 import net.swisstech.bitly.model.v3.UserLinkSaveResponse;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.joda.time.DateTime;
 import org.testng.annotations.Test;
@@ -39,7 +38,7 @@ import org.testng.annotations.Test;
  */
 public class UserLinkSaveIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserLinkSaveExistingLink() {
 		// must have a unique link and so we add milliseconds
 		Response<UserLinkSaveResponse> resp = getClient().userLinkSave() //
@@ -58,7 +57,7 @@ public class UserLinkSaveIntegrationTest extends AbstractBitlyClientIntegrationT
 		assertEquals(resp.data.link_save.new_link, 0);
 	}
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserLinkSaveNewLink() {
 		String longUrl = "https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis();
 		Response<UserLinkSaveResponse> resp = getClient().userLinkSave() //

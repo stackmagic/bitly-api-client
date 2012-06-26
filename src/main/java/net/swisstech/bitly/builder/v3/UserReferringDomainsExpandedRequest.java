@@ -17,16 +17,28 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsRequest;
+import net.swisstech.bitly.builder.MetricsExpandedRequest;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserReferringDomainsExpandedRequest extends MetricsRequest<UserReferringDomainsExpandedRequest, UserReferringDomainsExpanded> {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a
+ * href="http://dev.bitly.com/user_metrics.html#v3_user_referring_domains">/v3/user/referring_domains</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserReferringDomainsExpandedRequest extends MetricsExpandedRequest<UserReferringDomainsExpandedRequest, UserReferringDomainsExpanded> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserReferringDomainsExpandedRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override

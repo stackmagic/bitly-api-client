@@ -20,7 +20,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.LinkCountriesExpanded;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
@@ -37,7 +36,7 @@ import org.testng.annotations.Test;
  */
 public class LinkCountriesIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callLinkCountriesExpanded() {
 		Response<LinkCountriesExpanded> resp = getClient().linkCountriesExpanded() //
 				.setLink("http://bit.ly/LfXpbF") //

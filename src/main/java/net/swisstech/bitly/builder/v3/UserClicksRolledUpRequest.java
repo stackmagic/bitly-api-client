@@ -17,7 +17,7 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsRequest;
+import net.swisstech.bitly.builder.MetricsRolledUpRequest;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 
@@ -30,10 +30,14 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserClicksRolledUpRequest extends MetricsRequest<UserClicksRolledUpRequest, UserClicksRolledUp> {
+public class UserClicksRolledUpRequest extends MetricsRolledUpRequest<UserClicksRolledUpRequest, UserClicksRolledUp> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserClicksRolledUpRequest(String accessToken) {
-		super(accessToken, true);
+		super(accessToken);
 	}
 
 	@Override

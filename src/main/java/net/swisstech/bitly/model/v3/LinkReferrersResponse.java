@@ -17,22 +17,28 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
+import net.swisstech.bitly.model.MetricsResponse;
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class LinkReferrers extends ToStringSupport {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referrers">/v3/link/referrers</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class LinkReferrersResponse extends MetricsResponse {
 
-	public long tz_offset;
+	/** list of referrer referring to this link with click counts */
+	public List<LinkReferrer> referrers;
 
-	public String unit;
+	/** a single referrer referring a number of clicks */
+	public static class LinkReferrer extends ToStringSupport {
 
-	public long units;
-
-	public List<Referrer> referrers;
-
-	public static class Referrer extends ToStringSupport {
-
+		/** the number of clicks referred from this URL */
 		public long clicks;
 
+		/** the URL referring clicks */
 		public String referrer;
 	}
 }

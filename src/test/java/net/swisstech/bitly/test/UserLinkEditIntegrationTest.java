@@ -19,7 +19,6 @@ import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkEditResponse;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.joda.time.DateTime;
 import org.testng.annotations.Test;
@@ -37,7 +36,7 @@ import org.testng.annotations.Test;
  */
 public class UserLinkEditIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserLinkEdit() {
 		// test link to https://www.example.com/bitly-api-client-test
 		Response<UserLinkEditResponse> resp = getClient().userLinkEdit() //

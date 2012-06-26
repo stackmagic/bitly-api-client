@@ -17,17 +17,29 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsRequest;
+import net.swisstech.bitly.builder.MetricsExpandedRequest;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserShareCountsByShareTypeExpanded;
 
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a
+ * href="http://dev.bitly.com/user_metrics.html#v3_user_share_counts_by_share_type">/v3/user/share_counts_by_share_type</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class UserShareCountsByShareTypeExpandedRequest extends
-		MetricsRequest<UserShareCountsByShareTypeExpandedRequest, UserShareCountsByShareTypeExpanded> {
+		MetricsExpandedRequest<UserShareCountsByShareTypeExpandedRequest, UserShareCountsByShareTypeExpanded> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserShareCountsByShareTypeExpandedRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override

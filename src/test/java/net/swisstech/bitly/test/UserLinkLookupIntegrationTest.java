@@ -19,7 +19,6 @@ import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkLookupResponse;
-import net.swisstech.bitly.test.util.TestGroup;
 
 import org.testng.annotations.Test;
 
@@ -36,7 +35,7 @@ import org.testng.annotations.Test;
  */
 public class UserLinkLookupIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	@Test(groups = TestGroup.INTTEST)
+	@Test
 	public void callUserLinkLookup() {
 		Response<UserLinkLookupResponse> resp = getClient().userLinkLookup() //
 				.addUrl("https://www.example.com/bitly-api-client-test") //

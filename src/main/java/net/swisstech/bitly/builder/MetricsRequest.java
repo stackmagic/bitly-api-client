@@ -31,11 +31,9 @@ public abstract class MetricsRequest<REQ extends MetricsRequest<REQ, DATA>, DATA
 	/**
 	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
-	 * @param rollup wether we want a rolledup response or not
 	 */
-	public MetricsRequest(String accessToken, boolean rollup) {
+	public MetricsRequest(String accessToken) {
 		super(accessToken);
-		addQueryParameter("rollup", rollup);
 	}
 
 	/**

@@ -33,8 +33,12 @@ import com.google.gson.reflect.TypeToken;
  */
 public class LinkReferringDomainsRequest extends MetricsRequest<LinkReferringDomainsRequest, LinkReferringDomains> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public LinkReferringDomainsRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override
