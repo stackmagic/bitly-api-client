@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserInfo;
+import net.swisstech.bitly.model.v3.UserInfoResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -30,7 +30,7 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserInfoRequest extends Request<UserInfo> {
+public class UserInfoRequest extends Request<UserInfoResponse> {
 
 	public UserInfoRequest(String accessToken) {
 		super(accessToken);
@@ -43,15 +43,25 @@ public class UserInfoRequest extends Request<UserInfo> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserInfo>>() {
+		return new TypeToken<Response<UserInfoResponse>>() {
 		}.getType();
 	}
 
+	/**
+	 * optional: set the login
+	 * @param login the bitly login of the user whose info to look up. If not given, the authenticated user will be used
+	 * @return this builder
+	 */
 	public UserInfoRequest setLogin(String login) {
 		addQueryParameter("login", login);
 		return this;
 	}
 
+	/**
+	 * optional: set the full name
+	 * @param full_name set the users full name value. (only available for the authenticated user
+	 * @return this builder
+	 */
 	public UserInfoRequest setFullName(String full_name) {
 		addQueryParameter("full_name", full_name);
 		return this;

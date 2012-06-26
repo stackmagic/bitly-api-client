@@ -16,12 +16,10 @@
 package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
-import static org.testng.Assert.assertEquals;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
-import net.swisstech.bitly.model.v3.UserInfo;
 import net.swisstech.bitly.model.v3.UserLinkHistory;
 import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
@@ -35,28 +33,6 @@ import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callUserInfoForAccessTokenUser() {
-		Response<UserInfo> resp = getClient().userInfo() //
-				.call();
-
-		printAndVerify(resp, UserInfo.class);
-
-		// you need to change this to your own user name
-		assertEquals(resp.data.login, "stackmagic");
-	}
-
-	@Test
-	public void callUserInfoForAnotherLogin() {
-		Response<UserInfo> resp = getClient().userInfo() //
-				.setLogin("bufferapp") //
-				.call();
-
-		printAndVerify(resp, UserInfo.class);
-
-		assertEquals(resp.data.login, "bufferapp");
-	}
 
 	@Test
 	public void callUserLinkHistoryGeneral() {
