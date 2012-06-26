@@ -18,19 +18,33 @@ package net.swisstech.bitly.util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import net.swisstech.bitly.BitlyClientException;
+
+/**
+ * Encoding Utilities
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public final class EncodingUtil {
 
-	private static final String URLENCODING = "UTF-8";
+	/** Encoding to be used */
+	private static final String ENCODING = "UTF-8";
 
 	/** private constructor for utility class */
 	private EncodingUtil() {
 	}
 
-	public static String encode(String string) {
+	/**
+	 * URL-Encode a String. Throws a RuntimeException if the JVM does not support UTF-8.
+	 * 
+	 * @param unencodedString the String to be encoded
+	 * @return the encoded String
+	 */
+	public static String encode(String unencodedString) {
 		try {
-			return URLEncoder.encode(string, URLENCODING);
+			return URLEncoder.encode(unencodedString, ENCODING);
 		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException(string);
+			throw new BitlyClientException("Error encoding String '" + unencodedString + "' with charset '" + ENCODING + "'", e);
 		}
 	}
 }

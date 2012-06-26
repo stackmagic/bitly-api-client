@@ -33,6 +33,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class UserNetworkHistoryRequest extends Request<UserNetworkHistory> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserNetworkHistoryRequest(String accessToken) {
 		super(accessToken);
 	}

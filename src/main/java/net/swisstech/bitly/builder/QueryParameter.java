@@ -17,29 +17,59 @@ package net.swisstech.bitly.builder;
 
 import net.swisstech.bitly.util.EncodingUtil;
 
+/**
+ * Represents a single parameter in an url query as in <code>name=value</code>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class QueryParameter {
 
+	/** the name of the parameter */
 	private final String name;
 
+	/** the value of the parameter */
 	private final String value;
 
+	/**
+	 * Constructs a new QueryParameter
+	 * @param name the Name of the parameter
+	 * @param value the Value of the parameter
+	 */
 	public QueryParameter(String name, String value) {
 		this.name = name;
 		this.value = EncodingUtil.encode(value);
 	}
 
+	/**
+	 * Constructs a new QueryParameter
+	 * @param name the Name of the parameter
+	 * @param value the Value of the parameter
+	 */
 	public QueryParameter(String name, boolean value) {
 		this(name, String.valueOf(value));
 	}
 
+	/**
+	 * Constructs a new QueryParameter
+	 * @param name the Name of the parameter
+	 * @param value the Value of the parameter
+	 */
 	public QueryParameter(String name, long value) {
 		this(name, String.valueOf(value));
 	}
 
+	/**
+	 * Get the Name
+	 * @return the Name of the parameter
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Get the Value
+	 * @return the Value of the parameter
+	 */
 	public String getValue() {
 		return value;
 	}

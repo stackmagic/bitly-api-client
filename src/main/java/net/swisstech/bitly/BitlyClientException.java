@@ -13,25 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder;
+package net.swisstech.bitly;
 
-public class RequestBuilderException extends RuntimeException {
+/**
+ * Simple RuntimeException. Thrown if something goes wrong.
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class BitlyClientException extends RuntimeException {
 
 	private static final long serialVersionUID = 5810677972369016949L;
 
-	public RequestBuilderException() {
+	/** Construct a new RequestBuilderException */
+	public BitlyClientException() {
 		super();
 	}
 
-	public RequestBuilderException(String message, Throwable cause) {
+	/**
+	 * Construct a new RequestBuilderException
+	 * @param message the Message
+	 * @param cause the Cause
+	 */
+	public BitlyClientException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
-	public RequestBuilderException(String message) {
+	/**
+	 * Construct a new RequestBuilderException
+	 * @param message the Message
+	 */
+	public BitlyClientException(String message) {
 		super(message);
 	}
 
-	public RequestBuilderException(Throwable cause) {
+	/**
+	 * Construct a new RequestBuilderException
+	 * @param cause the Cause
+	 */
+	public BitlyClientException(Throwable cause) {
 		super(cause);
 	}
 }

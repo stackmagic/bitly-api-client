@@ -16,15 +16,20 @@
 package net.swisstech.bitly.builder;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import net.swisstech.bitly.BitlyClientException;
 import net.swisstech.bitly.gson.GsonFactory;
 import net.swisstech.bitly.model.Response;
 
@@ -36,67 +41,119 @@ import com.google.gson.Gson;
  * Base Request Builder and logic to make the actual call, add query parameters etc.
  * 
  * @author Patrick Huber (gmail: stackmagic)
- *
+ * 
  * @param <T> Type of the Response
  */
 public abstract class Request<T> {
 
+	/** Logger */
+	private static final Logger LOG = Logger.getLogger(Request.class.getName());
+
+	/** the access token to be used for the request */
 	private final String accessToken;
 
+	/** contains all query parameters to be added to the request */
 	private List<QueryParameter> queryParameters = new LinkedList<QueryParameter>();
 
+	/**
+	 * Constructs a new Request
+	 * 
+	 * TODO we could consider killing the constructor and instead add a setAccessToken method so the AT would be treated like every other query
+	 * parameter.
+	 * 
+	 * @param accessToken the access token to be used for the request
+	 */
 	public Request(String accessToken) {
 		this.accessToken = accessToken;
 	}
 
+	/**
+	 * Get the QueryParameters
+	 * @return the QueryParameters
+	 */
 	public List<QueryParameter> getQueryParameters() {
 		return Collections.unmodifiableList(queryParameters);
 	}
 
+	/**
+	 * Subclasses must implement this method and return the endpoint like for example <code>http://example.com/api/resource</code>.
+	 * @return the Endpoint
+	 */
 	public abstract String getEndpoint();
 
 	/**
-	 * GSON has this construct to deserialize generic types. Just using
-	 * <code>Response&lt;T&gt;</code> won't work here for the same reasons GSON
-	 * introduced this construct in the first place. So the RequestBuilder has
-	 * to return an explicit type here, no T parameters or anything because that
-	 * won't work and then GSON will serialize the responsee's data as a
-	 * StringMap.
+	 * GSON has this construct to deserialize generic types. Just using <code>Response&lt;T&gt;</code> won't work here for the same reasons GSON
+	 * introduced this construct in the first place. So the RequestBuilder has to return an explicit type here, no T parameters or anything because
+	 * that won't work and then GSON will serialize the responsee's data as a StringMap.
 	 * 
 	 * @return Type for GSON deserializer
 	 */
 	protected abstract Type getTypeForGson();
 
+	/**
+	 * Add a QueryParameter
+	 * @param name the Name of the Parameter
+	 * @param value the Value of the Parameter
+	 */
 	public void addQueryParameter(String name, String value) {
 		addQueryParameter(new QueryParameter(name, value));
 	}
 
+	/**
+	 * Add a QueryParameter
+	 * @param name the Name of the Parameter
+	 * @param value the Value of the Parameter
+	 */
 	public void addQueryParameter(String name, boolean value) {
 		addQueryParameter(new QueryParameter(name, value));
 	}
 
+	/**
+	 * Add a QueryParameter
+	 * @param name the Name of the Parameter
+	 * @param value the Value of the Parameter
+	 */
 	public void addQueryParameter(String name, long value) {
 		addQueryParameter(new QueryParameter(name, value));
 	}
 
+	/**
+	 * Add a QueryParameter
+	 * @param name the Name of the Parameter
+	 * @param value the Value of the Parameter
+	 */
 	public void addQueryParameter(String name, DateTime value) {
 		addQueryParameter(new QueryParameter(name, value.getMillis()));
 	}
 
+	/**
+	 * Add a QueryParameter
+	 * @param queryParameter the QueryParameter
+	 */
 	public void addQueryParameter(QueryParameter queryParameter) {
 		queryParameters.add(queryParameter);
 	}
 
+	/**
+	 * Build the URL for the call to the API.
+	 * @return the URL
+	 */
 	public String buildUrl() {
 		return buildUrl(queryParameters);
 	}
 
-	protected String buildUrl(List<QueryParameter> params) {
+	/**
+	 * Build the URL for the call to the API. Subclasses can override this method if they need to add extra parameters or do some other special
+	 * manipulations that this base implementation of URL builder doesn't provide.
+	 * @param queryParameters the QueryParameters
+	 * @return the URL
+	 */
+	protected String buildUrl(List<QueryParameter> queryParameters) {
 
 		// TODO find a way to pass the collection to addQuery in a simple and
 		// extensible way without breaking but extending the normal
 		// addQueryParameter methods
-		params = new LinkedList<QueryParameter>(params);
+		List<QueryParameter> params = new LinkedList<QueryParameter>(queryParameters);
 		params.add(new QueryParameter("access_token", accessToken));
 
 		StringBuffer url = new StringBuffer();
@@ -114,14 +171,17 @@ public abstract class Request<T> {
 		return url.toString();
 	}
 
+	/**
+	 * Make the call to the API and return the result
+	 * @return the Response
+	 */
 	public Response<T> call() {
 		try {
-
-			// make the call
 			String url = buildUrl();
-			System.out.println("Calling URL: " + url);
+			LOG.log(Level.FINE, "Calling URL: " + url);
 			URLConnection conn = new URL(url).openConnection();
 			conn.connect();
+
 			StringBuffer respBuf = new StringBuffer();
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String line = null;
@@ -133,12 +193,12 @@ public abstract class Request<T> {
 			// deserialize
 			Gson gson = GsonFactory.getGson();
 			Type type = getTypeForGson();
-			Response<T> response = gson.fromJson(resp, type);
-			return response;
+			return gson.fromJson(resp, type);
 
-		} catch (Throwable t) {
-			// TODO cleanup
-			throw new RuntimeException(t);
+		} catch (MalformedURLException e) {
+			throw new BitlyClientException(e);
+		} catch (IOException e) {
+			throw new BitlyClientException(e);
 		}
 	}
 }

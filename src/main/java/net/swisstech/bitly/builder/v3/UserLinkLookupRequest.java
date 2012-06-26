@@ -33,6 +33,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class UserLinkLookupRequest extends Request<UserLinkLookupResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserLinkLookupRequest(String accessToken) {
 		super(accessToken);
 	}

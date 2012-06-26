@@ -17,6 +17,11 @@ package net.swisstech.bitly.model;
 
 import net.swisstech.bitly.gson.GsonFactory;
 
+/**
+ * Extend this class to have simple toString support (will be serialized to json using GSON).
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public abstract class ToStringSupport {
 
 	@Override

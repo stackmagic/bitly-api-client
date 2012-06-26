@@ -32,6 +32,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class UserInfoRequest extends Request<UserInfoResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserInfoRequest(String accessToken) {
 		super(accessToken);
 	}

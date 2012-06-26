@@ -18,6 +18,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class LinkEncodersCountRequest extends Request<LinkEncodersCountResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public LinkEncodersCountRequest(String accessToken) {
 		super(accessToken);
 	}
