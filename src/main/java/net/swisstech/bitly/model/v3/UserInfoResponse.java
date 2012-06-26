@@ -49,8 +49,9 @@ public class UserInfoResponse extends ToStringSupport {
 	public String display_name;
 
 	/**
-	 * a list of the share accounts (Twitter or Facebook) linked to the user's account (optional, always returned in the response) TODO substructure
-	 * unclear
+	 * a list of the share accounts (Twitter or Facebook) linked to the user's account (optional, always returned in the response)
+	 * 
+	 * TODO substructure unclear
 	 */
 	public List<Object> share_accounts;
 
@@ -61,7 +62,7 @@ public class UserInfoResponse extends ToStringSupport {
 	 * <code>0</code> or <code>1</code> to indicate if this account is signed up for bitly enterprise (optional, only included in requests for a
 	 * user's own info)
 	 */
-	public long is_enterprise;
+	public boolean is_enterprise;
 
 	/**
 	 * A short domain registered with this account that can be used in place of <code>bit.ly</code> for shortening links (optional, only included in
@@ -70,7 +71,9 @@ public class UserInfoResponse extends ToStringSupport {
 	public String custom_short_domain;
 
 	/**
-	 * A list of domains configured for analytics tracking (optional, only included in requests for a user's own info) TODO substructure unclear
+	 * A list of domains configured for analytics tracking (optional, only included in requests for a user's own info)
+	 * 
+	 * TODO substructure unclear
 	 */
 	public List<Object> tracking_domains;
 
@@ -81,7 +84,9 @@ public class UserInfoResponse extends ToStringSupport {
 	public String default_link_privacy;
 
 	/**
-	 * list of accounts associated with this account (optional, only included for enterprise accounts (is_enterprise == 1)) TODO substructure unclear
+	 * list of accounts associated with this account (optional, only included for enterprise accounts (is_enterprise == 1))
+	 * 
+	 * TODO substructure unclear
 	 */
 	public List<Object> sub_accounts;
 
@@ -98,8 +103,9 @@ public class UserInfoResponse extends ToStringSupport {
 	public String master_account;
 
 	/**
-	 * list of enterprise permissions associated with this account (optional, only included for enterprise accounts (is_enterprise == 1)) TODO
-	 * substructure unclear
+	 * list of enterprise permissions associated with this account (optional, only included for enterprise accounts (is_enterprise == 1))
+	 * 
+	 * TODO substructure unclear
 	 */
 	public List<Object> enterprise_permissions;
 }
