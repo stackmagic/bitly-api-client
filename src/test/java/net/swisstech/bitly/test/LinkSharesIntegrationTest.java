@@ -15,10 +15,14 @@
  */
 package net.swisstech.bitly.test;
 
+import static net.swisstech.bitly.test.util.AssertUtil.assertGreater;
+import static net.swisstech.bitly.test.util.AssertUtil.assertIn;
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkSharesResponse;
+import net.swisstech.bitly.model.v3.LinkSharesExpandedResponse;
+import net.swisstech.bitly.model.v3.LinkSharesExpandedResponse.LinkShare;
+import net.swisstech.bitly.model.v3.LinkSharesExpandedResponse.LinkShareGroup;
 
 import org.testng.annotations.Test;
 
@@ -36,21 +40,29 @@ import org.testng.annotations.Test;
 public class LinkSharesIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test
-	public void callLinkShares() {
-		Response<LinkSharesResponse> resp = getClient().linkShares() //
-				.setLink("http://bit.ly/cJ8Hst") //
-				.setUnit("month") //
+	public void callLinkSharesExpanded() {
+		Response<LinkSharesExpandedResponse> resp = getClient().linkSharesExpanded() //
+				.setLink("http://bit.ly/LTlncm") //
+				.setUnit("day") //
 				.setUnits(-1) //
 				.setTimezone(0) //
 				.setLimit(1000) //
 				.call();
 
-		printAndVerify(resp, LinkSharesResponse.class);
+		printAndVerify(resp, LinkSharesExpandedResponse.class);
 
 		// the api doesn't seem to return any shares and total_shares data
-		assertEquals(resp.data.shares.size(), 0);
-		assertEquals(resp.data.total_shares, 0);
-		assertEquals(resp.data.unit, "month");
+		assertGreater(resp.data.shares.size(), 0);
+		for (LinkShareGroup group : resp.data.shares) {
+			assertGreater(group.values.size(), 0);
+			for (LinkShare share : group.values) {
+				assertGreater(share.shares, 0);
+				assertIn(share.share_type, "tw", "fb");
+			}
+		}
+
+		assertGreater(resp.data.total_shares, 0);
+		assertEquals(resp.data.unit, "day");
 		assertEquals(resp.data.units, -1);
 		assertEquals(resp.data.tz_offset, 0);
 	}

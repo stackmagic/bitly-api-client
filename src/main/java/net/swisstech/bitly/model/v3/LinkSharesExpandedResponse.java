@@ -20,6 +20,8 @@ import java.util.List;
 import net.swisstech.bitly.model.MetricsResponse;
 import net.swisstech.bitly.model.ToStringSupport;
 
+import org.joda.time.DateTime;
+
 /**
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_shares">/v3/link/shares</a> request.
@@ -27,14 +29,31 @@ import net.swisstech.bitly.model.ToStringSupport;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkSharesResponse extends MetricsResponse {
+public class LinkSharesExpandedResponse extends MetricsResponse {
 
+	/** the number of total shares */
 	public long total_shares;
 
-	public List<LinkShare> shares;
+	/** the shares themselfs */
+	public List<LinkShareGroup> shares;
 
+	/** a share group that aggregates shares on each platform (tw/fb) for the points in time (unit) */
+	public static class LinkShareGroup extends ToStringSupport {
+
+		/** the beginning of this group (unit) */
+		public DateTime dt;
+
+		/** the actual share information grouped by platform */
+		public List<LinkShare> values;
+	}
+
+	/** A link share (count with platform and begin timestamp of the unit */
 	public static class LinkShare extends ToStringSupport {
-		// TODO the docs don't say what's in here and the api returns no
-		// information
+
+		/** the number of shares */
+		public long shares;
+
+		/** the social network the link was shared to */
+		public String share_type;
 	}
 }

@@ -24,7 +24,7 @@ import net.swisstech.bitly.builder.v3.LinkEncodersCountRequest;
 import net.swisstech.bitly.builder.v3.LinkLookupRequest;
 import net.swisstech.bitly.builder.v3.LinkReferrersRequest;
 import net.swisstech.bitly.builder.v3.LinkReferringDomainsRequest;
-import net.swisstech.bitly.builder.v3.LinkSharesRequest;
+import net.swisstech.bitly.builder.v3.LinkSharesExpandedRequest;
 import net.swisstech.bitly.builder.v3.ShortenRequest;
 import net.swisstech.bitly.builder.v3.UserClicksExpandedRequest;
 import net.swisstech.bitly.builder.v3.UserClicksRolledUpRequest;
@@ -103,13 +103,8 @@ public class BitlyClient {
 		return new LinkReferringDomainsRequest(accessToken);
 	}
 
-	/**
-	 * TODO this does not return any data and must be revisited, mail to the bitly guys has been sent. also, the documentation is incomplete and once
-	 * they fix it, it will be a rollup + expanded call
-	 */
-	@Deprecated
-	public LinkSharesRequest linkShares() {
-		return new LinkSharesRequest(accessToken);
+	public LinkSharesExpandedRequest linkSharesExpanded() {
+		return new LinkSharesExpandedRequest(accessToken);
 	}
 
 	public UserInfoRequest userInfo() {
