@@ -18,9 +18,11 @@ package net.swisstech.bitly.test;
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserLinkHistoryResponse;
+import net.swisstech.bitly.model.v3.UserLinkHistoryResponse.Share;
 import net.swisstech.bitly.model.v3.UserLinkHistoryResponse.UserLinkHistory;
 
 import org.testng.annotations.Test;
@@ -46,6 +48,14 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 
 		assertTrue(resp.data.link_history.size() > 0);
+		for (UserLinkHistory ulh : resp.data.link_history) {
+			assertNotNull(ulh.link);
+			if (ulh.shares != null) {
+				for (Share s : ulh.shares) {
+					assertNotNull(s.share_id);
+				}
+			}
+		}
 	}
 
 	@Test

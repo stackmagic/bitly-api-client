@@ -26,14 +26,14 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import net.swisstech.bitly.BitlyClientException;
 import net.swisstech.bitly.gson.GsonFactory;
 import net.swisstech.bitly.model.Response;
 
 import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 
@@ -47,7 +47,7 @@ import com.google.gson.Gson;
 public abstract class Request<T> {
 
 	/** Logger */
-	private static final Logger LOG = Logger.getLogger(Request.class.getName());
+	private static final Logger LOG = LoggerFactory.getLogger(Request.class.getName());
 
 	/** the access token to be used for the request */
 	private final String accessToken;
@@ -178,7 +178,7 @@ public abstract class Request<T> {
 	public Response<T> call() {
 		try {
 			String url = buildUrl();
-			LOG.log(Level.FINE, "Calling URL: " + url);
+			LOG.debug("Calling URL: " + url);
 			URLConnection conn = new URL(url).openConnection();
 			conn.connect();
 

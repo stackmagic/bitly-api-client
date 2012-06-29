@@ -19,7 +19,12 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import net.swisstech.bitly.model.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public final class TestUtil {
+
+	private static final Logger LOG = LoggerFactory.getLogger(TestUtil.class);
 
 	/** private constructor for utility class */
 	private TestUtil() {
@@ -43,9 +48,9 @@ public final class TestUtil {
 	}
 
 	public static <T> void print(Response<T> resp) {
-		System.out.println(String.format("response.status_code = %d", resp.status_code));
-		System.out.println(String.format("response.status_txt  = %s", resp.status_txt));
-		System.out.println(String.format("response.data.class  = %s", resp.data == null ? "null" : resp.data.getClass().getName()));
-		System.out.println(String.format("response.data        = %s", resp.data));
+		LOG.debug(String.format("response.status_code = %d", resp.status_code));
+		LOG.debug(String.format("response.status_txt  = %s", resp.status_txt));
+		LOG.debug(String.format("response.data.class  = %s", resp.data == null ? "null" : resp.data.getClass().getName()));
+		LOG.debug(String.format("response.data        = %s", resp.data));
 	}
 }

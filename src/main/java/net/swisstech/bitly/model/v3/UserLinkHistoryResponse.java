@@ -69,11 +69,35 @@ public class UserLinkHistoryResponse extends ToStringSupport {
 		/** the title for this link */
 		public String title;
 
-		/**
-		 * a list of share actions (for the authenticated user only)
-		 * 
-		 * TODO what is this exactly?
-		 */
-		public String shares;
+		/** information about who/when/where this link has been shared trough bitly */
+		public List<Share> shares;
+	}
+
+	/** information about who/when/where this link has been shared trough bitly */
+	public static class Share {
+
+		/** the account sharing the link (username or applicationid) */
+		public String account_login;
+
+		/** id of the share */
+		public String share_id;
+
+		/** the type of share (facebook/twitter) */
+		public String share_type;
+
+		/** link to the place where the link was shared (actual fb/tw post) */
+		public String remote_share_link;
+
+		/** extra user entered text on the share */
+		public String text;
+
+		/** timestamp of the share */
+		public DateTime ts;
+
+		/** id of the share in the remote platform (facebook graph id, twitter status id) */
+		public String remote_share_id;
+
+		/** name of the account used to share onto the remote platform */
+		public String account_name;
 	}
 }

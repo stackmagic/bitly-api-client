@@ -20,9 +20,8 @@ import static net.swisstech.bitly.test.util.AssertUtil.assertIn;
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import static org.testng.Assert.assertEquals;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkSharesExpandedResponse;
-import net.swisstech.bitly.model.v3.LinkSharesExpandedResponse.LinkShare;
-import net.swisstech.bitly.model.v3.LinkSharesExpandedResponse.LinkShareGroup;
+import net.swisstech.bitly.model.v3.LinkSharesRolledUpResponse;
+import net.swisstech.bitly.model.v3.LinkSharesRolledUpResponse.LinkShare;
 
 import org.testng.annotations.Test;
 
@@ -37,11 +36,11 @@ import org.testng.annotations.Test;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkSharesIntegrationTest extends AbstractBitlyClientIntegrationTest {
+public class LinkSharesRolledUpIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
 	@Test
-	public void callLinkSharesExpanded() {
-		Response<LinkSharesExpandedResponse> resp = getClient().linkSharesExpanded() //
+	public void callLinkSharesRolledUp() {
+		Response<LinkSharesRolledUpResponse> resp = getClient().linkSharesRolledUp() //
 				.setLink("http://bit.ly/LTlncm") //
 				.setUnit("day") //
 				.setUnits(-1) //
@@ -49,16 +48,12 @@ public class LinkSharesIntegrationTest extends AbstractBitlyClientIntegrationTes
 				.setLimit(1000) //
 				.call();
 
-		printAndVerify(resp, LinkSharesExpandedResponse.class);
+		printAndVerify(resp, LinkSharesRolledUpResponse.class);
 
-		// the api doesn't seem to return any shares and total_shares data
 		assertGreater(resp.data.shares.size(), 0);
-		for (LinkShareGroup group : resp.data.shares) {
-			assertGreater(group.values.size(), 0);
-			for (LinkShare share : group.values) {
-				assertGreater(share.shares, 0);
-				assertIn(share.share_type, "tw", "fb");
-			}
+		for (LinkShare share : resp.data.shares) {
+			assertGreater(share.shares, 0);
+			assertIn(share.share_type, "tw", "fb");
 		}
 
 		assertGreater(resp.data.total_shares, 0);
