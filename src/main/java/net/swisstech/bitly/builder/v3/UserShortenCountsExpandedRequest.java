@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.MetricsExpandedRequest;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserShortenCounts;
+import net.swisstech.bitly.model.v3.UserShortenCountsExpandedResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,13 +31,13 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserShortenCountsRequest extends MetricsExpandedRequest<UserShortenCountsRequest, UserShortenCounts> {
+public class UserShortenCountsExpandedRequest extends MetricsExpandedRequest<UserShortenCountsExpandedRequest, UserShortenCountsExpandedResponse> {
 
 	/**
 	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
-	public UserShortenCountsRequest(String accessToken) {
+	public UserShortenCountsExpandedRequest(String accessToken) {
 		super(accessToken);
 	}
 
@@ -48,7 +48,7 @@ public class UserShortenCountsRequest extends MetricsExpandedRequest<UserShorten
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserShortenCounts>>() {
+		return new TypeToken<Response<UserShortenCountsExpandedResponse>>() {
 		}.getType();
 	}
 }
