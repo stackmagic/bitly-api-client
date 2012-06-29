@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserNetworkHistory;
+import net.swisstech.bitly.model.v3.UserNetworkHistoryResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,7 +31,7 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserNetworkHistoryRequest extends Request<UserNetworkHistory> {
+public class UserNetworkHistoryRequest extends Request<UserNetworkHistoryResponse> {
 
 	/**
 	 * Create a new request builder
@@ -39,6 +39,12 @@ public class UserNetworkHistoryRequest extends Request<UserNetworkHistory> {
 	 */
 	public UserNetworkHistoryRequest(String accessToken) {
 		super(accessToken);
+
+		// we just set this to true hard because the user field is reused for both the username (String, if expand_user=false) and the user (Object,
+		// if expand_user=true)
+
+		// TODO split into 2 calls following the same principle as expanded/rolledup?
+		addQueryParameter("expand_user", true);
 	}
 
 	@Override
@@ -48,22 +54,38 @@ public class UserNetworkHistoryRequest extends Request<UserNetworkHistory> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserNetworkHistory>>() {
+		return new TypeToken<Response<UserNetworkHistoryResponse>>() {
 		}.getType();
 	}
 
+	/**
+	 * optional: set the offset
+	 * @param offset integer that specifies the first record to return
+	 * @return this builder
+	 */
 	public UserNetworkHistoryRequest setOffset(long offset) {
 		addQueryParameter("offset", offset);
 		return this;
 	}
 
+	/**
+	 * optional: set the limit
+	 * @param limit integer in the range 1;100 that specifies the number of records to return (default:20)
+	 * @return this builder
+	 */
 	public UserNetworkHistoryRequest setLimit(long limit) {
 		addQueryParameter("limit", limit);
 		return this;
 	}
 
-	public UserNetworkHistoryRequest setExpandUser(boolean expand_user) {
-		addQueryParameter("expand_user", expand_user);
-		return this;
-	}
+	/**
+	 * optional: set to expand the user
+	 * @param expand_user <code>true|false</code> - include extra user info in response (<code>login</code>, <code>avatar_url</code>,
+	 *            <code>display_name</code>, <code>profile_url</code>, <code>full_name</code>). default is <code>false</code>
+	 * @return this builder
+	 */
+	// public UserNetworkHistoryRequest setExpandUser(boolean expand_user) {
+	// addQueryParameter("expand_user", expand_user);
+	// return this;
+	// }
 }

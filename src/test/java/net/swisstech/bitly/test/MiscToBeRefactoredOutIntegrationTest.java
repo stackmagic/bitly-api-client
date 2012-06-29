@@ -20,7 +20,6 @@ import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserClicksExpanded;
 import net.swisstech.bitly.model.v3.UserClicksRolledUp;
 import net.swisstech.bitly.model.v3.UserCountriesExpanded;
-import net.swisstech.bitly.model.v3.UserNetworkHistory;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
 import net.swisstech.bitly.model.v3.UserReferrersExpanded;
 import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
@@ -32,14 +31,6 @@ import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callUserNetworkHistory() {
-		Response<UserNetworkHistory> resp = getClient().userNetworkHistory() //
-				.call();
-
-		printAndVerify(resp, UserNetworkHistory.class);
-	}
 
 	@Test
 	public void callUserTrackingDomainList() {

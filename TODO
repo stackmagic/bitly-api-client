@@ -4,4 +4,4 @@
 * ALL: check required parameters are present before making the call?
 * ALL: verify rollup behaviour
 * ALL: verify day parameter, not all metrics request have it
-* Replace java.util.Logging with something that has a usable api... fine? finer?? please...
+* UserNetworkHistory: split expanded and collapsed user into 2 structures? same as expand/rollup?
