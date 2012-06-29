@@ -17,10 +17,18 @@ package net.swisstech.bitly.model.v3;
 
 import net.swisstech.bitly.model.MetricsResponse;
 
-
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_clicks">/v3/user/clicks</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class UserClicksRolledUp extends MetricsResponse {
 
+	/** the aggregate number of clicks on all of the authenticated user's bitly links from other saves */
 	public long total_clicks;
 
+	/** the aggregate number of clicks on all of the authenticated user's bitly links from his own saves*/
 	public long user_clicks;
 }
