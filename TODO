@@ -5,3 +5,4 @@
 * ALL: verify rollup behaviour
 * ALL: verify day parameter, not all metrics request have it
 * UserNetworkHistory: split expanded and collapsed user into 2 structures? same as expand/rollup?
+* Calls that take no parameters like UserTrackingDomainList could be executed right away. Downside: 2 behaviours in the BitlyClient class.

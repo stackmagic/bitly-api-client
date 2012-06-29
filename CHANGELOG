@@ -1,20 +1,21 @@
 [?.?.?]
 
-* IMPROVEMENT: Expand             Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: Info               Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: LinkLookup         Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: Shorten            Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: UserLinkEdit       Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: UserLinkLookup     Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: UserLinkSave       Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: LinkClicksExpanded Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: LinkClicksRolledUp Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: LinkSharesExpanded Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: LinkSharesRolledUp Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: UserLinkHistory    Refactoring and Javadoc (partially copied directly from bitly)
-* IMPROVEMENT: UserLinkHistory    Now can also deal with share information
+* IMPROVEMENT: Expand                 Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: Info                   Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkLookup             Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: Shorten                Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkEdit           Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkLookup         Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkSave           Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkClicksExpanded     Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkClicksRolledUp     Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkSharesExpanded     Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkSharesRolledUp     Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkHistory        Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkHistory Now can also deal with share information
 * IMPROVEMENT: Switch to SLF4J (slf4j-api is a hard dependency, the backends in the pom are only used for the tests -- feel free to use your own!)
 * IMPROVEMENT: UserNetworkHistory Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserTrackingDomainList Refactoring and Javadoc (partially copied directly from bitly)
 
 [0.5.0]
 

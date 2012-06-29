@@ -26,19 +26,10 @@ import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
 import net.swisstech.bitly.model.v3.UserShareCountsByShareTypeExpanded;
 import net.swisstech.bitly.model.v3.UserShareCountsExpanded;
 import net.swisstech.bitly.model.v3.UserShortenCounts;
-import net.swisstech.bitly.model.v3.UserTrackingDomainList;
 
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callUserTrackingDomainList() {
-		Response<UserTrackingDomainList> resp = getClient().userTrackingDomainList() //
-				.call();
-
-		printAndVerify(resp, UserTrackingDomainList.class);
-	}
 
 	@Test
 	public void callUserClicksExpanded() {

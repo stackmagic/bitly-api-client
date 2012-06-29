@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder.v3;
+package net.swisstech.bitly.test;
 
-import java.lang.reflect.Type;
-
-import net.swisstech.bitly.builder.Request;
+import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserTrackingDomainListResponse;
 
-import com.google.gson.reflect.TypeToken;
+import org.testng.annotations.Test;
 
 /**
+ * <p>
+ * Integration Test for the <code>/v3/user/tracking_domain_list</code> call
+ * </p>
+ * 
  * <p>
  * Please see the bit.ly documentation for the <a
  * href="http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list">/v3/user/tracking_domain_list</a> request.
@@ -31,24 +33,12 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserTrackingDomainListRequest extends Request<UserTrackingDomainListResponse> {
+public class UserTrackingDomainListIntegrationTest extends AbstractBitlyClientIntegrationTest {
+	@Test
+	public void callUserTrackingDomainList() {
+		Response<UserTrackingDomainListResponse> resp = getClient().userTrackingDomainList() //
+				.call();
 
-	/**
-	 * Create a new request builder
-	 * @param accessToken the access token to access the bitly api
-	 */
-	public UserTrackingDomainListRequest(String accessToken) {
-		super(accessToken);
-	}
-
-	@Override
-	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/user/tracking_domain_list";
-	}
-
-	@Override
-	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserTrackingDomainListResponse>>() {
-		}.getType();
+		printAndVerify(resp, UserTrackingDomainListResponse.class);
 	}
 }
