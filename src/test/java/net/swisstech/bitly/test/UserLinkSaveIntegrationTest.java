@@ -27,10 +27,6 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/user/link_save</code> call
- * </p>
- * 
- * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_save">/v3/user/link_save</a> request.
  * </p>
  * 

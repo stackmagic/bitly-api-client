@@ -17,17 +17,27 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.ToStringSupport;
 import net.swisstech.bitly.model.MetricsResponse;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class UserCountriesExpanded extends MetricsResponse {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_countries">/v3/user/countries</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserCountriesRolledUpResponse extends MetricsResponse {
 
+	/** a list of countries referring traffic to this user's links */
 	public List<UserCountry> user_countries;
 
+	/** a country referring traffic to this user's links */
 	public static class UserCountry extends ToStringSupport {
-
-		public String country;
-
+		/** the number of clicks referred from this country */
 		public long clicks;
+
+		/** the two-letter code of the referring country */
+		public String country;
 	}
 }

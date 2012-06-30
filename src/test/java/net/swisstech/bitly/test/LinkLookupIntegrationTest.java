@@ -27,10 +27,6 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/link/lookup</code> call
- * </p>
- * 
- * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_link_lookup">/v3/link/lookup</a> request.
  * </p>
  * 

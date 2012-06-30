@@ -29,10 +29,6 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/user/link_history</code> call
- * </p>
- * 
- * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_link_history">/v3/user/link_history</a> request.
  * </p>
  * 

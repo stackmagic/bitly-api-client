@@ -27,10 +27,6 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/shorten</code> call
- * </p>
- * 
- * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_shorten">/v3/shorten</a> request.
  * </p>
  * 

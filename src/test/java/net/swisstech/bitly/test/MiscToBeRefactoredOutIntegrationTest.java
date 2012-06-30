@@ -17,7 +17,7 @@ package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserCountriesExpanded;
+import net.swisstech.bitly.model.v3.UserCountriesRolledUpResponse;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
 import net.swisstech.bitly.model.v3.UserReferrersExpanded;
 import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
@@ -27,16 +27,6 @@ import net.swisstech.bitly.model.v3.UserShareCountsExpanded;
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callUserCountriesExpanded() {
-		Response<UserCountriesExpanded> resp = getClient().userCountriesExpanded() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
-
-		printAndVerify(resp, UserCountriesExpanded.class);
-	}
 
 	@Test
 	public void callUserPopularLinksExpanded() {

@@ -26,10 +26,6 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/link/referring_domains</code> call
- * </p>
- * 
- * <p>
  * Please see the bit.ly documentation for the <a
  * href="http://dev.bitly.com/link_metrics.html#v3_link_referring_domains">/v3/link/referring_domains</a> request.
  * </p>

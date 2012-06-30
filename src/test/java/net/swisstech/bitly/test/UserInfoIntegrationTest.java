@@ -24,10 +24,6 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/user/info</code> call
- * </p>
- * 
- * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_info">/v3/user/info</a> request.
  * </p>
  * 

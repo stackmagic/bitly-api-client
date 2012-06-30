@@ -20,7 +20,8 @@
 * IMPROVEMENT: UserClicksRolledUp        Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserShortenCountsExpanded Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserShortenCountsRolledUp Refactoring and Javadoc (partially copied directly from bitly)
-* 
+* IMPROVEMENT: UserCountriesRolledUp     Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserCountriesExpanded     (does not exist - api always behaves as rollup=true)
 
 [0.5.0]
 

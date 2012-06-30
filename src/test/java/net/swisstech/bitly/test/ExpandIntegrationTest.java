@@ -30,10 +30,6 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Integration Test for the <code>/v3/expand</code> call
- * </p>
- * 
- * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_expand">/v3/expand</a> request.
  * </p>
  * 

@@ -32,4 +32,7 @@ public abstract class MetricsResponse extends ToStringSupport {
 
 	/** an echo of the specified <code>unit</code> value */
 	public String unit;
+
+	/** the number of days for which data is provided (ONLY returned if unit is not specified) <b>and only for some requests!</b> */
+	public long days;
 }
