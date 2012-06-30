@@ -53,6 +53,7 @@ public class UserCountriesIntegrationTest extends AbstractBitlyClientIntegration
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test(expectedExceptions = UnsupportedOperationException.class, expectedExceptionsMessageRegExp = "Bitly always behaves as rollup=true for this call, use userCountriesRolledUp\\(\\) instead")
 	public void callUserCountriesExpanded() {
 		getClient().userCountriesExpanded();
