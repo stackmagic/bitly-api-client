@@ -17,6 +17,10 @@ p. This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api
 
 for information on the current feature-set have a look at the file "CHANGELOG"
 
+h2. get involved!
+
+if you want a feature/bugfix go ahead, fork this repo, make a fix (on the development branch) and send me a pull request!
+
 h2. get started right away
 
 h3. step 0: get the library
