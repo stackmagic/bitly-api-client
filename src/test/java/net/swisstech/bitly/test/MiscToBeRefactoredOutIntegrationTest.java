@@ -18,7 +18,6 @@ package net.swisstech.bitly.test;
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import net.swisstech.bitly.model.Response;
 import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
-import net.swisstech.bitly.model.v3.UserReferrersExpanded;
 import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
 
 import org.testng.annotations.Test;
@@ -33,16 +32,6 @@ public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientInt
 				.call();
 
 		printAndVerify(resp, UserPopularLinksExpanded.class);
-	}
-
-	@Test
-	public void callUserReferrersExpanded() {
-		Response<UserReferrersExpanded> resp = getClient().userReferersExpanded() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
-
-		printAndVerify(resp, UserReferrersExpanded.class);
 	}
 
 	// this returns a 404
