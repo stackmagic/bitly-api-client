@@ -11,8 +11,9 @@ p. This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api
 * reasonably bugfree
 * built by apache maven
 * with a minimum of dependencies
-* and for now a **work in progress** (but will soon be complete)
 * licensed under the apache license 2.0
+
+I use versions in the form of x.y.z - please do not expect compatibility if x or y changed, if only z has changed there might be a chance that releases are compatible, the reason being that there is still a lot of refactoring going on and there will still be quite a bit of that for some time.
 
 for information on the current feature-set have a look at the file "CHANGELOG"
 
