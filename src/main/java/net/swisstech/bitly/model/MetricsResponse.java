@@ -15,15 +15,24 @@
  */
 package net.swisstech.bitly.model;
 
-
+/**
+ * <p>
+ * base response for all responses that return some form of metrics. they all have largely the same parameters.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public abstract class MetricsResponse extends ToStringSupport {
 
+	/** the offset for the specified <code>timezone</code>, in hours */
 	public long tz_offset;
 
+	/** an echo of the specified <code>units</code> value */
 	public long units;
 
+	/** an echo of the specified <code>unit</code> value */
 	public String unit;
 
+	/** the number of days for which data is provided (ONLY returned if unit is not specified) <b>and only for some requests!</b> */
 	public long days;
-
 }

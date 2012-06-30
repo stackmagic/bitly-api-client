@@ -3,7 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.swisstech.bitly</groupId>
 	<artifactId>bitly-api-client</artifactId>
-	<version>0.5.0</version>
+	<version>0.6.0</version>
+	<name>bit.ly API Client in Java</name>
 
 	<distributionManagement>
 		<repository>
@@ -16,16 +17,41 @@
 	</distributionManagement>
 
 	<dependencies>
+
+		<!-- JSON (de)serializing -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.2.1</version>
 		</dependency>
+
+		<!-- Date and Time functionality -->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.1</version>
 		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.6.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.6</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Unit Tests -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -62,7 +88,7 @@
 						<version>2.12</version>
 						<configuration>
 							<excludes>
-								<exclude>**/**IntegrationTest*</exclude>
+								<exclude>**/**IntegrationTest.java</exclude>
 							</excludes>
 						</configuration>
 					</plugin>
@@ -78,6 +104,30 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<version>2.12</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>sonar</id>
+			<properties>
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+				<sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar</sonar.jdbc.url>
+				<sonar.jdbc.username>sonar</sonar.jdbc.username>
+				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+				<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.12</version>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.sonar</groupId>
+						<artifactId>sonar-maven3-plugin</artifactId>
+						<version>2.14</version>
 					</plugin>
 				</plugins>
 			</build>

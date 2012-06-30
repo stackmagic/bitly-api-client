@@ -1,0 +1,12 @@
+* Expand: Eliminate duplicate parameters
+* Expand: Throw exception when exceeding max of 15 hash/shortUrls
+* Expand: Throw exception when not at least 1 hash/shortUrls
+* ALL: check required parameters are present before making the call?
+* ALL: verify rollup behaviour
+* ALL: verify day parameter, not all metrics request have it
+* UserNetworkHistory: split expanded and collapsed user into 2 structures? same as expand/rollup?
+* Calls that take no parameters like UserTrackingDomainList could be executed right away. Downside: 2 behaviours in the BitlyClient class.
+* have another look at the response model - should each and every name be unique? could collapse a bunch of expanded/rolledup integration tests and would eliminate the need for using XYZ.ABC types in the code, everything could be done in the imports
+* UserReferrersExpanded: if the unit parameter is missing, this call returns an entirely different response, and rollup has no influence
+* UserCountriesRolledUpRequest is broken, the response is always expanded
+* MetricsRequest: not all requests that inherit from MetricsRequest accept a "link" parameter

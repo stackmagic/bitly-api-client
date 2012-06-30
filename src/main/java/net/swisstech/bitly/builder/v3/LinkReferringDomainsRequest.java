@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.MetricsRequest;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkReferringDomains;
+import net.swisstech.bitly.model.v3.LinkReferringDomainsResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,10 +31,14 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkReferringDomainsRequest extends MetricsRequest<LinkReferringDomainsRequest, LinkReferringDomains> {
+public class LinkReferringDomainsRequest extends MetricsRequest<LinkReferringDomainsRequest, LinkReferringDomainsResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public LinkReferringDomainsRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override
@@ -44,7 +48,7 @@ public class LinkReferringDomainsRequest extends MetricsRequest<LinkReferringDom
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkReferringDomains>>() {
+		return new TypeToken<Response<LinkReferringDomainsResponse>>() {
 		}.getType();
 	}
 }

@@ -19,14 +19,25 @@ import java.util.List;
 
 import net.swisstech.bitly.model.MetricsResponse;
 
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_referrers">/v3/user/referrers</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public class UserReferrersExpanded extends MetricsResponse {
 
+	/** a list of URLs referring traffic to this user's links */
 	public List<Referrer> user_referrers;
 
+	/** a single source of clicks, a referrer */
 	public static class Referrer {
 
+		/** the URL referring clicks */
 		public String referrer;
 
+		/** the number of clicks referred from this URL */
 		public long clicks;
 	}
 }

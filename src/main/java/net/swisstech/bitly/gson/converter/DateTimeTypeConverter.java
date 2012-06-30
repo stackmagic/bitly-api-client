@@ -23,7 +23,6 @@ import org.joda.time.DateTime;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
@@ -40,11 +39,11 @@ public class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDese
 	}
 
 	@Override
-	public DateTime deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
+	public DateTime deserialize(JsonElement json, Type type, JsonDeserializationContext context) {
 		try {
 			return new DateTime(json.getAsLong());
 		} catch (IllegalArgumentException e) {
-			// May be it came in formatted as a java.util.Date, so try that
+			// May be it can be formatted as a java.util.Date, so try that
 			Date date = context.deserialize(json, Date.class);
 			return new DateTime(date);
 		}

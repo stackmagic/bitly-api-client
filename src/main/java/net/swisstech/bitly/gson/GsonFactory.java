@@ -24,9 +24,14 @@ import org.joda.time.Instant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * Factory for a Gson Instance, initialized with all converters used/needed. Only a single instance is created since Gson is thread-safe.
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
 public final class GsonFactory {
 
-	private static final Gson gson;
+	private static final Gson GSON;
 
 	/** private constructor for utility class */
 	private GsonFactory() {
@@ -36,10 +41,14 @@ public final class GsonFactory {
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(DateTime.class, new DateTimeTypeConverter());
 		builder.registerTypeAdapter(Instant.class, new InstantTypeConverter());
-		gson = builder.create();
+		GSON = builder.create();
 	}
 
+	/**
+	 * Get the Gson instance
+	 * @return the Gson instance
+	 */
 	public static Gson getGson() {
-		return gson;
+		return GSON;
 	}
 }

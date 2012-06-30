@@ -24,23 +24,27 @@ import net.swisstech.bitly.builder.v3.LinkEncodersCountRequest;
 import net.swisstech.bitly.builder.v3.LinkLookupRequest;
 import net.swisstech.bitly.builder.v3.LinkReferrersRequest;
 import net.swisstech.bitly.builder.v3.LinkReferringDomainsRequest;
-import net.swisstech.bitly.builder.v3.LinkSharesRequest;
+import net.swisstech.bitly.builder.v3.LinkSharesExpandedRequest;
+import net.swisstech.bitly.builder.v3.LinkSharesRolledUpRequest;
 import net.swisstech.bitly.builder.v3.ShortenRequest;
 import net.swisstech.bitly.builder.v3.UserClicksExpandedRequest;
 import net.swisstech.bitly.builder.v3.UserClicksRolledUpRequest;
-import net.swisstech.bitly.builder.v3.UserCountriesExpandedRequest;
+import net.swisstech.bitly.builder.v3.UserCountriesRolledUpRequest;
 import net.swisstech.bitly.builder.v3.UserInfoRequest;
 import net.swisstech.bitly.builder.v3.UserLinkEditRequest;
 import net.swisstech.bitly.builder.v3.UserLinkHistoryRequest;
 import net.swisstech.bitly.builder.v3.UserLinkLookupRequest;
 import net.swisstech.bitly.builder.v3.UserLinkSaveRequest;
 import net.swisstech.bitly.builder.v3.UserNetworkHistoryRequest;
-import net.swisstech.bitly.builder.v3.UserPopularLinksExpandedRequest;
+import net.swisstech.bitly.builder.v3.UserPopularLinksRequest;
 import net.swisstech.bitly.builder.v3.UserReferrersExpandedRequest;
-import net.swisstech.bitly.builder.v3.UserReferringDomainsExpandedRequest;
+import net.swisstech.bitly.builder.v3.UserReferringDomainsRequest;
 import net.swisstech.bitly.builder.v3.UserShareCountsByShareTypeExpandedRequest;
+import net.swisstech.bitly.builder.v3.UserShareCountsByShareTypeRolledUpRequest;
 import net.swisstech.bitly.builder.v3.UserShareCountsExpandedRequest;
-import net.swisstech.bitly.builder.v3.UserShortenCountsRequest;
+import net.swisstech.bitly.builder.v3.UserShareCountsRolledUpRequest;
+import net.swisstech.bitly.builder.v3.UserShortenCountsExpandedRequest;
+import net.swisstech.bitly.builder.v3.UserShortenCountsRolledUpRequest;
 import net.swisstech.bitly.builder.v3.UserTrackingDomainListRequest;
 
 public class BitlyClient {
@@ -103,8 +107,12 @@ public class BitlyClient {
 		return new LinkReferringDomainsRequest(accessToken);
 	}
 
-	public LinkSharesRequest linkShares() {
-		return new LinkSharesRequest(accessToken);
+	public LinkSharesExpandedRequest linkSharesExpanded() {
+		return new LinkSharesExpandedRequest(accessToken);
+	}
+
+	public LinkSharesRolledUpRequest linkSharesRolledUp() {
+		return new LinkSharesRolledUpRequest(accessToken);
 	}
 
 	public UserInfoRequest userInfo() {
@@ -131,31 +139,53 @@ public class BitlyClient {
 		return new UserClicksRolledUpRequest(accessToken);
 	}
 
-	public UserCountriesExpandedRequest userCountriesExpanded() {
-		return new UserCountriesExpandedRequest(accessToken);
+	/**
+	 * <b>Note:</b> Contrary to the documentation, rollup always seems to behave as <code>true</code> for this call (no per-unit data returned, just
+	 * the sum per country).
+	 * @return
+	 */
+	@Deprecated
+	public UserCountriesRolledUpRequest userCountriesExpanded() {
+		throw new UnsupportedOperationException("Bitly always behaves as rollup=true for this call, use userCountriesRolledUp() instead");
 	}
 
-	public UserPopularLinksExpandedRequest userPopularLinksExpanded() {
-		return new UserPopularLinksExpandedRequest(accessToken);
+	public UserCountriesRolledUpRequest userCountriesRolledUp() {
+		return new UserCountriesRolledUpRequest(accessToken);
+	}
+
+	public UserPopularLinksRequest userPopularLinksExpanded() {
+		return new UserPopularLinksRequest(accessToken);
 	}
 
 	public UserReferrersExpandedRequest userReferersExpanded() {
 		return new UserReferrersExpandedRequest(accessToken);
 	}
 
-	public UserReferringDomainsExpandedRequest userReferringDomainsExpanded() {
-		return new UserReferringDomainsExpandedRequest(accessToken);
+	public UserReferringDomainsRequest userReferringDomainsExpanded() {
+		return new UserReferringDomainsRequest(accessToken);
 	}
 
 	public UserShareCountsExpandedRequest userShareCountsExpanded() {
 		return new UserShareCountsExpandedRequest(accessToken);
 	}
 
-	public UserShareCountsByShareTypeExpandedRequest userShareCountyByShareTypeExpanded() {
+	public UserShareCountsRolledUpRequest userShareCountsRolledUp() {
+		return new UserShareCountsRolledUpRequest(accessToken);
+	}
+
+	public UserShareCountsByShareTypeExpandedRequest userShareCountryByShareTypeExpanded() {
 		return new UserShareCountsByShareTypeExpandedRequest(accessToken);
 	}
 
-	public UserShortenCountsRequest userShortenCounts() {
-		return new UserShortenCountsRequest(accessToken);
+	public UserShareCountsByShareTypeRolledUpRequest userShareCountryByShareTypeRolledUp() {
+		return new UserShareCountsByShareTypeRolledUpRequest(accessToken);
+	}
+
+	public UserShortenCountsExpandedRequest userShortenCountsExpanded() {
+		return new UserShortenCountsExpandedRequest(accessToken);
+	}
+
+	public UserShortenCountsRolledUpRequest userShortenCountsRolledUp() {
+		return new UserShortenCountsRolledUpRequest(accessToken);
 	}
 }

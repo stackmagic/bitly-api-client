@@ -20,7 +20,7 @@ import java.util.Collection;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.Info;
+import net.swisstech.bitly.model.v3.InfoResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,8 +31,12 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class InfoRequest extends Request<Info> {
+public class InfoRequest extends Request<InfoResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public InfoRequest(String accessToken) {
 		super(accessToken);
 	}
@@ -44,20 +48,35 @@ public class InfoRequest extends Request<Info> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<Info>>() {
+		return new TypeToken<Response<InfoResponse>>() {
 		}.getType();
 	}
 
-	public InfoRequest setExpandUser(boolean expand) {
-		addQueryParameter("expand_user", expand);
+	/**
+	 * Set wether or not user info should be included in the response
+	 * @param expandUser include extra user info in response
+	 * @return this builder
+	 */
+	public InfoRequest setExpandUser(boolean expandUser) {
+		addQueryParameter("expand_user", expandUser);
 		return this;
 	}
 
+	/**
+	 * Add a hash
+	 * @param hash refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name )
+	 * @return this builder
+	 */
 	public InfoRequest addHash(String hash) {
 		addQueryParameter("hash", hash);
 		return this;
 	}
 
+	/**
+	 * Add hashes
+	 * @param hashes refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name )
+	 * @return this builder
+	 */
 	public InfoRequest addHashes(String... hashes) {
 		for (String hash : hashes) {
 			addHash(hash);
@@ -65,6 +84,11 @@ public class InfoRequest extends Request<Info> {
 		return this;
 	}
 
+	/**
+	 * Add hashes
+	 * @param hashes refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name )
+	 * @return this builder
+	 */
 	public InfoRequest addHashes(Collection<String> hashes) {
 		for (String hash : hashes) {
 			addHash(hash);
@@ -72,11 +96,21 @@ public class InfoRequest extends Request<Info> {
 		return this;
 	}
 
+	/**
+	 * Add shortUrl
+	 * @param shortUrl refers to one or more bitly links e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT
+	 * @return this builder
+	 */
 	public InfoRequest addShortUrl(String shortUrl) {
 		addQueryParameter("shortUrl", shortUrl);
 		return this;
 	}
 
+	/**
+	 * Add shortUrls
+	 * @param shortUrls refers to one or more bitly links e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT
+	 * @return this builder
+	 */
 	public InfoRequest addShortUrls(String... shortUrls) {
 		for (String shortUrl : shortUrls) {
 			addShortUrl(shortUrl);
@@ -84,6 +118,11 @@ public class InfoRequest extends Request<Info> {
 		return this;
 	}
 
+	/**
+	 * Add shortUrls
+	 * @param shortUrls refers to one or more bitly links e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT
+	 * @return this builder
+	 */
 	public InfoRequest addShortUrls(Collection<String> shortUrls) {
 		for (String shortUrl : shortUrls) {
 			addShortUrl(shortUrl);

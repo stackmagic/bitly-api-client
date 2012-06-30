@@ -19,20 +19,24 @@ import java.lang.reflect.Type;
 
 import net.swisstech.bitly.builder.Request;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserTrackingDomainList;
+import net.swisstech.bitly.model.v3.UserTrackingDomainListResponse;
 
 import com.google.gson.reflect.TypeToken;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list"
- * >/v3/user/tracking_domain_list</a> request.
+ * Please see the bit.ly documentation for the <a
+ * href="http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list">/v3/user/tracking_domain_list</a> request.
  * </p>
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserTrackingDomainListRequest extends Request<UserTrackingDomainList> {
+public class UserTrackingDomainListRequest extends Request<UserTrackingDomainListResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserTrackingDomainListRequest(String accessToken) {
 		super(accessToken);
 	}
@@ -44,7 +48,7 @@ public class UserTrackingDomainListRequest extends Request<UserTrackingDomainLis
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserTrackingDomainList>>() {
+		return new TypeToken<Response<UserTrackingDomainListResponse>>() {
 		}.getType();
 	}
 }

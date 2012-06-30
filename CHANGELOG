@@ -1,3 +1,33 @@
+[?.?.?]
+
+* IMPROVEMENT: Expand                    Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: Info                      Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkLookup                Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: Shorten                   Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkEdit              Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkLookup            Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkSave              Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkClicksExpanded        Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkClicksRolledUp        Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkSharesExpanded        Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: LinkSharesRolledUp        Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkHistory           Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserLinkHistory Now can also deal with share information
+* IMPROVEMENT: Switch to SLF4J (slf4j-api is a hard dependency, the backends in the pom are only used for the tests -- feel free to use your own!)
+* IMPROVEMENT: UserNetworkHistory Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserTrackingDomainList    Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserClicksExpanded        Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserClicksRolledUp        Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserShortenCountsExpanded Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserShortenCountsRolledUp Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserCountriesRolledUp     Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserCountriesExpanded     (does not exist - api always behaves as rollup=true)
+* IMPROVEMENT: UserShareCountsExpanded   Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserShareCountsRolledUp   Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserReferrersExpanded     Refactoring and Javadoc (partially copied directly from bitly) -- not done yet, this one is a bit of a mess with the different behaviour when the unit parameter is missing. always set a unit parameter in the metricsrequest base class? there may be more requests like this one.
+* IMPROVEMENT: UserPopularLinks          Refactoring and Javadoc (partially copied directly from bitly)
+* IMPROVEMENT: UserReferringDomains      Refactoring and Javadoc (partially copied directly from bitly)
+
 [0.5.0]
 
 more or less feature complete. most metrics are there with an expanded variant, the rolledup one needs a closer look and once I've figured out how this stuff actually works I'll add it too but for the moment this is a pretty usable state right now.

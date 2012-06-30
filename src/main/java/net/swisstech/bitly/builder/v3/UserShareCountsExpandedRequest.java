@@ -17,16 +17,28 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsRequest;
+import net.swisstech.bitly.builder.MetricsExpandedRequest;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserShareCountsExpanded;
+import net.swisstech.bitly.model.v3.UserShareCountsExpandedResponse;
 
 import com.google.gson.reflect.TypeToken;
 
-public class UserShareCountsExpandedRequest extends MetricsRequest<UserShareCountsExpandedRequest, UserShareCountsExpanded> {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_share_counts">/v3/user/share_counts</a>
+ * request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserShareCountsExpandedRequest extends MetricsExpandedRequest<UserShareCountsExpandedRequest, UserShareCountsExpandedResponse> {
 
+	/**
+	 * Create a new request builder
+	 * @param accessToken the access token to access the bitly api
+	 */
 	public UserShareCountsExpandedRequest(String accessToken) {
-		super(accessToken, false);
+		super(accessToken);
 	}
 
 	@Override
@@ -36,7 +48,7 @@ public class UserShareCountsExpandedRequest extends MetricsRequest<UserShareCoun
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserShareCountsExpanded>>() {
+		return new TypeToken<Response<UserShareCountsExpandedResponse>>() {
 		}.getType();
 	}
 }
