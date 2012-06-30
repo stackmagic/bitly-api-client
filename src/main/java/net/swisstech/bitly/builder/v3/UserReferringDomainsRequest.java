@@ -17,9 +17,9 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsExpandedRequest;
+import net.swisstech.bitly.builder.MetricsRequest;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
+import net.swisstech.bitly.model.v3.UserReferringDomainsResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,24 +31,24 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserReferringDomainsExpandedRequest extends MetricsExpandedRequest<UserReferringDomainsExpandedRequest, UserReferringDomainsExpanded> {
+public class UserReferringDomainsRequest extends MetricsRequest<UserReferringDomainsRequest, UserReferringDomainsResponse> {
 
 	/**
 	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
-	public UserReferringDomainsExpandedRequest(String accessToken) {
+	public UserReferringDomainsRequest(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/user/referrering_domains";
+		return "https://api-ssl.bitly.com/v3/user/referring_domains";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserReferringDomainsExpanded>>() {
+		return new TypeToken<Response<UserReferringDomainsResponse>>() {
 		}.getType();
 	}
 }

@@ -20,16 +20,29 @@ import java.util.List;
 import net.swisstech.bitly.model.MetricsResponse;
 import net.swisstech.bitly.model.ToStringSupport;
 
-public class UserReferringDomainsExpanded extends MetricsResponse {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a
+ * href="http://dev.bitly.com/user_metrics.html#v3_user_referring_domains">/v3/user/referring_domains</a> request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserReferringDomainsResponse extends MetricsResponse {
 
-	public List<ReferringDomain> referring_domains;
+	/** a list of domains referring traffic to this user's links */
+	public List<ReferringDomain> user_referring_domains;
 
+	/** a domain referring traffic to this user's links */
 	public static class ReferringDomain extends ToStringSupport {
 
+		/** the number of clicks referred from this domain */
 		public long clicks;
 
+		/** the domain referring clicks */
 		public String domain;
 
+		/** the complete URL of the domain referring clicks (null if the domain is "direct") */
 		public String url;
 	}
 }

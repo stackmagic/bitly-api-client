@@ -38,6 +38,9 @@ public abstract class MetricsRequest<REQ extends MetricsRequest<REQ, DATA>, DATA
 
 	/**
 	 * set the link
+	 * 
+	 * TODO this isn't used/allowed in all metrics requests!
+	 * 
 	 * @param link a bitly link
 	 * @return this builder
 	 */
