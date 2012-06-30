@@ -20,6 +20,7 @@
 * IMPROVEMENT: UserClicksRolledUp        Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserShortenCountsExpanded Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserShortenCountsRolledUp Refactoring and Javadoc (partially copied directly from bitly)
+* 
 
 [0.5.0]
 
