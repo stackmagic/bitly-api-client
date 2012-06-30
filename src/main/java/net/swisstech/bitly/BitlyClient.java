@@ -36,7 +36,7 @@ import net.swisstech.bitly.builder.v3.UserLinkHistoryRequest;
 import net.swisstech.bitly.builder.v3.UserLinkLookupRequest;
 import net.swisstech.bitly.builder.v3.UserLinkSaveRequest;
 import net.swisstech.bitly.builder.v3.UserNetworkHistoryRequest;
-import net.swisstech.bitly.builder.v3.UserPopularLinksExpandedRequest;
+import net.swisstech.bitly.builder.v3.UserPopularLinksRequest;
 import net.swisstech.bitly.builder.v3.UserReferrersExpandedRequest;
 import net.swisstech.bitly.builder.v3.UserReferringDomainsExpandedRequest;
 import net.swisstech.bitly.builder.v3.UserShareCountsByShareTypeExpandedRequest;
@@ -153,8 +153,8 @@ public class BitlyClient {
 		return new UserCountriesRolledUpRequest(accessToken);
 	}
 
-	public UserPopularLinksExpandedRequest userPopularLinksExpanded() {
-		return new UserPopularLinksExpandedRequest(accessToken);
+	public UserPopularLinksRequest userPopularLinksExpanded() {
+		return new UserPopularLinksRequest(accessToken);
 	}
 
 	public UserReferrersExpandedRequest userReferersExpanded() {

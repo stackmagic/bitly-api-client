@@ -25,6 +25,7 @@
 * IMPROVEMENT: UserShareCountsExpanded   Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserShareCountsRolledUp   Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: UserReferrersExpanded     Refactoring and Javadoc (partially copied directly from bitly) -- not done yet, this one is a bit of a mess with the different behaviour when the unit parameter is missing. always set a unit parameter in the metricsrequest base class? there may be more requests like this one.
+* IMPROVEMENT: UserPopularLinks          Refactoring and Javadoc (partially copied directly from bitly)
 
 [0.5.0]
 

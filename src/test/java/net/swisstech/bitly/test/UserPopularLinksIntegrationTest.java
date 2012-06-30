@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.builder.v3;
+package net.swisstech.bitly.test;
 
-import java.lang.reflect.Type;
-
-import net.swisstech.bitly.builder.MetricsExpandedRequest;
+import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
+import net.swisstech.bitly.model.v3.UserPopularLinksResponse;
 
-import com.google.gson.reflect.TypeToken;
+import org.testng.annotations.Test;
 
 /**
  * <p>
@@ -30,24 +28,15 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserPopularLinksExpandedRequest extends MetricsExpandedRequest<UserPopularLinksExpandedRequest, UserPopularLinksExpanded> {
+public class UserPopularLinksIntegrationTest extends AbstractBitlyClientIntegrationTest {
 
-	/**
-	 * Create a new request builder
-	 * @param accessToken the access token to access the bitly api
-	 */
-	public UserPopularLinksExpandedRequest(String accessToken) {
-		super(accessToken);
-	}
+	@Test
+	public void callUserPopularLinksExpanded() {
+		Response<UserPopularLinksResponse> resp = getClient().userPopularLinksExpanded() //
+				.setUnit("hour") //
+				.setUnits(-1) //
+				.call();
 
-	@Override
-	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/user/popular_links";
-	}
-
-	@Override
-	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserPopularLinksExpanded>>() {
-		}.getType();
+		printAndVerify(resp, UserPopularLinksResponse.class);
 	}
 }

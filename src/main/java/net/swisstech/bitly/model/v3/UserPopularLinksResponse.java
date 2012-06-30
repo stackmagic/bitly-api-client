@@ -17,17 +17,29 @@ package net.swisstech.bitly.model.v3;
 
 import java.util.List;
 
-import net.swisstech.bitly.model.ToStringSupport;
 import net.swisstech.bitly.model.MetricsResponse;
+import net.swisstech.bitly.model.ToStringSupport;
 
-public class UserPopularLinksExpanded extends MetricsResponse {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_popular_links">/v3/user/popular_links</a>
+ * request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserPopularLinksResponse extends MetricsResponse {
 
+	/** the links that have received click traffic in the specified timeframe */
 	public List<PopularLink> popular_links;
 
+	/** a link that has received traffic */
 	public static class PopularLink extends ToStringSupport {
 
+		/** a bitly link */
 		public String link;
 
+		/** the number of clicks on that bitly link in the specified timeframe */
 		public long clicks;
 	}
 }

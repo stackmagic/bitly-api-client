@@ -17,22 +17,11 @@ package net.swisstech.bitly.test;
 
 import static net.swisstech.bitly.test.util.TestUtil.printAndVerify;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserPopularLinksExpanded;
 import net.swisstech.bitly.model.v3.UserReferringDomainsExpanded;
 
 import org.testng.annotations.Test;
 
 public class MiscToBeRefactoredOutIntegrationTest extends AbstractBitlyClientIntegrationTest {
-
-	@Test
-	public void callUserPopularLinksExpanded() {
-		Response<UserPopularLinksExpanded> resp = getClient().userPopularLinksExpanded() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
-
-		printAndVerify(resp, UserPopularLinksExpanded.class);
-	}
 
 	// this returns a 404
 	@Test(enabled = false)
