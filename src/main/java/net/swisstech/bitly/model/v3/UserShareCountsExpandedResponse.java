@@ -22,14 +22,26 @@ import net.swisstech.bitly.model.ToStringSupport;
 
 import org.joda.time.DateTime;
 
-public class UserShareCountsExpanded extends MetricsResponse {
+/**
+ * <p>
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_share_counts">/v3/user/share_counts</a>
+ * request.
+ * </p>
+ * 
+ * @author Patrick Huber (gmail: stackmagic)
+ */
+public class UserShareCountsExpandedResponse extends MetricsResponse {
 
+	/** the number of shares from this user's account */
 	public List<ShareCount> share_counts;
 
+	/** single element of timeseries data per unit */
 	public static class ShareCount extends ToStringSupport {
 
+		/** timestamp corresponding to the specified <code>unit</code> */
 		public DateTime dt;
 
+		/** the number of shares in that timeframe */
 		public long shares;
 	}
 }

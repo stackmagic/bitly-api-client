@@ -17,9 +17,9 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsExpandedRequest;
+import net.swisstech.bitly.builder.MetricsRolledUpRequest;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.UserShareCountsExpandedResponse;
+import net.swisstech.bitly.model.v3.UserShareCountsRolledUpResponse;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -31,13 +31,13 @@ import com.google.gson.reflect.TypeToken;
  * 
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class UserShareCountsExpandedRequest extends MetricsExpandedRequest<UserShareCountsExpandedRequest, UserShareCountsExpandedResponse> {
+public class UserShareCountsRolledUpRequest extends MetricsRolledUpRequest<UserShareCountsRolledUpRequest, UserShareCountsRolledUpResponse> {
 
 	/**
 	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
-	public UserShareCountsExpandedRequest(String accessToken) {
+	public UserShareCountsRolledUpRequest(String accessToken) {
 		super(accessToken);
 	}
 
@@ -48,7 +48,7 @@ public class UserShareCountsExpandedRequest extends MetricsExpandedRequest<UserS
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserShareCountsExpandedResponse>>() {
+		return new TypeToken<Response<UserShareCountsRolledUpResponse>>() {
 		}.getType();
 	}
 }
