@@ -34,6 +34,7 @@ public final class AccessTokenUtil {
 		InputStreamReader isr = new InputStreamReader(fis);
 		BufferedReader br = new BufferedReader(isr);
 		String token = br.readLine();
+		br.close();
 		return token;
 	}
 }

@@ -1,3 +1,7 @@
+[0.6.2]
+
+* FIX: resource leak in AccessTokenUtil (used for tests only but still)
+
 [0.6.1]
 
 * IMPROVEMENT: log the responses received at TRACE level in net.swisstech.bitly.builder.Request to debug Issue #1
