@@ -39,9 +39,9 @@ import com.google.gson.Gson;
 
 /**
  * Base Request Builder and logic to make the actual call, add query parameters etc.
- * 
+ *
  * @author Patrick Huber (gmail: stackmagic)
- * 
+ *
  * @param <T> Type of the Response
  */
 public abstract class Request<T> {
@@ -57,10 +57,10 @@ public abstract class Request<T> {
 
 	/**
 	 * Constructs a new Request
-	 * 
+	 *
 	 * TODO we could consider killing the constructor and instead add a setAccessToken method so the AT would be treated like every other query
 	 * parameter.
-	 * 
+	 *
 	 * @param accessToken the access token to be used for the request
 	 */
 	public Request(String accessToken) {
@@ -85,7 +85,7 @@ public abstract class Request<T> {
 	 * GSON has this construct to deserialize generic types. Just using <code>Response&lt;T&gt;</code> won't work here for the same reasons GSON
 	 * introduced this construct in the first place. So the RequestBuilder has to return an explicit type here, no T parameters or anything because
 	 * that won't work and then GSON will serialize the responsee's data as a StringMap.
-	 * 
+	 *
 	 * @return Type for GSON deserializer
 	 */
 	protected abstract Type getTypeForGson();
@@ -178,7 +178,7 @@ public abstract class Request<T> {
 	public Response<T> call() {
 		try {
 			String url = buildUrl();
-			LOG.debug("Calling URL: " + url);
+			LOG.debug("Calling URL: {}", url);
 			URLConnection conn = new URL(url).openConnection();
 			conn.connect();
 
@@ -189,6 +189,7 @@ public abstract class Request<T> {
 				respBuf.append(line);
 			}
 			String resp = respBuf.toString();
+			LOG.trace("Response received: {}", resp);
 
 			// deserialize
 			Gson gson = GsonFactory.getGson();

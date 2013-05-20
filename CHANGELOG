@@ -1,4 +1,8 @@
-[?.?.?]
+[0.6.1]
+
+* IMPROVEMENT: log the responses received at TRACE level in net.swisstech.bitly.builder.Request to debug Issue #1
+
+[0.6.0]
 
 * IMPROVEMENT: Expand                    Refactoring and Javadoc (partially copied directly from bitly)
 * IMPROVEMENT: Info                      Refactoring and Javadoc (partially copied directly from bitly)
