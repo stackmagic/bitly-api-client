@@ -2,6 +2,6 @@
 
 mvn -DperformRelease=true clean deploy
 
-cd ../maven-repo
+cd ../gh-stackmagic-maven-repo
 ./update-repository-index.sh
 

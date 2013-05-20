@@ -12,7 +12,7 @@
 			<!-- the gh-pages branch is checked out and set up following -->
 			<!-- the instructions at http://bit.ly/LKqoDd -->
 			<id>gh-pages</id>
-			<url>file:///${basedir}/../maven-repo/maven2</url>
+			<url>file:///${basedir}/../gh-stackmagic-maven-repo/maven2</url>
 		</repository>
 	</distributionManagement>
 
