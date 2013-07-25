@@ -19,7 +19,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
@@ -30,12 +29,14 @@ import java.util.List;
 import net.swisstech.bitly.BitlyClientException;
 import net.swisstech.bitly.gson.GsonFactory;
 import net.swisstech.bitly.model.Response;
+import net.swisstech.bitly.model.ResponsePartial;
 
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 
 /**
  * Base Request Builder and logic to make the actual call, add query parameters etc.
@@ -48,6 +49,9 @@ public abstract class Request<T> {
 
 	/** Logger */
 	private static final Logger LOG = LoggerFactory.getLogger(Request.class.getName());
+
+	/** GSON instance */
+	private static final Gson GSON = GsonFactory.getGson();
 
 	/** the access token to be used for the request */
 	private final String accessToken;
@@ -188,18 +192,43 @@ public abstract class Request<T> {
 			while ((line = br.readLine()) != null) {
 				respBuf.append(line);
 			}
+
 			String resp = respBuf.toString();
 			LOG.trace("Response received: {}", resp);
 
-			// deserialize
-			Gson gson = GsonFactory.getGson();
-			Type type = getTypeForGson();
-			return gson.fromJson(resp, type);
+			try {
+				return deserializeFull(resp);
+			}
+			catch (JsonParseException e) {
+				return deserializePartial(resp);
+			}
 
-		} catch (MalformedURLException e) {
-			throw new BitlyClientException(e);
 		} catch (IOException e) {
 			throw new BitlyClientException(e);
 		}
+	}
+
+	/**
+	 * Attempt to fully deserialize bitly's response
+	 * @param resp bitly's response data
+	 * @return the Response
+	 */
+	private Response<T> deserializeFull(String resp) {
+		return GSON.fromJson(resp, getTypeForGson());
+	}
+
+	/**
+	 * Only deserialize the status fields, copy them into a Response and set the <code>deserialize_error</code> flag.
+	 * @param resp bitly's response data
+	 * @return the Response
+	 */
+	private Response<T> deserializePartial(String resp) {
+		ResponsePartial partial = GSON.fromJson(resp, ResponsePartial.class);
+		Response<T> full = new Response<T>();
+		full.data = null;
+		full.deserialize_error = true;
+		full.status_code = partial.status_code;
+		full.status_txt = partial.status_txt;
+		return full;
 	}
 }

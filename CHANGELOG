@@ -1,3 +1,7 @@
+[0.7.1]
+
+* FIX: Issue#2 (https://github.com/stackmagic/bitly-api-client/issues/2) where a gson exception was thrown on error responses from bitly. Just checking the status field for a value of 200 would break UserLinkSaveIntegrationTest where a 304 is returned along with a valid data field. So we first try to deserialize and only in case of error we'll do a partial deserialize. There's a new field deserialize_error in the response to indicate that the data field will be null as a result of an error
+
 [0.7.0]
 
 * IMPROVEMENT: upgrade libraries to latest versions
