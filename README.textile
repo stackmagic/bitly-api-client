@@ -4,7 +4,7 @@ p. Build Status: !https://secure.travis-ci.org/stackmagic/bitly-api-client.png?b
 
 p. This is a simple java client for the "bit.ly v3 api":http://dev.bitly.com/api.html. It is:
 
-* at version 0.7.0
+* at version 0.7.1
 * small
 * easy to use
 * fairly complete
@@ -114,4 +114,5 @@ The client follows a few simple rules:
 h2. questions / bugs
 
 p. Feel free to raise a bug or question here: "https://github.com/stackmagic/bitly-api-client/issues":https://github.com/stackmagic/bitly-api-client/issues
+
 
