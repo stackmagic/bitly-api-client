@@ -58,13 +58,13 @@ p. The basic principle is simple: You create a BitlyClient with your access toke
 
 bc.. BitlyClient client = new BitlyClient("... the access token ...")
 Response<ShortUrl> respShort = client.shorten() //
-                                     .longUrl("https://github.com/stackmagic/bitly-api-client") //
+                                     .setLongUrl("https://github.com/stackmagic/bitly-api-client") //
                                      .call();
 
 p. This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the @BitlyClient@ instance around, you can instantiate the @RequestBuilder@ specializations directly. So above example would become this:
 
 bc.. Response<ShortUrl> respShort = new ShortenRequestBuilder("... the access token ...") //
-                               .longUrl("https://github.com/stackmagic/bitly-api-client") //
+                               .setLongUrl("https://github.com/stackmagic/bitly-api-client") //
                                .call();
 
 p. And it's a 1-liner (but less pretty IMO).
