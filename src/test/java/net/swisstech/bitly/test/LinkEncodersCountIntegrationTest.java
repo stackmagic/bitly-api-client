@@ -28,7 +28,7 @@ import org.testng.annotations.Test;
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_encoders_count">/v3/link/encoders_count</a>
  * request.
  * </p>
- * 
+ *
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkEncodersCountIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -42,6 +42,6 @@ public class LinkEncodersCountIntegrationTest extends AbstractBitlyClientIntegra
 		printAndVerify(resp, LinkEncodersCountResponse.class);
 
 		assertTrue(resp.data.count > 0);
-		assertEquals(resp.data.aggregate_link, "http://bitly.com/CjiA");
+		assertEquals(resp.data.aggregate_link, "http://bit.ly/CjiA");
 	}
 }
