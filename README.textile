@@ -29,7 +29,7 @@ p. if you build your project with maven (who doesn't?) you can add the following
 
 bc.. <repository>
     <id>stackmagic.github.maven-repo</id>
-    <url>http://stackmagic.github.com/maven-repo/</url>
+    <url>http://stackmagic.github.com/maven-repo/maven2</url>
 </repository>
 
 p. and here's the dependency, see the CHANGELOG file for the curent version
@@ -61,7 +61,7 @@ Response<ShortUrl> respShort = client.shorten() //
                                      .longUrl("https://github.com/stackmagic/bitly-api-client") //
                                      .call();
 
-p. This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the @BitlyClient@ instance around, you can instantiate the @RequestBuilder@ specializations directly. So above example would become this: 
+p. This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the @BitlyClient@ instance around, you can instantiate the @RequestBuilder@ specializations directly. So above example would become this:
 
 bc.. Response<ShortUrl> respShort = new ShortenRequestBuilder("... the access token ...") //
                                .longUrl("https://github.com/stackmagic/bitly-api-client") //
