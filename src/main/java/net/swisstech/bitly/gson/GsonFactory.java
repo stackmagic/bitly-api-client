@@ -15,8 +15,11 @@
  */
 package net.swisstech.bitly.gson;
 
+import net.swisstech.bitly.gson.converter.AbstractTagConverter;
 import net.swisstech.bitly.gson.converter.DateTimeTypeConverter;
 import net.swisstech.bitly.gson.converter.InstantTypeConverter;
+import net.swisstech.bitly.model.v3.LinkInfoResponse.LinktagOther;
+import net.swisstech.bitly.model.v3.LinkInfoResponse.MetatagName;
 
 import org.joda.time.DateTime;
 import org.joda.time.Instant;
@@ -26,7 +29,7 @@ import com.google.gson.GsonBuilder;
 
 /**
  * Factory for a Gson Instance, initialized with all converters used/needed. Only a single instance is created since Gson is thread-safe.
- * 
+ *
  * @author Patrick Huber (gmail: stackmagic)
  */
 public final class GsonFactory {
@@ -41,6 +44,8 @@ public final class GsonFactory {
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(DateTime.class, new DateTimeTypeConverter());
 		builder.registerTypeAdapter(Instant.class, new InstantTypeConverter());
+		builder.registerTypeAdapter(LinktagOther.class, new AbstractTagConverter<LinktagOther>(LinktagOther.class));
+		builder.registerTypeAdapter(MetatagName.class, new AbstractTagConverter<MetatagName>(MetatagName.class));
 		GSON = builder.create();
 	}
 

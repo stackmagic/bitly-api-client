@@ -21,6 +21,7 @@ import net.swisstech.bitly.builder.v3.LinkClicksExpandedRequest;
 import net.swisstech.bitly.builder.v3.LinkClicksRolledUpRequest;
 import net.swisstech.bitly.builder.v3.LinkCountriesExpandedRequest;
 import net.swisstech.bitly.builder.v3.LinkEncodersCountRequest;
+import net.swisstech.bitly.builder.v3.LinkInfoRequest;
 import net.swisstech.bitly.builder.v3.LinkLookupRequest;
 import net.swisstech.bitly.builder.v3.LinkReferrersRequest;
 import net.swisstech.bitly.builder.v3.LinkReferringDomainsRequest;
@@ -58,6 +59,10 @@ public class BitlyClient {
 
 	public InfoRequest info() {
 		return new InfoRequest(accessToken);
+	}
+
+	public LinkInfoRequest linkInfo() {
+		return new LinkInfoRequest(accessToken);
 	}
 
 	public LinkLookupRequest linkLookup() {

@@ -17,35 +17,46 @@ package net.swisstech.bitly.builder.v3;
 
 import java.lang.reflect.Type;
 
-import net.swisstech.bitly.builder.MetricsExpandedRequest;
+import net.swisstech.bitly.builder.MetricsRequest;
 import net.swisstech.bitly.model.Response;
-import net.swisstech.bitly.model.v3.LinkClicksExpanded;
+import net.swisstech.bitly.model.v3.LinkInfoResponse;
 
 import com.google.gson.reflect.TypeToken;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_clicks">/v3/link/clicks</a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/data_apis.html#v3_link_info">/v3/link/info</a> request.
  * </p>
  * @author Patrick Huber (gmail: stackmagic)
  */
-public class LinkClicksExpandedRequest extends MetricsExpandedRequest<LinkClicksExpandedRequest, LinkClicksExpanded> {
+public class LinkInfoRequest extends MetricsRequest<LinkInfoRequest, LinkInfoResponse> {
 
 	/**
 	 * Create a new request builder
 	 * @param accessToken the access token to access the bitly api
 	 */
-	public LinkClicksExpandedRequest(String accessToken) {
+	public LinkInfoRequest(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
 	public String getEndpoint() {
-		return "https://api-ssl.bitly.com/v3/link/clicks";
+		return "https://api-ssl.bitly.com/v3/link/info";
 	}
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkClicksExpanded>>() {}.getType();
+		return new TypeToken<Response<LinkInfoResponse>>() {}.getType();
+	}
+
+	/**
+	 * Set the link for which you want to retrieve info
+	 * @param bitlyLink a Bitlink
+	 * @return this builder
+	 */
+	@Override
+	public LinkInfoRequest setLink(String bitlyLink) {
+		addQueryParameter("link", bitlyLink);
+		return this;
 	}
 }

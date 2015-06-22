@@ -13,14 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.swisstech.bitly.model.v3;
+package net.swisstech.bitly.model;
 
-import net.swisstech.bitly.model.ToStringSupport;
+public abstract class AbstractTag extends ToStringSupport {
 
-public class UserSaveCustomDomainKeywordResponse extends ToStringSupport {
-
-	public String keyword_link;
-	public String target_link;
-	public String aggregate_link;
-	public Boolean is_new;
+	public String key;
+	public String value;
 }
