@@ -30,9 +30,9 @@ public class UserShareCountsIntegrationTests extends AbstractBitlyClientIntegrat
 	@Test
 	public void callUserShareCountsExpanded() {
 		Response<UserShareCountsExpandedResponse> resp = getClient().userShareCountsExpanded() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.call();
 
 		printAndVerify(resp, UserShareCountsExpandedResponse.class);
 
@@ -46,9 +46,9 @@ public class UserShareCountsIntegrationTests extends AbstractBitlyClientIntegrat
 	@Test
 	public void callUserShareCountsRolledUp() {
 		Response<UserShareCountsRolledUpResponse> resp = getClient().userShareCountsRolledUp() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.call();
 
 		printAndVerify(resp, UserShareCountsRolledUpResponse.class);
 

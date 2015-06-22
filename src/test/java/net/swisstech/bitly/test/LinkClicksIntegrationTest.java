@@ -28,7 +28,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_clicks">/v3/link/clicks</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkClicksIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -36,12 +35,12 @@ public class LinkClicksIntegrationTest extends AbstractBitlyClientIntegrationTes
 	@Test
 	public void callLinkClicksRolledUp() {
 		Response<LinkClicksRolledUp> resp = getClient().linkClicksRolledUp() //
-				.setLink("http://bit.ly/LfXpbF") //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.setTimezone(0) //
-				.setLimit(1000) //
-				.call();
+			.setLink("http://bit.ly/LfXpbF") //
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.setTimezone(0) //
+			.setLimit(1000) //
+			.call();
 
 		printAndVerify(resp, LinkClicksRolledUp.class);
 
@@ -54,12 +53,12 @@ public class LinkClicksIntegrationTest extends AbstractBitlyClientIntegrationTes
 	@Test
 	public void callLinkClicksExpanded() {
 		Response<LinkClicksExpanded> resp = getClient().linkClicksExpanded() //
-				.setLink("http://bit.ly/LfXpbF") //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.setTimezone(0) //
-				.setLimit(1000) //
-				.call();
+			.setLink("http://bit.ly/LfXpbF") //
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.setTimezone(0) //
+			.setLimit(1000) //
+			.call();
 
 		printAndVerify(resp, LinkClicksExpanded.class);
 

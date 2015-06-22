@@ -26,7 +26,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_info">/v3/user/info</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserInfoIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -34,7 +33,7 @@ public class UserInfoIntegrationTest extends AbstractBitlyClientIntegrationTest 
 	@Test
 	public void callUserInfoForAccessTokenUser() {
 		Response<UserInfoResponse> resp = getClient().userInfo() //
-				.call();
+			.call();
 
 		printAndVerify(resp, UserInfoResponse.class);
 
@@ -44,8 +43,8 @@ public class UserInfoIntegrationTest extends AbstractBitlyClientIntegrationTest 
 	@Test
 	public void callUserInfoForAnotherLogin() {
 		Response<UserInfoResponse> resp = getClient().userInfo() //
-				.setLogin("bufferapp") //
-				.call();
+			.setLogin("bufferapp") //
+			.call();
 
 		printAndVerify(resp, UserInfoResponse.class);
 

@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referrers">/v3/link/referrers</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkReferrersRequest extends MetricsRequest<LinkReferrersRequest, LinkReferrersResponse> {
@@ -47,7 +46,6 @@ public class LinkReferrersRequest extends MetricsRequest<LinkReferrersRequest, L
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkReferrersResponse>>() {
-		}.getType();
+		return new TypeToken<Response<LinkReferrersResponse>>() {}.getType();
 	}
 }

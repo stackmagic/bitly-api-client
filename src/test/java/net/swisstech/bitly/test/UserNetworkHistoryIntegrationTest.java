@@ -29,10 +29,8 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_network_history">/v3/user/network_history</a>
- * request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_network_history">/v3/user/network_history</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserNetworkHistoryIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -42,7 +40,7 @@ public class UserNetworkHistoryIntegrationTest extends AbstractBitlyClientIntegr
 	@Test
 	public void callUserNetworkHistory() {
 		Response<UserNetworkHistoryResponse> resp = getClient().userNetworkHistory() //
-				.call();
+			.call();
 
 		printAndVerify(resp, UserNetworkHistoryResponse.class);
 

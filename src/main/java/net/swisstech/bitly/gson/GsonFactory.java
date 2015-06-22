@@ -29,7 +29,6 @@ import com.google.gson.GsonBuilder;
 
 /**
  * Factory for a Gson Instance, initialized with all converters used/needed. Only a single instance is created since Gson is thread-safe.
- *
  * @author Patrick Huber (gmail: stackmagic)
  */
 public final class GsonFactory {
@@ -37,8 +36,7 @@ public final class GsonFactory {
 	private static final Gson GSON;
 
 	/** private constructor for utility class */
-	private GsonFactory() {
-	}
+	private GsonFactory() {}
 
 	static {
 		GsonBuilder builder = new GsonBuilder();

@@ -28,7 +28,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_info">/v3/info</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class InfoRequest extends Request<InfoResponse> {
@@ -48,8 +47,7 @@ public class InfoRequest extends Request<InfoResponse> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<InfoResponse>>() {
-		}.getType();
+		return new TypeToken<Response<InfoResponse>>() {}.getType();
 	}
 
 	/**

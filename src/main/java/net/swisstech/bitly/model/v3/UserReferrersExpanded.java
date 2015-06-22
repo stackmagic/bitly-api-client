@@ -23,7 +23,6 @@ import net.swisstech.bitly.model.MetricsResponse;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_referrers">/v3/user/referrers</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserReferrersExpanded extends MetricsResponse {

@@ -27,8 +27,7 @@ public final class TestUtil {
 	private static final Logger LOG = LoggerFactory.getLogger(TestUtil.class);
 
 	/** private constructor for utility class */
-	private TestUtil() {
-	}
+	private TestUtil() {}
 
 	public static <T> void printAndVerify(Response<T> resp, Class<T> type) {
 		printAndVerify(resp, type, 200, "OK");

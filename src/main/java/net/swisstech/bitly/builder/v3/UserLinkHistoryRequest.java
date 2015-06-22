@@ -29,7 +29,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_link_history">/v3/user/link_history</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkHistoryRequest extends Request<UserLinkHistoryResponse> {
@@ -49,8 +48,7 @@ public class UserLinkHistoryRequest extends Request<UserLinkHistoryResponse> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkHistoryResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserLinkHistoryResponse>>() {}.getType();
 	}
 
 	/**

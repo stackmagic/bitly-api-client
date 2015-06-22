@@ -25,10 +25,8 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts">/v3/user/shorten_counts</a>
- * request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts">/v3/user/shorten_counts</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserShortenCountsRolledUpRequest extends MetricsRolledUpRequest<UserShortenCountsRolledUpRequest, UserShortenCountsRolledUpResponse> {
@@ -48,7 +46,6 @@ public class UserShortenCountsRolledUpRequest extends MetricsRolledUpRequest<Use
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserShortenCountsRolledUpResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserShortenCountsRolledUpResponse>>() {}.getType();
 	}
 }

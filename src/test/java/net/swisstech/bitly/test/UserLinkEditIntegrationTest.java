@@ -27,7 +27,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_edit">/v3/user/link_edit</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkEditIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -36,10 +35,10 @@ public class UserLinkEditIntegrationTest extends AbstractBitlyClientIntegrationT
 	public void callUserLinkEdit() {
 		// test link to https://www.example.com/bitly-api-client-test
 		Response<UserLinkEditResponse> resp = getClient().userLinkEdit() //
-				.setLink("http://bit.ly/MtVsf1") //
-				.setNote("Note: " + System.currentTimeMillis()) //
-				.setUserTs(DateTime.now()) //
-				.call();
+			.setLink("http://bit.ly/MtVsf1") //
+			.setNote("Note: " + System.currentTimeMillis()) //
+			.setUserTs(DateTime.now()) //
+			.call();
 
 		printAndVerify(resp, UserLinkEditResponse.class);
 

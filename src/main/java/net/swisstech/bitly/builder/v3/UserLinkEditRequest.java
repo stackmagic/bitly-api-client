@@ -35,12 +35,10 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_edit">/v3/user/link_edit</a> request.
  * </p>
- * 
  * <p>
- * This builder adds the <code>edit</code> field automatically. If you call setNote(), the request will contain a field named <code>edit</code> with
- * the value <code>note</code> (or a commaseparated list of multiple parameters) to tell the api which fields are to be changed.
+ * This builder adds the <code>edit</code> field automatically. If you call setNote(), the request will contain a field named <code>edit</code> with the value
+ * <code>note</code> (or a commaseparated list of multiple parameters) to tell the api which fields are to be changed.
  * </p>
- * 
  * <p>
  * Notes (by bitly)
  * <ul>
@@ -48,7 +46,6 @@ import com.google.gson.reflect.TypeToken;
  * <li>Because link metadata is modified asynchronously, it may take a few moments for changes made via this API method to update.</li>
  * </ul>
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkEditRequest extends Request<UserLinkEditResponse> {
@@ -68,8 +65,7 @@ public class UserLinkEditRequest extends Request<UserLinkEditResponse> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkEditResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserLinkEditResponse>>() {}.getType();
 	}
 
 	/**

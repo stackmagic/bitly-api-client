@@ -28,8 +28,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 /**
- * Type Converter to serialize and deserialize Joda Time {@link DateTime}
- * objects. Copied from the GSON Project Wiki/Manual.
+ * Type Converter to serialize and deserialize Joda Time {@link DateTime} objects. Copied from the GSON Project Wiki/Manual.
  */
 public class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDeserializer<DateTime> {
 
@@ -42,7 +41,8 @@ public class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDese
 	public DateTime deserialize(JsonElement json, Type type, JsonDeserializationContext context) {
 		try {
 			return new DateTime(json.getAsLong());
-		} catch (IllegalArgumentException e) {
+		}
+		catch (IllegalArgumentException e) {
 			// May be it can be formatted as a java.util.Date, so try that
 			Date date = context.deserialize(json, Date.class);
 			return new DateTime(date);

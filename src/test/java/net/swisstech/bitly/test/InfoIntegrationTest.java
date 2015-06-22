@@ -31,7 +31,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_info">/v3/info</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class InfoIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -39,14 +38,14 @@ public class InfoIntegrationTest extends AbstractBitlyClientIntegrationTest {
 	@Test
 	public void callInfo() throws IOException {
 		Response<InfoResponse> resp = getClient().info() //
-				.setExpandUser(false) //
-				.addHash("phphotoLakeZurichAtDusk") //
-				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
-				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
-				.addShortUrl("http://bit.ly/LCJq0b") //
-				.addShortUrls("http://bit.ly/phphotoCrossroads", "http://bit.ly/springFever") //
-				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
-				.call();
+			.setExpandUser(false) //
+			.addHash("phphotoLakeZurichAtDusk") //
+			.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
+			.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
+			.addShortUrl("http://bit.ly/LCJq0b") //
+			.addShortUrls("http://bit.ly/phphotoCrossroads", "http://bit.ly/springFever") //
+			.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
+			.call();
 
 		printAndVerify(resp, InfoResponse.class);
 

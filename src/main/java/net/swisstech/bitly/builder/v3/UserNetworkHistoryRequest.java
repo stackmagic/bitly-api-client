@@ -25,10 +25,8 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_network_history">/v3/user/network_history</a>
- * request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_network_history">/v3/user/network_history</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserNetworkHistoryRequest extends Request<UserNetworkHistoryResponse> {
@@ -54,8 +52,7 @@ public class UserNetworkHistoryRequest extends Request<UserNetworkHistoryRespons
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserNetworkHistoryResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserNetworkHistoryResponse>>() {}.getType();
 	}
 
 	/**
@@ -80,8 +77,8 @@ public class UserNetworkHistoryRequest extends Request<UserNetworkHistoryRespons
 
 	/**
 	 * optional: set to expand the user
-	 * @param expand_user <code>true|false</code> - include extra user info in response (<code>login</code>, <code>avatar_url</code>,
-	 *            <code>display_name</code>, <code>profile_url</code>, <code>full_name</code>). default is <code>false</code>
+	 * @param expand_user <code>true|false</code> - include extra user info in response (<code>login</code>, <code>avatar_url</code>, <code>display_name</code>,
+	 *            <code>profile_url</code>, <code>full_name</code>). default is <code>false</code>
 	 * @return this builder
 	 */
 	// public UserNetworkHistoryRequest setExpandUser(boolean expand_user) {

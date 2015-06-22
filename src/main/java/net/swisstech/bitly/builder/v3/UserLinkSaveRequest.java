@@ -29,20 +29,18 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_save">/v3/user/link_save</a> request.
  * </p>
- * 
  * <p>
  * Notes (by bitly)
  * <ul>
- * <li>Long URLs should be <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoded</a>. You can not include a longUrl in the request that
- * has <code>&amp;</code>, <code>?</code>, <code>#</code>, or other reserved parameters without first encoding it.</li>
- * <li>Long URLs should not contain spaces: any longUrl with spaces will be rejected. All spaces should be either percent encoded <code>%20</code> or
- * plus encoded <code>+</code>. Note that tabs, newlines and trailing spaces are all indications of errors. Please remember to strip leading and
- * trailing whitespace from any user input before saving.</li>
- * <li>Long URLs must have a slash between the domain and the path component. For example, <code>http://example.com?query=parameter</code> is invalid,
- * and instead should be formatted as <code>http://example.com/?query=parameter</code></li>
+ * <li>Long URLs should be <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoded</a>. You can not include a longUrl in the request that has
+ * <code>&amp;</code>, <code>?</code>, <code>#</code>, or other reserved parameters without first encoding it.</li>
+ * <li>Long URLs should not contain spaces: any longUrl with spaces will be rejected. All spaces should be either percent encoded <code>%20</code> or plus
+ * encoded <code>+</code>. Note that tabs, newlines and trailing spaces are all indications of errors. Please remember to strip leading and trailing whitespace
+ * from any user input before saving.</li>
+ * <li>Long URLs must have a slash between the domain and the path component. For example, <code>http://example.com?query=parameter</code> is invalid, and
+ * instead should be formatted as <code>http://example.com/?query=parameter</code></li>
  * </ul>
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkSaveRequest extends Request<UserLinkSaveResponse> {
@@ -62,8 +60,7 @@ public class UserLinkSaveRequest extends Request<UserLinkSaveResponse> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkSaveResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserLinkSaveResponse>>() {}.getType();
 	}
 
 	/**

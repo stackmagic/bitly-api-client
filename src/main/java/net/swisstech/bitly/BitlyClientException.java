@@ -17,7 +17,6 @@ package net.swisstech.bitly;
 
 /**
  * Simple RuntimeException. Thrown if something goes wrong.
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class BitlyClientException extends RuntimeException {

@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_popular_links">/v3/user/popular_links</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserPopularLinksRequest extends MetricsRequest<UserPopularLinksRequest, UserPopularLinksResponse> {
@@ -47,7 +46,6 @@ public class UserPopularLinksRequest extends MetricsRequest<UserPopularLinksRequ
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserPopularLinksResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserPopularLinksResponse>>() {}.getType();
 	}
 }

@@ -21,14 +21,13 @@ import net.swisstech.bitly.model.ToStringSupport;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_shorten">/v3/shorten</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class ShortenResponse extends ToStringSupport {
 
 	/**
-	 * designates if this is the first time this long_url was shortened by this user. The return value will equal 1 the first time a long_url is
-	 * shortened. It will also then be added to the user history
+	 * designates if this is the first time this long_url was shortened by this user. The return value will equal 1 the first time a long_url is shortened. It
+	 * will also then be added to the user history
 	 */
 	public long new_hash;
 
@@ -42,8 +41,8 @@ public class ShortenResponse extends ToStringSupport {
 	public String global_hash;
 
 	/**
-	 * an echo back of the longUrl request parameter. This may not always be equal to the URL requested, as some URL normalization may occur (e.g.,
-	 * due to encoding differences, or case differences in the domain). This long_url will always be functionally identical the the request parameter
+	 * an echo back of the longUrl request parameter. This may not always be equal to the URL requested, as some URL normalization may occur (e.g., due to
+	 * encoding differences, or case differences in the domain). This long_url will always be functionally identical the the request parameter
 	 */
 	public String long_url;
 }

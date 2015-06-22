@@ -24,7 +24,6 @@ import net.swisstech.bitly.model.ToStringSupport;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referrers">/v3/link/referrers</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkReferrersResponse extends MetricsResponse {

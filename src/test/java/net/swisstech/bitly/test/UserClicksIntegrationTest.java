@@ -28,9 +28,9 @@ public class UserClicksIntegrationTest extends AbstractBitlyClientIntegrationTes
 	@Test
 	public void callUserClicksExpanded() {
 		Response<UserClicksExpanded> resp = getClient().userClicksExpanded() //
-				.setUnit("day") //
-				.setUnits(500) //
-				.call();
+			.setUnit("day") //
+			.setUnits(500) //
+			.call();
 
 		printAndVerify(resp, UserClicksExpanded.class);
 
@@ -40,9 +40,9 @@ public class UserClicksIntegrationTest extends AbstractBitlyClientIntegrationTes
 	@Test
 	public void callUserClicksRolledUp() {
 		Response<UserClicksRolledUp> resp = getClient().userClicksRolledUp() //
-				.setUnit("day") //
-				.setUnits(500) //
-				.call();
+			.setUnit("day") //
+			.setUnits(500) //
+			.call();
 
 		printAndVerify(resp, UserClicksRolledUp.class);
 	}

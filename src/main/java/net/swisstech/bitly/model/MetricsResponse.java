@@ -19,7 +19,6 @@ package net.swisstech.bitly.model;
  * <p>
  * base response for all responses that return some form of metrics. they all have largely the same parameters.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public abstract class MetricsResponse extends ToStringSupport {

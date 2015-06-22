@@ -29,7 +29,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_save">/v3/user/link_save</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkSaveIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -38,12 +37,12 @@ public class UserLinkSaveIntegrationTest extends AbstractBitlyClientIntegrationT
 	public void callUserLinkSaveExistingLink() {
 		// must have a unique link and so we add milliseconds
 		Response<UserLinkSaveResponse> resp = getClient().userLinkSave() //
-				.setLongUrl("https://www.example.com/bitly-api-client-test") //
-				.setTitle("example user link save (existing)") //
-				.setNote("testing link save (existing)") //
-				.setPrivate(true) //
-				.setUserTs(DateTime.now()) //
-				.call();
+			.setLongUrl("https://www.example.com/bitly-api-client-test") //
+			.setTitle("example user link save (existing)") //
+			.setNote("testing link save (existing)") //
+			.setPrivate(true) //
+			.setUserTs(DateTime.now()) //
+			.call();
 
 		printAndVerify(resp, UserLinkSaveResponse.class, 304, "LINK_ALREADY_EXISTS");
 
@@ -57,12 +56,12 @@ public class UserLinkSaveIntegrationTest extends AbstractBitlyClientIntegrationT
 	public void callUserLinkSaveNewLink() {
 		String longUrl = "https://www.example.com/bitly-api-client-test/" + System.currentTimeMillis();
 		Response<UserLinkSaveResponse> resp = getClient().userLinkSave() //
-				.setLongUrl(longUrl) //
-				.setTitle("example user link save (new)") //
-				.setNote("testing link save (new)") //
-				.setPrivate(true) //
-				.setUserTs(DateTime.now()) //
-				.call();
+			.setLongUrl(longUrl) //
+			.setTitle("example user link save (new)") //
+			.setNote("testing link save (new)") //
+			.setPrivate(true) //
+			.setUserTs(DateTime.now()) //
+			.call();
 
 		printAndVerify(resp, UserLinkSaveResponse.class);
 
@@ -73,9 +72,9 @@ public class UserLinkSaveIntegrationTest extends AbstractBitlyClientIntegrationT
 
 		// can't have this showing up in my history so archive it
 		Response<UserLinkEditResponse> edit = getClient().userLinkEdit() //
-				.setLink(resp.data.link_save.link) //
-				.setArchived(true) //
-				.call();
+			.setLink(resp.data.link_save.link) //
+			.setArchived(true) //
+			.call();
 
 		printAndVerify(edit, UserLinkEditResponse.class);
 

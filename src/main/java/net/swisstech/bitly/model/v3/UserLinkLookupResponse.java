@@ -23,7 +23,6 @@ import net.swisstech.bitly.model.ToStringSupport;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_lookup">/v3/user/link_lookup</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkLookupResponse extends ToStringSupport {

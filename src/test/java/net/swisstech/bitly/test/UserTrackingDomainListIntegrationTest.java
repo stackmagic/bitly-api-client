@@ -23,17 +23,17 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a
- * href="http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list">/v3/user/tracking_domain_list</a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list">/v3/user/tracking_domain_list</a>
+ * request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserTrackingDomainListIntegrationTest extends AbstractBitlyClientIntegrationTest {
+
 	@Test
 	public void callUserTrackingDomainList() {
 		Response<UserTrackingDomainListResponse> resp = getClient().userTrackingDomainList() //
-				.call();
+			.call();
 
 		printAndVerify(resp, UserTrackingDomainListResponse.class);
 	}

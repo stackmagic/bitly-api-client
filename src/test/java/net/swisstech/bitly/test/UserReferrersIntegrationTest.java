@@ -28,7 +28,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_referrers">/v3/user/referrers</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserReferrersIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -38,9 +37,9 @@ public class UserReferrersIntegrationTest extends AbstractBitlyClientIntegration
 	@Test
 	public void callUserReferrersExpanded() {
 		Response<UserReferrersExpanded> resp = getClient().userReferersExpanded() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.call();
 
 		printAndVerify(resp, UserReferrersExpanded.class);
 

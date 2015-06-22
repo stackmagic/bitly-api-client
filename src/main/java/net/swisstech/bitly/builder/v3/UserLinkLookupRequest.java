@@ -28,7 +28,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the <a href="http://dev.bitly.com/links.html#v3_user_link_lookup">bit.ly documentation for the /v3/user/link_lookup</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkLookupRequest extends Request<UserLinkLookupResponse> {
@@ -48,8 +47,7 @@ public class UserLinkLookupRequest extends Request<UserLinkLookupResponse> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserLinkLookupResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserLinkLookupResponse>>() {}.getType();
 	}
 
 	/**

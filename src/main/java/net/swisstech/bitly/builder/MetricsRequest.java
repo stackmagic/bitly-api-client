@@ -19,10 +19,9 @@ import org.joda.time.DateTime;
 
 /**
  * <p>
- * Base Request for all Metrics Requests that have the common link/unit/units/timezone/limit/unit_reference_ts parameters. Uses two generic types for
- * the return type (so we can keep the fluent builder pattern) and for the data type.
+ * Base Request for all Metrics Requests that have the common link/unit/units/timezone/limit/unit_reference_ts parameters. Uses two generic types for the return
+ * type (so we can keep the fluent builder pattern) and for the data type.
  * </p>
- * 
  * @param <REQ> Type of the Request Builder
  * @param <DATA> Type of the Response DTO
  */
@@ -37,10 +36,7 @@ public abstract class MetricsRequest<REQ extends MetricsRequest<REQ, DATA>, DATA
 	}
 
 	/**
-	 * set the link
-	 * 
-	 * TODO this isn't used/allowed in all metrics requests!
-	 * 
+	 * set the link TODO this isn't used/allowed in all metrics requests!
 	 * @param link a bitly link
 	 * @return this builder
 	 */
@@ -99,8 +95,8 @@ public abstract class MetricsRequest<REQ extends MetricsRequest<REQ, DATA>, DATA
 	 * set the newest point in time from where to fetch data backwards into the past
 	 * @param unit_reference_ts an epoch timestamp, indicating the most recent time for which to pull metrics. default:<code>now</code> <br/>
 	 *            <strong>Note:</strong> the value of <code>unit_reference_ts</code> rounds to the nearest <code>unit</code>. <br/>
-	 *            <strong>Note:</strong> historical data is stored hourly beyond the most recent 60 minutes. If a <code>unit_reference_ts</code> is
-	 *            specified, <code>unit</code> cannot be <code>minute</code>
+	 *            <strong>Note:</strong> historical data is stored hourly beyond the most recent 60 minutes. If a <code>unit_reference_ts</code> is specified,
+	 *            <code>unit</code> cannot be <code>minute</code>
 	 * @return this builder
 	 */
 	@SuppressWarnings("unchecked")

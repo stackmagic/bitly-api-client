@@ -25,7 +25,6 @@ import org.joda.time.DateTime;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_info">/v3/info</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class InfoResponse extends ToStringSupport {

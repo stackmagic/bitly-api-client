@@ -3,7 +3,6 @@ package net.swisstech.bitly.model;
 
 /**
  * Partial response. This will be used on its own to deserialize just the status fields if there was an error deserializing bitly's response as a whole.
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class ResponsePartial extends ToStringSupport {

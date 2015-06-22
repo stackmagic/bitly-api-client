@@ -22,7 +22,6 @@ import net.swisstech.bitly.BitlyClientException;
 
 /**
  * Encoding Utilities
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public final class EncodingUtil {
@@ -31,19 +30,18 @@ public final class EncodingUtil {
 	private static final String ENCODING = "UTF-8";
 
 	/** private constructor for utility class */
-	private EncodingUtil() {
-	}
+	private EncodingUtil() {}
 
 	/**
 	 * URL-Encode a String. Throws a RuntimeException if the JVM does not support UTF-8.
-	 * 
 	 * @param unencodedString the String to be encoded
 	 * @return the encoded String
 	 */
 	public static String encode(String unencodedString) {
 		try {
 			return URLEncoder.encode(unencodedString, ENCODING);
-		} catch (UnsupportedEncodingException e) {
+		}
+		catch (UnsupportedEncodingException e) {
 			throw new BitlyClientException("Error encoding String '" + unencodedString + "' with charset '" + ENCODING + "'", e);
 		}
 	}

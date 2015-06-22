@@ -22,10 +22,8 @@ import net.swisstech.bitly.model.ToStringSupport;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_popular_links">/v3/user/popular_links</a>
- * request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_popular_links">/v3/user/popular_links</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserPopularLinksResponse extends MetricsResponse {

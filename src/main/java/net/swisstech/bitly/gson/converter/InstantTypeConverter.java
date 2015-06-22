@@ -27,8 +27,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 /**
- * Type Converter to serialize and deserialize Joda Time {@link Instant}
- * objects. Copied from the GSON Project Wiki/Manual.
+ * Type Converter to serialize and deserialize Joda Time {@link Instant} objects. Copied from the GSON Project Wiki/Manual.
  */
 public class InstantTypeConverter implements JsonSerializer<Instant>, JsonDeserializer<Instant> {
 

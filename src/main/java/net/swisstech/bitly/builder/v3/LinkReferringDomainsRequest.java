@@ -25,10 +25,9 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referring_domains" >/v3/link/referring_domains
- *</a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referring_domains" >/v3/link/referring_domains </a>
+ * request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkReferringDomainsRequest extends MetricsRequest<LinkReferringDomainsRequest, LinkReferringDomainsResponse> {
@@ -48,7 +47,6 @@ public class LinkReferringDomainsRequest extends MetricsRequest<LinkReferringDom
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkReferringDomainsResponse>>() {
-		}.getType();
+		return new TypeToken<Response<LinkReferringDomainsResponse>>() {}.getType();
 	}
 }

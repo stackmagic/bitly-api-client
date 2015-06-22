@@ -28,7 +28,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_expand">/v3/expand</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class ExpandRequest extends Request<ExpandResponse> {
@@ -48,9 +47,9 @@ public class ExpandRequest extends Request<ExpandResponse> {
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<ExpandResponse>>() {
-		}.getType();
+		return new TypeToken<Response<ExpandResponse>>() {}.getType();
 	}
+
 	/**
 	 * Add a hash
 	 * @param hash refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name )

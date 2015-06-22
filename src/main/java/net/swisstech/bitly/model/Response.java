@@ -17,16 +17,13 @@ package net.swisstech.bitly.model;
 
 /**
  * <p>
- * Base response from the API. If the <code>status_code</code> or <code>status_txt</code> contain an error, it's very likely, that the
- * <code>data</code> field will be null or may contain garbage.
+ * Base response from the API. If the <code>status_code</code> or <code>status_txt</code> contain an error, it's very likely, that the <code>data</code> field
+ * will be null or may contain garbage.
  * </p>
- *
  * <p>
  * For more information on the base formats please see the <a href="http://dev.bitly.com/formats.html">bit.ly documentation on formats<O/a>.
  * </p>
- *
  * @author Patrick Huber (gmail: stackmagic)
- *
  * @param <T> Type of the Response
  */
 public class Response<T> extends ResponsePartial {

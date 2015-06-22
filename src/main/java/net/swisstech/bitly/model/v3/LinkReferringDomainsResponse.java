@@ -22,10 +22,9 @@ import net.swisstech.bitly.model.ToStringSupport;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referring_domains" >/v3/link/referring_domains
- * </a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_referring_domains" >/v3/link/referring_domains </a>
+ * request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkReferringDomainsResponse extends MetricsResponse {

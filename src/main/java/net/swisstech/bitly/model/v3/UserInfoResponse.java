@@ -25,7 +25,6 @@ import org.joda.time.DateTime;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_info">/v3/user/info</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserInfoResponse extends ToStringSupport {
@@ -49,9 +48,7 @@ public class UserInfoResponse extends ToStringSupport {
 	public String display_name;
 
 	/**
-	 * a list of the share accounts (Twitter or Facebook) linked to the user's account (optional, always returned in the response)
-	 * 
-	 * TODO substructure unclear
+	 * a list of the share accounts (Twitter or Facebook) linked to the user's account (optional, always returned in the response) TODO substructure unclear
 	 */
 	public List<Object> share_accounts;
 
@@ -59,53 +56,47 @@ public class UserInfoResponse extends ToStringSupport {
 	public String apiKey;
 
 	/**
-	 * <code>0</code> or <code>1</code> to indicate if this account is signed up for bitly enterprise (optional, only included in requests for a
-	 * user's own info)
+	 * <code>0</code> or <code>1</code> to indicate if this account is signed up for bitly enterprise (optional, only included in requests for a user's own
+	 * info)
 	 */
 	public boolean is_enterprise;
 
 	/**
-	 * A short domain registered with this account that can be used in place of <code>bit.ly</code> for shortening links (optional, only included in
-	 * requests for a user's own info)
+	 * A short domain registered with this account that can be used in place of <code>bit.ly</code> for shortening links (optional, only included in requests
+	 * for a user's own info)
 	 */
 	public String custom_short_domain;
 
 	/**
-	 * A list of domains configured for analytics tracking (optional, only included in requests for a user's own info)
-	 * 
-	 * TODO substructure unclear
+	 * A list of domains configured for analytics tracking (optional, only included in requests for a user's own info) TODO substructure unclear
 	 */
 	public List<Object> tracking_domains;
 
 	/**
-	 * <code>public</code> or <code>private</code> indicating the default privacy setting for new links (optional, only included in requests for a
-	 * user's own info)
+	 * <code>public</code> or <code>private</code> indicating the default privacy setting for new links (optional, only included in requests for a user's own
+	 * info)
 	 */
 	public String default_link_privacy;
 
 	/**
-	 * list of accounts associated with this account (optional, only included for enterprise accounts (is_enterprise == 1))
-	 * 
-	 * TODO substructure unclear
+	 * list of accounts associated with this account (optional, only included for enterprise accounts (is_enterprise == 1)) TODO substructure unclear
 	 */
 	public List<Object> sub_accounts;
 
 	/**
-	 * list of domains associated with this <code>custom_short_domain</code> (optional, only included for enterprise accounts (is_enterprise == 1))
-	 * TODO substructure unclear
+	 * list of domains associated with this <code>custom_short_domain</code> (optional, only included for enterprise accounts (is_enterprise == 1)) TODO
+	 * substructure unclear
 	 */
 	public List<Object> e2e_domains;
 
 	/**
-	 * the login of a master account, if this is associated with an enterprise account (optional, only included for enterprise accounts (is_enterprise
-	 * == 1))
+	 * the login of a master account, if this is associated with an enterprise account (optional, only included for enterprise accounts (is_enterprise == 1))
 	 */
 	public String master_account;
 
 	/**
-	 * list of enterprise permissions associated with this account (optional, only included for enterprise accounts (is_enterprise == 1))
-	 * 
-	 * TODO substructure unclear
+	 * list of enterprise permissions associated with this account (optional, only included for enterprise accounts (is_enterprise == 1)) TODO substructure
+	 * unclear
 	 */
 	public List<Object> enterprise_permissions;
 }

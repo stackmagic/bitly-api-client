@@ -29,7 +29,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_shorten">/v3/shorten</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class ShortenIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -37,8 +36,8 @@ public class ShortenIntegrationTest extends AbstractBitlyClientIntegrationTest {
 	@Test
 	public void callShorten() throws IOException {
 		Response<ShortenResponse> resp = getClient().shorten() //
-				.setLongUrl("https://www.example.com/") //
-				.call();
+			.setLongUrl("https://www.example.com/") //
+			.call();
 
 		printAndVerify(resp, ShortenResponse.class);
 

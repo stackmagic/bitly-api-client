@@ -25,10 +25,8 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_share_counts">/v3/user/share_counts</a>
- * request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_share_counts">/v3/user/share_counts</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserShareCountsRolledUpRequest extends MetricsRolledUpRequest<UserShareCountsRolledUpRequest, UserShareCountsRolledUpResponse> {
@@ -48,7 +46,6 @@ public class UserShareCountsRolledUpRequest extends MetricsRolledUpRequest<UserS
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserShareCountsRolledUpResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserShareCountsRolledUpResponse>>() {}.getType();
 	}
 }

@@ -26,7 +26,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_lookup">/v3/user/link_lookup</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkLookupIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -34,8 +33,8 @@ public class UserLinkLookupIntegrationTest extends AbstractBitlyClientIntegratio
 	@Test
 	public void callUserLinkLookup() {
 		Response<UserLinkLookupResponse> resp = getClient().userLinkLookup() //
-				.addUrl("https://www.example.com/bitly-api-client-test") //
-				.call();
+			.addUrl("https://www.example.com/bitly-api-client-test") //
+			.call();
 
 		printAndVerify(resp, UserLinkLookupResponse.class);
 

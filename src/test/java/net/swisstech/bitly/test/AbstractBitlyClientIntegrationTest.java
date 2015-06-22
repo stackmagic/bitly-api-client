@@ -25,10 +25,9 @@ import org.testng.annotations.BeforeMethod;
 
 /**
  * <p>
- * Please note, that, in order to run, all integration tests require a file called <code>.accesstoken</code> in the root directory of the project
- * which contains a valid working access token on a single line, no newlines, nothing.
+ * Please note, that, in order to run, all integration tests require a file called <code>.accesstoken</code> in the root directory of the project which contains
+ * a valid working access token on a single line, no newlines, nothing.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public abstract class AbstractBitlyClientIntegrationTest {

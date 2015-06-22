@@ -32,7 +32,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_expand">/v3/expand</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class ExpandIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -40,13 +39,13 @@ public class ExpandIntegrationTest extends AbstractBitlyClientIntegrationTest {
 	@Test
 	public void callExpand() throws IOException {
 		Response<ExpandResponse> resp = getClient().expand() //
-				.addHash("api-client") //
-				.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
-				.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
-				.addShortUrl("http://bit.ly/LCJq0b") //
-				.addShortUrls("http://bit.ly/phphotoCrossroads", "http://bit.ly/springFever") //
-				.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
-				.call();
+			.addHash("api-client") //
+			.addHashes("phphotoWinterSunII", "phphotoQuoVadis") //
+			.addHashes(Arrays.asList("phphotoDock3", "phphotoZueriWest")) //
+			.addShortUrl("http://bit.ly/LCJq0b") //
+			.addShortUrls("http://bit.ly/phphotoCrossroads", "http://bit.ly/springFever") //
+			.addShortUrls(Arrays.asList("http://bit.ly/phphotoBenched", "http://bit.ly/Lt5SJo")) //
+			.call();
 
 		printAndVerify(resp, ExpandResponse.class);
 

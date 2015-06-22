@@ -21,7 +21,6 @@ import net.swisstech.bitly.model.ToStringSupport;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/links.html#v3_user_link_save">/v3/user/link_save</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkSaveResponse extends ToStringSupport {
@@ -36,8 +35,7 @@ public class UserLinkSaveResponse extends ToStringSupport {
 		public String link;
 
 		/**
-		 * a bitly short URL for the provided longUrl, which can be used to track aggregate stats across all bitly links that point to the same
-		 * longUrl
+		 * a bitly short URL for the provided longUrl, which can be used to track aggregate stats across all bitly links that point to the same longUrl
 		 */
 		public String aggregate_link;
 
@@ -47,9 +45,8 @@ public class UserLinkSaveResponse extends ToStringSupport {
 		public long new_link;
 
 		/**
-		 * an echo back of the longUrl request parameter. This may not always be equal to the URL requested, as some URL normalization may occur
-		 * (e.g., due to encoding differences, or case differences in the domain). This long_url will always be functionally identical the the request
-		 * parameter
+		 * an echo back of the longUrl request parameter. This may not always be equal to the URL requested, as some URL normalization may occur (e.g., due to
+		 * encoding differences, or case differences in the domain). This long_url will always be functionally identical the the request parameter
 		 */
 		public String long_url;
 	}

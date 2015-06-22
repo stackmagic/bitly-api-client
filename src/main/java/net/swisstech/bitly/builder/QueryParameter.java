@@ -19,7 +19,6 @@ import net.swisstech.bitly.util.EncodingUtil;
 
 /**
  * Represents a single parameter in an url query as in <code>name=value</code>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class QueryParameter {

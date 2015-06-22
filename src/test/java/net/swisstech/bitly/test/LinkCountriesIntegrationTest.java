@@ -27,7 +27,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_countries">/v3/link/countries</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkCountriesIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -35,12 +34,12 @@ public class LinkCountriesIntegrationTest extends AbstractBitlyClientIntegration
 	@Test
 	public void callLinkCountriesExpanded() {
 		Response<LinkCountriesExpanded> resp = getClient().linkCountriesExpanded() //
-				.setLink("http://bit.ly/LfXpbF") //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.setTimezone(0) //
-				.setLimit(1000) //
-				.call();
+			.setLink("http://bit.ly/LfXpbF") //
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.setTimezone(0) //
+			.setLimit(1000) //
+			.call();
 
 		printAndVerify(resp, LinkCountriesExpanded.class);
 

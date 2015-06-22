@@ -40,9 +40,7 @@ import com.google.gson.JsonParseException;
 
 /**
  * Base Request Builder and logic to make the actual call, add query parameters etc.
- *
  * @author Patrick Huber (gmail: stackmagic)
- *
  * @param <T> Type of the Response
  */
 public abstract class Request<T> {
@@ -60,11 +58,8 @@ public abstract class Request<T> {
 	private List<QueryParameter> queryParameters = new LinkedList<QueryParameter>();
 
 	/**
-	 * Constructs a new Request
-	 *
-	 * TODO we could consider killing the constructor and instead add a setAccessToken method so the AT would be treated like every other query
-	 * parameter.
-	 *
+	 * Constructs a new Request TODO we could consider killing the constructor and instead add a setAccessToken method so the AT would be treated like every
+	 * other query parameter.
 	 * @param accessToken the access token to be used for the request
 	 */
 	public Request(String accessToken) {
@@ -86,10 +81,9 @@ public abstract class Request<T> {
 	public abstract String getEndpoint();
 
 	/**
-	 * GSON has this construct to deserialize generic types. Just using <code>Response&lt;T&gt;</code> won't work here for the same reasons GSON
-	 * introduced this construct in the first place. So the RequestBuilder has to return an explicit type here, no T parameters or anything because
-	 * that won't work and then GSON will serialize the responsee's data as a StringMap.
-	 *
+	 * GSON has this construct to deserialize generic types. Just using <code>Response&lt;T&gt;</code> won't work here for the same reasons GSON introduced this
+	 * construct in the first place. So the RequestBuilder has to return an explicit type here, no T parameters or anything because that won't work and then
+	 * GSON will serialize the responsee's data as a StringMap.
 	 * @return Type for GSON deserializer
 	 */
 	protected abstract Type getTypeForGson();
@@ -147,8 +141,8 @@ public abstract class Request<T> {
 	}
 
 	/**
-	 * Build the URL for the call to the API. Subclasses can override this method if they need to add extra parameters or do some other special
-	 * manipulations that this base implementation of URL builder doesn't provide.
+	 * Build the URL for the call to the API. Subclasses can override this method if they need to add extra parameters or do some other special manipulations
+	 * that this base implementation of URL builder doesn't provide.
 	 * @param queryParameters the QueryParameters
 	 * @return the URL
 	 */
@@ -203,7 +197,8 @@ public abstract class Request<T> {
 				return deserializePartial(resp);
 			}
 
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new BitlyClientException(e);
 		}
 	}

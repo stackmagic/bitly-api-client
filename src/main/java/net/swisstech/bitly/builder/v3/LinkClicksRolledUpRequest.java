@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/link_metrics.html#v3_link_clicks">/v3/link/clicks</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class LinkClicksRolledUpRequest extends MetricsRolledUpRequest<LinkClicksRolledUpRequest, LinkClicksRolledUp> {
@@ -47,7 +46,6 @@ public class LinkClicksRolledUpRequest extends MetricsRolledUpRequest<LinkClicks
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<LinkClicksRolledUp>>() {
-		}.getType();
+		return new TypeToken<Response<LinkClicksRolledUp>>() {}.getType();
 	}
 }

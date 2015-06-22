@@ -25,7 +25,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_popular_links">/v3/user/popular_links</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserPopularLinksIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -33,9 +32,9 @@ public class UserPopularLinksIntegrationTest extends AbstractBitlyClientIntegrat
 	@Test
 	public void callUserPopularLinksExpanded() {
 		Response<UserPopularLinksResponse> resp = getClient().userPopularLinksExpanded() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.call();
 
 		printAndVerify(resp, UserPopularLinksResponse.class);
 	}

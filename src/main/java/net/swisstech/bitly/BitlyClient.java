@@ -134,8 +134,8 @@ public class BitlyClient {
 	}
 
 	/**
-	 * <b>Note:</b> Contrary to the documentation, rollup always seems to behave as <code>true</code> for this call (no per-unit data returned, just
-	 * the sum per country).
+	 * <b>Note:</b> Contrary to the documentation, rollup always seems to behave as <code>true</code> for this call (no per-unit data returned, just the sum per
+	 * country).
 	 * @return
 	 */
 	@Deprecated

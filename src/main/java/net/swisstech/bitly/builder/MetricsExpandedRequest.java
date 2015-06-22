@@ -17,10 +17,9 @@ package net.swisstech.bitly.builder;
 
 /**
  * <p>
- * Base Request for all Expanded Metrics Requests that have the common link/unit/units/timezone/limit/unit_reference_ts parameters. Uses two generic
- * types for the return type (so we can keep the fluent builder pattern) and for the data type.
+ * Base Request for all Expanded Metrics Requests that have the common link/unit/units/timezone/limit/unit_reference_ts parameters. Uses two generic types for
+ * the return type (so we can keep the fluent builder pattern) and for the data type.
  * </p>
- * 
  * @param <REQ> Type of the Request Builder
  * @param <DATA> Type of the Response DTO
  */

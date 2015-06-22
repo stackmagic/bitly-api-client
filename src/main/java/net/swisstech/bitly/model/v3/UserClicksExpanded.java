@@ -26,7 +26,6 @@ import org.joda.time.DateTime;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_clicks">/v3/user/clicks</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserClicksExpanded extends MetricsResponse {

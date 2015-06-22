@@ -31,7 +31,6 @@ import org.testng.annotations.Test;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_info.html#v3_user_link_history">/v3/user/link_history</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -39,7 +38,7 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 	@Test
 	public void callUserLinkHistoryGeneral() {
 		Response<UserLinkHistoryResponse> resp = getClient().userLinkHistory() //
-				.call();
+			.call();
 
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 
@@ -57,8 +56,8 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 	@Test
 	public void callUserLinkHistoryPrivateOn() {
 		Response<UserLinkHistoryResponse> resp = getClient().userLinkHistory() //
-				.setPrivate("on") //
-				.call();
+			.setPrivate("on") //
+			.call();
 
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 
@@ -71,8 +70,8 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 	@Test
 	public void callUserLinkHistoryPrivateOff() {
 		Response<UserLinkHistoryResponse> resp = getClient().userLinkHistory() //
-				.setPrivate("off") //
-				.call();
+			.setPrivate("off") //
+			.call();
 
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 
@@ -85,8 +84,8 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 	@Test
 	public void callUserLinkHistoryArchivedOn() {
 		Response<UserLinkHistoryResponse> resp = getClient().userLinkHistory() //
-				.setArchived("on") //
-				.call();
+			.setArchived("on") //
+			.call();
 
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 
@@ -99,8 +98,8 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 	@Test
 	public void callUserLinkHistoryArchivedOff() {
 		Response<UserLinkHistoryResponse> resp = getClient().userLinkHistory() //
-				.setArchived("off") //
-				.call();
+			.setArchived("off") //
+			.call();
 
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 
@@ -113,8 +112,8 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 	@Test
 	public void callUserLinkHistoryForSingleLink() {
 		Response<UserLinkHistoryResponse> resp = getClient().userLinkHistory() //
-				.setLink("http://bit.ly/LlpM8d") //
-				.call();
+			.setLink("http://bit.ly/LlpM8d") //
+			.call();
 
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 
@@ -124,8 +123,8 @@ public class UserLinkHistoryIntegrationTest extends AbstractBitlyClientIntegrati
 	@Test
 	public void callUserLinkHistoryForAnotherUser() {
 		Response<UserLinkHistoryResponse> resp = getClient().userLinkHistory() //
-				.setUser("bufferapp") //
-				.call();
+			.setUser("bufferapp") //
+			.call();
 
 		printAndVerify(resp, UserLinkHistoryResponse.class);
 

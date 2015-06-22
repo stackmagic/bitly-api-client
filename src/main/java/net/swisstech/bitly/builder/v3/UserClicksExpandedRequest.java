@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_clicks">/v3/user/clicks</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserClicksExpandedRequest extends MetricsExpandedRequest<UserClicksExpandedRequest, UserClicksExpanded> {
@@ -47,7 +46,6 @@ public class UserClicksExpandedRequest extends MetricsExpandedRequest<UserClicks
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserClicksExpanded>>() {
-		}.getType();
+		return new TypeToken<Response<UserClicksExpanded>>() {}.getType();
 	}
 }

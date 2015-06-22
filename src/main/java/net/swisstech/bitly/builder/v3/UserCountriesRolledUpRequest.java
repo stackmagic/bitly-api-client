@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
  * <p>
  * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_countries">/v3/user/countries</a> request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserCountriesRolledUpRequest extends MetricsRolledUpRequest<UserCountriesRolledUpRequest, UserCountriesRolledUpResponse> {
@@ -47,7 +46,6 @@ public class UserCountriesRolledUpRequest extends MetricsRolledUpRequest<UserCou
 
 	@Override
 	protected Type getTypeForGson() {
-		return new TypeToken<Response<UserCountriesRolledUpResponse>>() {
-		}.getType();
+		return new TypeToken<Response<UserCountriesRolledUpResponse>>() {}.getType();
 	}
 }

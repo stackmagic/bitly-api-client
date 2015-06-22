@@ -26,10 +26,9 @@ import org.testng.annotations.Test;
 
 /**
  * <p>
- * Please see the bit.ly documentation for the <a
- * href="http://dev.bitly.com/user_metrics.html#v3_user_referring_domains">/v3/user/referring_domains</a> request.
+ * Please see the bit.ly documentation for the <a href="http://dev.bitly.com/user_metrics.html#v3_user_referring_domains">/v3/user/referring_domains</a>
+ * request.
  * </p>
- * 
  * @author Patrick Huber (gmail: stackmagic)
  */
 public class UserReferringDomainsIntegrationTest extends AbstractBitlyClientIntegrationTest {
@@ -37,9 +36,9 @@ public class UserReferringDomainsIntegrationTest extends AbstractBitlyClientInte
 	@Test
 	public void callUserReferringDomainsExpanded() {
 		Response<UserReferringDomainsResponse> resp = getClient().userReferringDomainsExpanded() //
-				.setUnit("hour") //
-				.setUnits(-1) //
-				.call();
+			.setUnit("hour") //
+			.setUnits(-1) //
+			.call();
 
 		printAndVerify(resp, UserReferringDomainsResponse.class);
 
