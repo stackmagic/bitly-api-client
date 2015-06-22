@@ -1,0 +1,110 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+description = 'Bitly API Client'
+group       = 'net.swisstech'
+version     = '0.8.0'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+// normal repositories and dependencies
+repositories {
+	jcenter()
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	// json (de)serializing
+	compile 'com.google.code.gson:gson:2.2.4'
+
+	// date and time functionality
+	compile 'joda-time:joda-time:2.2'
+
+	// logging
+	compile 'org.slf4j:slf4j-api:1.7.5'
+
+	// unit testing
+	testCompile 'org.slf4j:jcl-over-slf4j:1.7.5'
+	testCompile 'ch.qos.logback:logback-classic:1.0.13'
+	testCompile 'org.testng:testng:6.8.5'
+}
+
+// testing
+test.useTestNG()
+
+// TODO use eclipse-enhancer once it is published
+eclipseProject.doLast {
+	sourceSets*.java.srcDirs*.each      { it.mkdirs() }
+	sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+// END TODO
+
+// task to generate wrapper
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.1'
+}
+
+// source-code jar
+task sourceJar(type: Jar) {
+	from sourceSets.main.allSource
+}
+
+// bintray uses the publication, also includes source jar
+apply plugin: 'maven-publish'
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			artifact sourceJar {
+				classifier 'sources'
+			}
+		}
+	}
+}
+
+// uploading to jcenter
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6'
+	}
+}
+
+def getProperty = { String name ->
+	try {
+		return project[name]
+	}
+	catch (MissingPropertyException e) {
+		println "!!! property ${name} is not available"
+		return ""
+	}
+}
+
+apply plugin: 'com.jfrog.bintray'
+bintray {
+	// key and user must be in your ~/.gradle/gradle.properties
+	key          = getProperty('swisstech_bintray_apikey')
+	user         = getProperty('swisstech_bintray_user')
+	dryRun       = false
+	publish      = true
+	publications = [ 'mavenJava' ]
+	pkg {
+		repo            = 'maven'
+		name            = project.name
+		desc            = project.description
+		licenses        = [ 'Apache-2.0' ]
+		websiteUrl      = "https://github.com/stackmagic/${project.name}"
+		vcsUrl          = "https://github.com/stackmagic/${project.name}.git"
+		issueTrackerUrl = "https://github.com/stackmagic/${project.name}/issues"
+		publicDownloadNumbers = true
+		version {
+			name = project.version
+			desc = project.description
+		}
+	}
+}
