@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.swisstech.bitly</groupId>
 	<artifactId>bitly-api-client</artifactId>
-	<version>0.7.2</version>
+	<version>0.7.3</version>
 	<name>bit.ly API Client in Java</name>
 
 	<distributionManagement>
