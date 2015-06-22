@@ -1,3 +1,18 @@
+
+# new stuff
+
+* http://dev.bitly.com/links.html#v3_user_save_custom_domain_keyword
+* http://dev.bitly.com/link_metrics.html#v3_link_encoders
+* http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count
+* http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain
+* http://dev.bitly.com/user_metrics.html#v3_user_popular_earned_by_clicks
+* http://dev.bitly.com/user_metrics.html#v3_user_popular_earned_by_shortens
+* http://dev.bitly.com/user_metrics.html#v3_user_popular_owned_by_clicks
+* http://dev.bitly.com/user_metrics.html#v3_user_popular_owned_by_shortens
+* ... more?
+
+# old todos
+
 * Expand: Eliminate duplicate parameters
 * Expand: Throw exception when exceeding max of 15 hash/shortUrls
 * Expand: Throw exception when not at least 1 hash/shortUrls
