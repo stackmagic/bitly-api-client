@@ -114,7 +114,7 @@ The `Response<T>` is a container that contains 3 important fields:
 * status_txt
 * data
 
-The `data` field contains the actual response information of type `T`. It is possible, that the `data` field is null. As of now, it is your obligation to check the status_code and act accordingly. No exceptions are thrown if an error response is received. [The meaning of the status_code](http://dev.bitly.com/formats.html) is well documented by bitly.
+The `data` field contains the actual response information of type `T`. It is possible, that the `data` field is `null`. As of now, it is your obligation to check the `status_code` and act accordingly. No exceptions are thrown if an error response is received. [The meaning of the `status_code`](http://dev.bitly.com/formats.html) is well documented by bitly.
 
 # Roadmap
 
