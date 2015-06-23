@@ -1,8 +1,6 @@
 bit.ly api client built in java
 ===============================
 
-Build Status: !https://secure.travis-ci.org/stackmagic/bitly-api-client.png?branch=master!
-
 [ ![TravicCI](https://travis-ci.org/stackmagic/bitly-api-client.svg?branch=master) ](https://travis-ci.org/stackmagic/bitly-api-client)
 [ ![Download](https://api.bintray.com/packages/stackmagic/maven/bitly-api-client/images/download.svg) ](https://bintray.com/stackmagic/maven/bitly-api-client/_latestVersion)
 
@@ -125,7 +123,7 @@ The `Response<T>` is a container that contains 3 important fields:
 * status_txt
 * data
 
-The `data` field contains the actual response information of type `T`. It is possible, that the `data` field is null. As of now, it is your obligation to check the status_code and act accordingly. No exceptions are thrown if an error response is received. "The meaning of the status_code":http://dev.bitly.com/formats.html is well documented by bitly.
+The `data` field contains the actual response information of type `T`. It is possible, that the `data` field is null. As of now, it is your obligation to check the status_code and act accordingly. No exceptions are thrown if an error response is received. [The meaning of the status_code](http://dev.bitly.com/formats.html) is well documented by bitly.
 
 Roadmap
 -------
