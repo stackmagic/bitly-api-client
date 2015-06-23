@@ -1,3 +1,9 @@
+
+[0.8.0]
+
+* BREAKING CHANGES: removed some calls that were deprecated by bit.ly
+* merged PR#6
+
 [0.7.2]
 * FIX: Issue#3 Link to maven repo was wrong
 * FIX: Issue#4 Example in Readme was wrong
