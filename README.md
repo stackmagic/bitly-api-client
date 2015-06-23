@@ -121,12 +121,12 @@ The `data` field contains the actual response information of type `T`. It is pos
 Right now this project is a rough skeleton. the api style is pretty much defined unless some unexpected special case comes up. the next most important steps are:
 
 * distinguish between single and multi occurrence parameters. some endpoints allow batching, this is not yet implemented in the request builder.
-  * eliminate duplicate values. eg ?url=a&url=a should be collapsed into a single url=a
+  * eliminate duplicate values. eg `?url=a&url=a` should be collapsed into a single `url=a`
   * include api limits (e.g. a paramter x may only be added 15 times for batching)
 * implement the full api
 * refine maven repo and release/publish process, use that maven release repo like it's intended to be used
 * add some javadoc
-* throw exceptions when there is a `status_code` that doesn't equal 200? make this optional (eg call() and callWithException()?)
+* throw exceptions when there is a `status_code` that doesn't equal `200`? make this optional (eg `call()` and `callWithException()`?)
 * add some debugging output (what's the smallest logging api in terms of size and further dependencies?)
 * need to cleanup the model package(s) and model class name(s) but the api is kind of a mess with 2 and 3 level deep links so how do I name stuff? especially the response objects
 
