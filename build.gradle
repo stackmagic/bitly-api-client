@@ -74,6 +74,10 @@ def getProperty = { String name ->
 	try {
 		return project[name]
 	}
+	catch (NullpointerException e) {
+		println "!!! property ${name} is not available"
+		return ""
+	}
 	catch (MissingPropertyException e) {
 		println "!!! property ${name} is not available"
 		return ""
