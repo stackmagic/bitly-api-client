@@ -81,7 +81,7 @@ The basic principle is simple: You create a BitlyClient with your access token. 
 
 ```
 BitlyClient client = new BitlyClient("... the access token ...")
-Response<ShortUrl> respShort = client.shorten() //
+ShortenResponse respShort = client.shorten() //
     .setLongUrl("https://github.com/stackmagic/bitly-api-client") //
     .call();
 ```
@@ -89,7 +89,7 @@ Response<ShortUrl> respShort = client.shorten() //
 This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the `BitlyClient` instance around, you can instantiate the `RequestBuilder` specializations directly. So above example would become this:
 
 ```
-Response<ShortUrl> respShort = new ShortenRequestBuilder("... the access token ...") //
+ShortenResponse respShort = new ShortenRequestBuilder("... the access token ...") //
     .setLongUrl("https://github.com/stackmagic/bitly-api-client") //
     .call();
 ```
@@ -103,7 +103,7 @@ If you don't like fluent builders the above example can also be written like thi
 ```
 ShortenRequestBuilder builder = new ShortenRequestBuilder("... the access token ...")
 builder.longUrl("https://github.com/stackmagic/bitly-api-client");
-Response<ShortUrl> respShort = builder.call();
+ShortenResponse respShort = builder.call();
 ```
 
 ## STEP 4: Working With The Response Object
