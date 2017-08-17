@@ -80,10 +80,10 @@ Please note that some of the integration tests may fail for you since you don't 
 The basic principle is simple: You create a BitlyClient with your access token. This is your factory and can be reused and passed around instead of passing around the access token String. Let the `BitlyClient` create a `RequestBuilder` for you and configure it, then make the call to bitly and work with the response. Simple, right? So here goes:
 
 ```
-BitlyClient client = new BitlyClient("... the access token ...")
-ShortenResponse respShort = client.shorten() //
-    .setLongUrl("https://github.com/stackmagic/bitly-api-client") //
-    .call();
+BitlyClient client = new BitlyClient("... the access token ...");
+Response<ShortenResponse> resp = client.shorten()
+                          .setLongUrl("https://github.com/stackmagic/bitly-api-client")
+                          .call();
 ```
 
 This simple 2-liner (newlines added for readability) shortens a link for you! If you do just a few calls or feeld more comfortable with passing the access token instead of the `BitlyClient` instance around, you can instantiate the `RequestBuilder` specializations directly. So above example would become this:
