@@ -1,6 +1,8 @@
 .*
+*.iml
 bin
 classes
 target
 test-output
 build
+out

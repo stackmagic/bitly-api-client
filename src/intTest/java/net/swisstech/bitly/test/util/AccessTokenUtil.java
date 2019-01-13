@@ -15,25 +15,26 @@
  */
 package net.swisstech.bitly.test.util;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import net.swisstech.log.Logger;
+import net.swisstech.log.LoggerFactory;
+
+import java.io.*;
 
 public final class AccessTokenUtil {
 
-	/** private constructor for utility class */
-	private AccessTokenUtil() {}
+	private static final Logger LOG = LoggerFactory.getLogger(AccessTokenUtil.class);
+
+	/**
+	 * private constructor for utility class
+	 */
+	private AccessTokenUtil() {
+	}
 
 	public static String readFrom(String path) throws IOException {
 		File file = new File(path);
-		System.out.println("Trying to load accessToken from file " + file.getAbsolutePath());
-		FileInputStream fis = new FileInputStream(file);
-		InputStreamReader isr = new InputStreamReader(fis);
-		BufferedReader br = new BufferedReader(isr);
-		String token = br.readLine();
-		br.close();
-		return token;
+		LOG.info("Trying to load accessToken from file " + file.getAbsolutePath());
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
+			return br.readLine();
+		}
 	}
 }
