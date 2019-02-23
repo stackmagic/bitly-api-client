@@ -65,7 +65,7 @@ buildscript {
 
 ## STEP 1: Get An OAuth Access Token (from bit.ly)
 
-There is one prerequisite: you need to obtain an oauth access token from bit.ly (which also requires you to [have an account with bit.ly](https://bitly.com/a/sign_up) and [register an app in the dev center](http://bitly.com/a/settings/advanced)). You can do this with [scribe-java](https://github.com/fernandezpablo85/scribe-java) but bit.ly support is not yet available. I made a fork of the scribe project and added bit.ly support. A pull request is currently pending. In the mean time: use my fork (or just the `BitlyApi` class from it) which is available here: https://github.com/stackmagic/scribe-java.
+https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-find-my-OAuth-access-token-
 
 ## STEP 2: Check Out The Integration Tests
 
