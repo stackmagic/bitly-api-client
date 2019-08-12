@@ -48,17 +48,19 @@ buildscript {
 ### Maven Setup
 
 ```xml
-<repository>
-    <id>central</id>
-    <name>bintray</name>
-    <url>http://jcenter.bintray.com</url>
-</repository>
+<repositories>
+    <repository>
+        <id>central</id>
+        <name>bintray</name>
+        <url>http://jcenter.bintray.com</url>
+    </repository>
+</repositories>
 
 <dependencies>
     <dependency>
         <groupId>net.swisstech</groupId>
         <artifactId>bitly-api-client</artifactId>
-        <version>...</version>
+        <version>0.8.0</version>
     </dependency>
 </dependencies>
 ```
